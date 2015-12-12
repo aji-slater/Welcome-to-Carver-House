@@ -3,21 +3,9 @@ var height = window.innerHeight;
 var game = new Phaser.Game(width, height, Phaser.AUTO, '', { preload: preload, create: create, update: update });
 
 var floorGroup;
-var board = [[0,0,0,0,0,0,0,1,1,0,0,0,0,0,0,0,0,0,0,0,0,0],
-             [0,0,0,0,0,0,0,1,1,0,0,0,0,0,0,0,0,0,0,0,0,0],
-             [0,0,0,1,1,1,1,1,1,1,1,1,1,1,1,1,0,0,0,0,0,0],
-             [0,0,0,1,1,1,1,1,1,1,1,1,1,1,1,1,0,0,0,0,0,0],
-             [0,0,0,1,1,1,1,1,1,1,1,1,1,1,1,1,0,0,0,0,0,0],
-             [0,0,0,1,1,1,1,1,1,1,1,1,1,1,1,1,0,0,0,0,0,0],
-             [0,0,0,1,1,1,1,1,1,1,1,1,1,1,1,1,0,0,0,0,0,0],
-             [0,0,0,1,1,1,1,1,1,1,1,1,1,1,1,1,0,0,0,0,0,0],
-             [0,0,0,1,1,1,1,1,1,1,1,1,1,1,1,1,0,0,0,0,0,0],
-             [0,0,0,1,1,1,1,1,1,1,1,1,1,1,1,1,0,0,0,0,0,0],
-             [0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,1,0,0,0,0,0,0],
-             [0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,1,0,0,0,0,0,0],
-             [0,0,0,0,0,0,0,1,1,1,1,1,1,1,1,1,0,0,0,0,0,0],
-             [0,0,0,0,0,0,0,1,1,1,1,1,1,1,1,1,0,0,0,0,0,0],
-             [0,0,0,0,0,0,0,1,1,1,1,1,1,1,1,1,0,0,0,0,0,0]];
+var gameBoard = new GameBoard();
+var board = gameBoard.generateBoard();
+console.log(board);
 
 function preload() {
   game.load.image('tile', 'images/tiles/wood-floor-tile.png');
@@ -38,7 +26,7 @@ function create() {
     for (var y = board[0].length; y > 0; y--) {
 
       if(board[x - 1][y - 1] === 1){
-        floorTile = game.add.isoSprite(xt + 1100, yt + 600, 0, 'tile', 0, floorGroup);
+        floorTile = game.add.isoSprite(xt + 9000, yt + 3000, 0, 'tile', 0, floorGroup);
         floorTile.anchor.set(1);
       }
       yt -= 55;
@@ -49,7 +37,7 @@ function create() {
   game.iso.topologicalSort(floorGroup);
 
 //change the size of the game board by changing these values ;)
-game.world.scale.setTo(0.8, 0.8);
+game.world.scale.setTo(0.1, 0.1);
 }
 
 function update() {

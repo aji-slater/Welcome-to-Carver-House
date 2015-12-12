@@ -8,10 +8,10 @@ var gameBoard = new GameBoard();
 var ANCHOR_SET = 0.5
 var TILE_POS = 55
 var yTilePosition = function(value){
-  return - (TITLE_POS * value);
+  return - (TILE_POS * value);
 }
 var xTilePosition = function(value){
-  return TITLE_POS * value;
+  return TILE_POS * value;
 }
 
 function preload() {

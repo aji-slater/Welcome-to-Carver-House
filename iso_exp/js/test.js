@@ -1,6 +1,8 @@
+
 var width = window.innerWidth;
 var height = window.innerHeight;
 var game = new Phaser.Game(width, height, Phaser.AUTO, '', { preload: preload, create: create, update: update });
+var text;
 
 var floorGroup;
 var board = [[0,0,0,0,0,0,0,1,1,0,0,0,0,0,0,0,0,0,0,0,0,0],
@@ -28,7 +30,18 @@ function preload() {
 }
 
 function create() {
-  floorGroup = game.add.group();
+  text = game.add.text(
+    game.world.centerX,
+    game.world.height/5,
+    "Welcome to Carver House",
+    {
+        size: "32px",
+        fill: "#FFF",
+        align: "center"
+    }
+);
+
+    floorGroup = game.add.group();
   var floorTile;
   var xt = 140;
   var yt = 140;
@@ -49,7 +62,7 @@ function create() {
   game.iso.topologicalSort(floorGroup);
 
 //change the size of the game board by changing these values ;)
-game.world.scale.setTo(0.8, 0.8);
+game.world.scale.setTo(0.5, 0.5);
 }
 
 function update() {

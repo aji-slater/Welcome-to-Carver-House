@@ -48,6 +48,7 @@ function create() {
   }
   game.iso.topologicalSort(floorGroup);
 
+//change the size of the game board by changing these values ;)
 game.world.scale.setTo(0.8, 0.8);
 }
 

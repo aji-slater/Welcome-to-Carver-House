@@ -5,11 +5,10 @@ var game = new Phaser.Game(width, height, Phaser.AUTO, '', { preload: preload, c
 var floorGroup;
 var gameBoard = new GameBoard();
 var board = gameBoard.generateBoard();
-console.log(board);
 var ANCHOR_SET = 0.5
 var TILE_POS = 55
-var tilePosition = function(gridNumber){
-  return gridNumber * 55;
+var grid ={
+  get orientation
 }
 
 function preload() {

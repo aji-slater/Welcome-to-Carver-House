@@ -1,7 +1,6 @@
 
 var itemCreate = function(){
-  console.log(function(4););
-  necklace = game.add.isoSprite(56, 56, 0, 'necklace', 0, itemGroup);
+  necklace = game.add.isoSprite(xTilePosition(4), yTilePosition(4), 0, 'necklace', 0, itemGroup);
   necklace.anchor.set(ANCHOR_SET);
   // necklace = game.add.isoSprite(900, 900, 0, 'necklace', 0, itemGroup);
   // var xx = 0;

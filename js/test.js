@@ -17,7 +17,6 @@ var xTilePosition = function(value){
 function preload() {
   game.load.image('tile', 'assets/tiles/wood-floor-tile.png');
   game.plugins.add(new Phaser.Plugin.Isometric(game));
-  game.world.setBounds(0, 0, 1740, 1740);
   // set the middle of the world in the middle of the screen
   game.iso.anchor.setTo(1);
   game.load.spritesheet('player','assets/someguy.png', 95.16, 158.75);

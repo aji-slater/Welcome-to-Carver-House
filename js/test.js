@@ -8,10 +8,10 @@ var gameBoard = new GameBoard();
 var ANCHOR_SET = 0.5
 var TILE_POS = 55
 var yTilePosition = function(value){
-  return -(55 * value);
+  return - (TITLE_POS * value);
 }
 var xTilePosition = function(value){
-  return 55 * value;
+  return TITLE_POS * value;
 }
 
 function preload() {
@@ -43,9 +43,9 @@ function create() {
         floorTile = game.add.isoSprite(yt, xt, 0, 'tile', 0, floorGroup);
         floorTile.anchor.set(ANCHOR_SET);
       }
-      xt -= 55;
+      xt -= TILE_POS;
     }
-    yt += 55;
+    yt += TILE_POS;
     xt = 0;
   }
   game.iso.topologicalSort(floorGroup);

@@ -10,9 +10,9 @@ console.log(board);
 function preload() {
   game.load.image('tile', 'images/tiles/wood-floor-tile.png');
   game.plugins.add(new Phaser.Plugin.Isometric(game));
-  game.world.setBounds(0, 0, 150, 150);
+  game.world.setBounds(0, 0, 740, 740);
   // set the middle of the world in the middle of the screen
-  game.iso.anchor.setTo(0.5, 0);
+  game.iso.anchor.setTo(1, 1);
 }
 
 function create() {
@@ -26,7 +26,7 @@ function create() {
     for (var y = board[0].length; y > 0; y--) {
 
       if(board[x - 1][y - 1] === 1){
-        floorTile = game.add.isoSprite(xt + 9000, yt + 3000, 0, 'tile', 0, floorGroup);
+        floorTile = game.add.isoSprite(xt, yt, 0, 'tile', 0, floorGroup);
         floorTile.anchor.set(1);
       }
       yt -= 55;
@@ -37,7 +37,7 @@ function create() {
   game.iso.topologicalSort(floorGroup);
 
 //change the size of the game board by changing these values ;)
-game.world.scale.setTo(0.1, 0.1);
+game.world.scale.setTo(0.5, 0.5);
 }
 
 function update() {

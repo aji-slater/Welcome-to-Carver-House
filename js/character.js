@@ -1,10 +1,12 @@
 
 // pre-load
-    game.load.spritesheet('player','images/someguy.png', 95.16, 158.75);
+    // game.load.spritesheet('player','assets/someguy.png', 95.16, 158.75);
 
 
 // create
 
+  var playerCreate = function(){
+    player = game.add.isoSprite(350, 280, 15, 'player', 15, floorGroup);
     game.physics.enable(player, Phaser.Physics.ARCADE);
     player.body.collideWorldBounds = true;
 
@@ -12,11 +14,12 @@
     player.animations.add('right', [25, 26, 27, 28, 29, 30, 31, 32, 33, 34, 35], 10, true);
     player.animations.add('up', [37, 38, 39, 40, 41, 42, 43, 44, 45, 46, 47], 10, true);
     player.animations.add('down', [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11], 10, true);
+  };
 
 
 
 // update
-
+  var playerUpdate = function(){
     var cursors = game.input.keyboard.createCursorKeys();
     player.body.velocity.x = 0;
 
@@ -49,3 +52,4 @@
   {
    player.body.velocity.y = -350;
   }
+};

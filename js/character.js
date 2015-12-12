@@ -6,7 +6,7 @@
 // create
 
   var playerCreate = function(){
-    player = game.add.isoSprite(350, 280, 15, 'player', 15, floorGroup);
+    player = game.add.isoSprite(-750, -750, 15, 'player', 15, activeGroup);
     game.physics.enable(player, Phaser.Physics.ARCADE);
     player.body.collideWorldBounds = true;
 
@@ -24,26 +24,19 @@
     player.body.velocity.x = 0;
 
    if(cursors.left.isDown){
-
      player.body.velocity.x = -150;
-
      player.animations.play('left');
    }
    else if (cursors.right.isDown){
      player.body.velocity.x = 150;
-
      player.animations.play('right');
     }
    else if (cursors.down.isDown){
-
      player.body.velocity.x = 150;
-
      player.animations.play('down');
     }
    else if (cursors.up.isDown){
-
      player.body.velocity.x = 150;
-
      player.animations.play('up');
     } else {
    player.animations.stop();

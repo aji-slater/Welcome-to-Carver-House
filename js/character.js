@@ -6,8 +6,12 @@
 // create
 
   var playerCreate = function(){
-    player = game.add.isoSprite(0, 0, 0, 'player', 15, activeGroup);
-    game.physics.enable(player, Phaser.Physics.ARCADE);
+
+
+
+
+    player = game.add.isoSprite(400, -250, 0, 'player', 15, activeGroup);
+    game.physics.isoArcade.enable(player);
     player.body.collideWorldBounds = true;
 
     player.animations.add('left', [13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23], 10, true);
@@ -34,17 +38,19 @@
      player.animations.play('right');
     }
    else if (cursors.down.isDown){
-     player.body.velocity.x = 150;
+     player.body.velocity.y = 150;
      player.animations.play('down');
     }
    else if (cursors.up.isDown){
-     player.body.velocity.x = 150;
+     player.body.velocity.y = -150;
      player.animations.play('up');
     } else {
-   player.animations.stop();
-   player.frame = 4;
+    player.animations.stop();
+    player.body.velocity.x = 0;
+    player.body.velocity.y = 0;
+    //player.frame = 4;
     }
-  {
-   player.body.velocity.y = -350;
-  }
+  // {
+  //  player.body.velocity.y = -350;
+  // }
 };

@@ -15,9 +15,13 @@ var xTilePosition = function(value){
 }
 
 function preload() {
+
   game.load.image('tile', 'assets/tiles/wood-floor-tile.png');
+  game.load.image('eastWallTile', 'assets/tiles/east-wall-tile.png');
+  game.load.image('northWallTile', 'assets/tiles/north-wall-tile.png');
   game.plugins.add(new Phaser.Plugin.Isometric(game));
   game.world.setBounds(0, 0, 1740, 1740);
+  game.physics.startSystem(Phaser.Plugin.Isometric.ISOARCADE);
   // set the middle of the world in the middle of the screen
   game.iso.anchor.setTo(1);
   game.load.spritesheet('player','assets/someguy.png', 95.16, 158.75);
@@ -26,11 +30,15 @@ function preload() {
 }
 
 function create() {
+  game.physics.isoArcade.gravity.setTo(0, 0, -500);
+
   floorGroup = game.add.group();
+  northWallGroup = game.add.group();
+  eastWallGroup = game.add.group();
   activeGroup = game.add.group();
   itemGroup = game.add.group();
   debugGroup = game.add.group();
-  var floorTile, necklace, debugTile;
+  var floorTile, wallTile, necklace, debugTile;
   var yt = 0;
   var xt = 0;
 
@@ -42,6 +50,14 @@ function create() {
       if(board[y - 1][x - 1] === 1){
         floorTile = game.add.isoSprite(yt, xt, 0, 'tile', 0, floorGroup);
         floorTile.anchor.set(ANCHOR_SET);
+      }
+      else if(board[y - 1][x - 1] === 2){
+        eastWallTile = game.add.isoSprite(yt, xt, 0, 'eastWallTile', 0, eastWallGroup);
+        eastWallTile.anchor.set(ANCHOR_SET);
+      }
+      else if(board[y - 1][x - 1] === 3){
+        northWallTile = game.add.isoSprite(yt, xt, 0, 'northWallTile', 0, northWallGroup);
+        northWallTile.anchor.set(ANCHOR_SET);
       }
       xt -= TILE_POS;
     }

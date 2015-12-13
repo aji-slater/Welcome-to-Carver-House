@@ -4,7 +4,7 @@ var TILE_POS = 55;
 var boardSides = board.length;
 
 var yTilePosition = function(value){
-  return - (TILE_POS * value);
+  return TILE_POS * value;
 };
 var xTilePosition = function(value){
   return TILE_POS * value;

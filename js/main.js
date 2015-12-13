@@ -19,7 +19,7 @@ BasicGame.Boot.prototype =
         itemGroup = game.add.group();
 
         generateTiles();
-
+        itemCreate();
         cursorPos = new Phaser.Plugin.Isometric.Point3();
         playerCreate();
         game.camera.follow(player);
@@ -30,20 +30,22 @@ BasicGame.Boot.prototype =
 
         game.iso.unproject(game.input.activePointer.position, cursorPos);
 
-        floorGroup.forEach(function (tile) {
+        itemGroup.forEach(function (tile) {
 
-            var inBounds = tile.isoBounds.containsXY(cursorPos.x, cursorPos.y);
+            var inBounds = necklace.isoBounds.containsXY(cursorPos.x, cursorPos.y);
 
             if (!tile.selected && inBounds) {
                 tile.selected = true;
-                tile.tint = 0xffffff;
-                game.add.tween(tile).to({ isoZ: 4 }, 200, Phaser.Easing.Quadratic.InOut, true);
+                tile.frame = 1
+                // tile.tint = 0xffff00;
+                // game.add.tween(tile).to({ isoZ: 4 }, 200, Phaser.Easing.Quadratic.InOut, true);
             }
 
             else if (tile.selected && !inBounds) {
                 tile.selected = false;
-                tile.tint = 0xffffff;
-                game.add.tween(tile).to({ isoZ: 0 }, 200, Phaser.Easing.Quadratic.InOut, true);
+                tile.frame = 0
+                // tile.tint = 0xffffff;
+                // game.add.tween(tile).to({ isoZ: 0 }, 200, Phaser.Easing.Quadratic.InOut, true);
             }
         });
     },

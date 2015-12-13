@@ -1,4 +1,4 @@
-var ANCHOR_SET = 0.5;
+var ANCHOR_SET = (.5);
 var TILE_POS = 55;
 
 var boardSides = board.length;

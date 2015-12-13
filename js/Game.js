@@ -1,8 +1,6 @@
-var game = new Phaser.Game(width, height, Phaser.AUTO, 'test', null, true, false);
-var BasicGame = function(game) { };
-BasicGame.Boot = function(game) { };
+BasicGame.Game = function(game) { };
 
-BasicGame.Boot.prototype =
+BasicGame.Game.prototype =
 {
     preload: function () {
         loadAll();
@@ -47,8 +45,8 @@ BasicGame.Boot.prototype =
             }
         });
     },
+    quitGame: function(pointer) {
+        this.state.start('MainMenu');
+    }
 
 };
-
-// game.state.add('Boot', BasicGame.Boot);
-// game.state.start('Boot');

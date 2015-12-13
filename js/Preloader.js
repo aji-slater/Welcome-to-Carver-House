@@ -16,7 +16,6 @@ BasicGame.Preloader.prototype = {
 
 	    text = this.add.text(400, 100, "Welcome to Carver House", style);
 	    text.anchor.set(0.5);
-
 	},
 
 	create: function() {

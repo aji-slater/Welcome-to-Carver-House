@@ -3,30 +3,25 @@ BasicGame.Game = function(game) { };
 BasicGame.Game.prototype =
 {
     preload: function () {
-        loadAll();
-        game.time.advancedTiming = true;
-        game.physics.startSystem(Phaser.Plugin.Isometric.ISOARCADE);
-        game.plugins.add(new Phaser.Plugin.Isometric(game));
-        game.world.setBounds(0, 0, 2048, 2048);
-
-
+        this.time.advancedTiming = true;
+        this.world.setBounds(0, 0, 2048, 2048);
     },
     create: function () {
-        floorGroup = game.add.group();
-        activeGroup = game.add.group();
-        itemGroup = game.add.group();
+        floorGroup = this.add.group();
+        activeGroup = this.add.group();
+        itemGroup = this.add.group();
 
         generateTiles();
 
         cursorPos = new Phaser.Plugin.Isometric.Point3();
         playerCreate();
-        game.camera.follow(player);
+        this.camera.follow(player);
 
     },
     update: function () {
         playerUpdate();
 
-        game.iso.unproject(game.input.activePointer.position, cursorPos);
+        this.iso.unproject(this.input.activePointer.position, cursorPos);
 
         floorGroup.forEach(function (tile) {
 
@@ -35,13 +30,13 @@ BasicGame.Game.prototype =
             if (!tile.selected && inBounds) {
                 tile.selected = true;
                 tile.tint = 0xffffff;
-                game.add.tween(tile).to({ isoZ: 4 }, 200, Phaser.Easing.Quadratic.InOut, true);
+                this.add.tween(tile).to({ isoZ: 4 }, 200, Phaser.Easing.Quadratic.InOut, true);
             }
 
             else if (tile.selected && !inBounds) {
                 tile.selected = false;
                 tile.tint = 0xffffff;
-                game.add.tween(tile).to({ isoZ: 0 }, 200, Phaser.Easing.Quadratic.InOut, true);
+                this.add.tween(tile).to({ isoZ: 0 }, 200, Phaser.Easing.Quadratic.InOut, true);
             }
         });
     },

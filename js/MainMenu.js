@@ -5,7 +5,7 @@ BasicGame.MainMenu = function(game) {
 
 BasicGame.MainMenu.prototype = {
 	create: function () {
-		console.log('Main Menu State');
+		// console.log('Main Menu State');
     	this.time.events.add(Phaser.Timer.SECOND * 2, this.transition, this);
 		// this.music = this.add.audio('titleMusic');
 		// this.music.play();
@@ -23,7 +23,7 @@ BasicGame.MainMenu.prototype = {
 
 	transition : function() {
     // start game
-    this.game.state.start('Game');
+    this.state.start('Game');
   	}
 
 	// startGame: function (pointer) {

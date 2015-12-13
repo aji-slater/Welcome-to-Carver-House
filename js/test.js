@@ -24,14 +24,14 @@ function preload() {
   game.physics.startSystem(Phaser.Plugin.Isometric.ISOARCADE);
   // set the middle of the world in the middle of the screen
   game.iso.anchor.setTo(1);
-  game.load.spritesheet('player','assets/someguy.png', 95.16, 158.75);
+  game.load.spritesheet('player','assets/inspector.png', 70, 70);
   game.load.spritesheet('debugTile', 'assets/tiles/debug_tiles.png', 100, 50);
   game.load.image('necklace', 'assets/necklace.png');
 }
 
 function create() {
   game.physics.isoArcade.gravity.setTo(0, 0, -500);
-
+  game.stage.backgroundColor = "rgb(131, 131, 131)"
   floorGroup = game.add.group();
   northWallGroup = game.add.group();
   eastWallGroup = game.add.group();

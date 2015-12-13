@@ -4,6 +4,36 @@ BasicGame.MainMenu = function(game) {
 };
 
 BasicGame.MainMenu.prototype = {
-	create: function() {
-	}
+	create: function () {
+		console.log('Main Menu State');
+    	this.time.events.add(Phaser.Timer.SECOND * 2, this.transition, this);
+		// this.music = this.add.audio('titleMusic');
+		// this.music.play();
+
+		// this.add.sprite(0, 0, 'titlepage');
+
+		// this.playButton = this.add.button(400, 600, 'playButton', this.startGame, this, 'buttonOver', 'buttonOut', 'buttonOver');
+  	},
+
+	update: function () {
+
+		//	Do some nice funky main menu effect here
+
+	},
+
+	transition : function() {
+    // start game
+    this.game.state.start('Game');
+  	}
+
+	// startGame: function (pointer) {
+
+	// 	//	Ok, the Play Button has been clicked or touched, so let's stop the music (otherwise it'll carry on playing)
+	// 	this.music.stop();
+
+	// 	//	And start the actual game
+	// 	this.state.start('Game');
+
+	// }
 }
+  

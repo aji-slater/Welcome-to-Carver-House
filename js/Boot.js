@@ -24,11 +24,5 @@ BasicGame.Boot.prototype = {
 	create: function() {
 
 		this.state.start('Preloader');
-	// sprite = this.add.sprite(0, 0, 'lovecraft_mansion');
-
- //    var style = { font: "67px Morpheus", fill: "#ffffff", wordWrap: true, wordWrapWidth: sprite.width, align: "center" };
-
- //    text = this.add.text(400, 100, "Welcome to Carver House", style);
- //    text.anchor.set(0.5);
 	}
 };

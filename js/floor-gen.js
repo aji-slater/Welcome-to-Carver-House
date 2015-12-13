@@ -1,8 +1,10 @@
 var generateTiles = function (){
-    var woodFloorTile, emptyFloorTile;
-    var xx, yy = 0;
-    for (var yi = 0; yi < boardSides; yi++){
-        for (var xi = 0; xi < boardSides; xi++){
+    var woodFloorTile;
+    var emptyFloorTile;
+    var xx = 0;
+    var yy = 0;
+    for (var yi = 0; yi < board.length; yi++){
+        for (var xi = 0; xi < board[0].length; xi++){
             if ( board[yi][xi] === 1 ){
                 woodFloorTile = game.add.isoSprite(xx, yy, 0, 'woodTile', 0, floorGroup);
                 woodFloorTile.anchor.set(0.5, 0);

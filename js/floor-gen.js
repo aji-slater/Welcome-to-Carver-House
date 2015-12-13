@@ -8,7 +8,7 @@ var generateTiles = function (){
             if ( board[yi][xi] === 1 ){
                 woodFloorTile = game.add.isoSprite(xx, yy, 0, 'woodTile', 0, floorGroup);
                 woodFloorTile.anchor.set(0.5, 0);
-            } else if ( board[yi][xi] === 0 ) {
+            } else {
                 emptyFloorTile = game.add.isoSprite(xx, yy, 0, 'emptyTile', 0, floorGroup);
                 emptyFloorTile.anchor.set(0.5, 0);
             };

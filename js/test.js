@@ -33,8 +33,6 @@ function create() {
   var yt = 0;
   var xt = 0;
 
-
-
   for (var y = 1; y < board.length; y++) {
     for (var x = 1; x < board.length; x++) {
 

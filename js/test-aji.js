@@ -17,13 +17,14 @@ BasicGame.Boot.prototype =
 
     },
     create: function () {
-        // game.world.scale.setTo(0.5, 0.5);
+        game.world.scale.setTo(0.5, 0.5);
 
         // Create a group for our tiles.
         floorGroup = game.add.group();
         activeGroup = game.add.group();
         itemGroup = game.add.group();
 
+        console.log(board);
         // Let's make a load of tiles on a grid.
         // this.spawnTiles();
         generateTiles();

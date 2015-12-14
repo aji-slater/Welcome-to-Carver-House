@@ -1,8 +1,4 @@
 BasicGame.Preloader = function (game) {
-<<<<<<< HEAD
-	// this.background = null;
-=======
->>>>>>> 5c284fbcb356ab883ce40ae1fa8b5a0dc5a874a5
 	this.preloadBar = null;
 	this.ready = false;
 };

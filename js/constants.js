@@ -1,10 +1,13 @@
 var ANCHOR_SET = 0.5;
 var TILE_POS = 55;
-gameBoard = new GameBoard();
+
+var gameBoard = new GameBoard();
 gameBoard.generateBoard();
 var board = gameBoard.board;
-
 var boardSides = board.length;
+
+var easyStar = new EasyStar.js();
+var timeStep = 400
 
 var yTilePosition = function(value){
   return TILE_POS * value;

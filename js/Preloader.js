@@ -9,13 +9,14 @@ BasicGame.Preloader.prototype = {
 
 	preload: function() {
 		// this.background = this.add.sprite(0, 0, 'lovecraft_mansion');
+    loadAll();
 		sprite = this.add.sprite(0, 0, 'lovecraft_mansion');
 		this.preloadBar = this.add.sprite(300, 400, 'preload_bar');
 
 		var style = { font: "67px Morpheus", fill: "#ffffff", wordWrap: true, wordWrapWidth: sprite.width, align: "center" };
 
-	    text = this.add.text(400, 100, "Welcome to Carver House", style);
-	    text.anchor.set(0.5);
+    text = this.add.text(400, 100, "Welcome to Carver House", style);
+    text.anchor.set(0.5);
 	},
 
 	create: function() {
@@ -26,8 +27,8 @@ BasicGame.Preloader.prototype = {
 
 	update: function() {
 		// if (this.ready == false) {
-			this.ready = true;
-		// 	this.state.start('MainMenu');
+		this.ready = true;
+		this.state.start('MainMenu');
 		// }
 	}
 };

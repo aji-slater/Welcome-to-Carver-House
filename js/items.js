@@ -17,7 +17,7 @@ var debugCreate = function(){
   var xx = 0;
   var i = 0;
   while ( i < 9 ){
-  debugTile = game.add.isoSprite(xx, 0, 0, 'debugTile', i, debugGroup);
+  debugTile = game.add.isoSprite(xx, 0, 0, 'debugTile', i, floorGroup);
   debugTile.anchor.set(ANCHOR_SET);
   i++;
   xx += TILE_POS;

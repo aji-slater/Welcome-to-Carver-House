@@ -15,7 +15,7 @@ var xTilePosition = function(value){
 
 var inventory = [];
 
-var floorGroup, activeGroup, itemGroup, menuGroup, furnishGroup;
+var floorGroup, activeGroup, itemGroup, menuGroup, furnishGroup, exitGroup;
 var cursorPos, cursor;
 var floorTile, necklace, key, debugTile;
 var yt, xt = 0;

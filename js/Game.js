@@ -9,6 +9,8 @@ BasicGame.Game.prototype =
   },
 
   create: function () {
+    game.physics.isoArcade.gravity.setTo(0, 0, -500);
+    emptyGroup = game.add.group();
     floorGroup = game.add.group();
     furnishGroup = game.add.group();
     itemGroup = game.add.group();
@@ -18,8 +20,8 @@ BasicGame.Game.prototype =
     playerCreate();
     generateTiles();
     generateWalls();
-    itemCreate();
-    itemInputs();
+    // itemCreate();
+    // itemInputs();
     hudDisplay();
     tableCreate();
 
@@ -30,12 +32,23 @@ BasicGame.Game.prototype =
   update: function () {
     game.iso.unproject(game.input.activePointer.position, cursorPos);
     playerUpdate();
-    illuminate();
+    // illuminate();
     itemInteract();
+    this.game.physics.isoArcade.collide(player, emptyGroup);
+
   },
 
   quitGame: function(pointer) {
       this.state.start('MainMenu');
+  },
+
+  render: function () {
+    // emptyGroup.forEach(function (tile) {
+    //     game.debug.body(tile, 'rgba(189, 221, 235, 0.6)', false);
+    // })
+    activeGroup.forEach(function (tile) {
+    game.debug.body(tile, 'rgba(189, 221, 235, 0.6)', false);
+    })
   }
 
 };

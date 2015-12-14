@@ -9,8 +9,12 @@ var generateTiles = function (){
                 woodFloorTile = this.game.add.isoSprite(xx, yy, 0, 'woodTile', 0, floorGroup);
                 woodFloorTile.anchor.set(0.5, 0);
             } else {
-                // emptyFloorTile = this.game.add.isoSprite(xx, yy, 0, 'emptyTile', 0, floorGroup);
-                // emptyFloorTile.anchor.set(0.5, 0);
+                emptyTile = this.game.add.isoSprite(xx, yy, 0, 'emptySquare', 0, emptyGroup);
+                emptyTile.anchor.set(0.5, 0);
+                game.physics.isoArcade.enable(emptyTile);
+                emptyTile.body.collideWorldBounds = true;
+                emptyTile.body.moves = false;
+                emptyTile.body.setSize(56, 56, 5);
             };
             xx += TILE_POS;
         };
@@ -43,10 +47,12 @@ var generateWalls = function(){
         }
     }
     for (var xi = 0; xi < board[0].length; xi++){
-        for (var yi = 1; yi < board.length; yi++){
+        for (var yi = 0; yi < board.length; yi++){
             if ( board[yi][xi] === 1 && board[yi-1][xi] === 0 ){
                 wall = this.game.add.isoSprite(xTilePosition(xi), yTilePosition(yi), 0, 'wall', 1, floorGroup);
                 wall.anchor.set(0.5, 0.66);
+            } else if (board[yi][1] === 1) {
+                wall = this.game.add.isoSprite(xTilePosition(xi), yTilePosition(yi), 0, 'wall', 1, floorGroup);
             }
         }
     }

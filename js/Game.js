@@ -34,12 +34,21 @@ BasicGame.Game.prototype =
     playerUpdate();
     illuminate();
     itemInteract();
-    game.physics.isoArcade.collide(emptyGroup, player);
+    this.game.physics.isoArcade.collide(player, emptyGroup);
 
   },
 
   quitGame: function(pointer) {
       this.state.start('MainMenu');
+  },
+
+  render: function () {
+    emptyGroup.forEach(function (tile) {
+        game.debug.body(tile, 'rgba(189, 221, 235, 0.6)', false);
+    })
+    activeGroup.forEach(function (tile) {
+    game.debug.body(tile, 'rgba(189, 221, 235, 0.6)', false);
+    })
   }
 
 };

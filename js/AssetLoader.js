@@ -6,7 +6,7 @@ var loadAll = function() {
   game.load.image('sideTable', 'assets/furniture/side-table.png');
   game.load.image('emptySquare', 'assets/tiles/empty-square.png');
 
-  game.load.spritesheet('testingPlayer', 'assets/tiles/investigator_new.png', 40, 70);
+  game.load.spritesheet('testingPlayer', 'assets/investigator_new.png', 40, 70);
 
   // game.load.spritesheet('player', 'assets/investigator.png', 70, 70);
   // game.load.spritesheet('debugTile', 'assets/tiles/debug_tiles.png', 100, 50);

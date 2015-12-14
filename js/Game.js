@@ -22,6 +22,7 @@ BasicGame.Game.prototype =
     itemInputs();
     hudDisplay();
     tableCreate();
+    pauseGame();
 
     cursorPos = new Phaser.Plugin.Isometric.Point3();
     game.camera.follow(player);

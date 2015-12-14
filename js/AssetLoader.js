@@ -5,6 +5,7 @@ var loadAll = function() {
   game.load.image('hudFrame', 'assets/hud/hud-frame.png');
   game.load.image('sideTable', 'assets/furniture/side-table.png');
   game.load.image('emptySquare', 'assets/tiles/empty-square.png');
+  game.load.image('inventoryMenu', 'assets/hud/inventory-frame.png');
 
   game.load.spritesheet('testingPlayer', 'assets/investigator_new.png', 40, 70);
 

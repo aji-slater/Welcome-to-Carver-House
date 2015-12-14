@@ -10,14 +10,14 @@ var pickUpNecklace = function(event, sprite){
   if (game.physics.arcade.distanceBetween(necklace, player) < 100) {
     inventory.push("necklace");
     necklace.kill();
-    console.log(inventory); };
+    console.log(inventory); }
 };
 
 var pickUpKey = function(event, sprite){
   if (game.physics.arcade.distanceBetween(key, player) < 100) {
     inventory.push("key");
     key.kill();
-    console.log(inventory); };
+    console.log(inventory); }
 };
 
 
@@ -31,7 +31,7 @@ var tableCreate = function(){
   table.body.setSize(30, 20, 45);
   table.body.collideWorldBounds = true;
   table.body.immovable = true;
-}
+};
 
 var itemInputs = function(){
   necklace.inputEnabled = true;
@@ -58,5 +58,4 @@ var itemInteract = function(){
       game.add.tween(item).to({ isoZ: 0 }, 200, Phaser.Easing.Quadratic.InOut, true);
     }
   });
-}
-
+};

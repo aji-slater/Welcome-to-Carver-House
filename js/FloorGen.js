@@ -15,12 +15,12 @@ var generateTiles = function (){
                 emptyTile.body.collideWorldBounds = true;
                 emptyTile.body.moves = false;
                 emptyTile.body.setSize(56, 56, 5);
-            };
+            }
             xx += TILE_POS;
-        };
+        }
         xx = 0;
         yy += TILE_POS;
-    };
+    }
         // Debug Tiles at 0x0
     // var i = 0
     // for (xx = 0; xx < 9*TILE_POS; xx+= TILE_POS){
@@ -35,7 +35,7 @@ var generateTiles = function (){
     //     debugTile.anchor.set(0.5, 0)
     //     i++;
     // }
-}
+};
 
 var generateWalls = function(){
     for (var yi = 0; yi < board.length; yi++){

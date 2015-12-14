@@ -4,7 +4,7 @@ BasicGame.Game.prototype =
 {
   preload: function () {
     game.time.advancedTiming = true;
-    game.world.setBounds(0, 0, 3500, 3500);
+    game.world.setBounds(0, 0, 5000, 5000);
     game.iso.anchor.setTo(0.5, 0.2);
   },
 
@@ -30,7 +30,7 @@ BasicGame.Game.prototype =
   update: function () {
     game.iso.unproject(game.input.activePointer.position, cursorPos);
     playerUpdate();
-    illuminate();
+    // illuminate();
     itemInteract();
   },
 

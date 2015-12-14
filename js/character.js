@@ -25,8 +25,27 @@
     var isoKeys = game.input.keyboard.addKeys( { 'nw': Phaser.Keyboard.Q, 'sw': Phaser.Keyboard.A, 'ne': Phaser.Keyboard.W, 'se': Phaser.Keyboard.S } );
     var cursors = game.input.keyboard.createCursorKeys();
     player.body.velocity.x = 0;
+    player.body.velocity.y = 0;
     // CursoryKeys Movement
-   if (cursors.up.isDown){
+   if (cursors.down.isDown && cursors.left.isDown){
+      player.body.velocity.y = 150;
+      player.animations.play('sw');
+    }
+    else if (cursors.up.isDown && cursors.left.isDown){
+       player.body.velocity.x = -150;
+       player.animations.play('nw');
+      }
+    else if (cursors.up.isDown && cursors.right.isDown){
+       player.body.velocity.y = -150;
+       player.animations.play('ne');
+      }
+    else if (cursors.down.isDown && cursors.right.isDown){
+       player.body.velocity.x = 150;
+       player.animations.play('se');
+      }
+
+
+   else if (cursors.up.isDown){
       player.body.velocity.x = -150;
       player.body.velocity.y = -150;
       player.animations.play('up');
@@ -46,29 +65,29 @@
      player.body.velocity.y = -100;
      player.animations.play('right');
    }
-    //  IsoKeys Movement
-   else if (isoKeys.nw.isDown){
-      player.body.velocity.x = -150;
-      player.animations.play('nw');
-     }
-   else if (isoKeys.sw.isDown){
-      player.body.velocity.y = 150;
-      player.animations.play('sw');
-     }
-   else if (isoKeys.ne.isDown){
-      player.body.velocity.y = -150;
-      player.animations.play('ne');
-     }
-   else if (isoKeys.se.isDown){
-      player.body.velocity.x = 150;
-      player.animations.play('se');
-     }
    else {
-    player.animations.stop();
-    player.body.velocity.x = 0;
-    player.body.velocity.y = 0;
-    //player.frame = 4;
-    }
+     player.animations.stop();
+     player.body.velocity.x = 0;
+     player.body.velocity.y = 0;
+     //player.frame = 4;
+   }
+    //  IsoKeys Movement
+  //  else if (isoKeys.nw.isDown){
+  //     player.body.velocity.x = -150;
+  //     player.animations.play('nw');
+  //    }
+  //  else if (isoKeys.sw.isDown){
+  //     player.body.velocity.y = 150;
+  //     player.animations.play('sw');
+  //    }
+  //  else if (isoKeys.ne.isDown){
+  //     player.body.velocity.y = -150;
+  //     player.animations.play('ne');
+  //    }
+  //  else if (isoKeys.se.isDown){
+  //     player.body.velocity.x = 150;
+  //     player.animations.play('se');
+  //    }
   // {
   //  player.body.velocity.y = -350;
   // }

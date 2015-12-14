@@ -25,6 +25,7 @@ BasicGame.Game.prototype =
 
     cursorPos = new Phaser.Plugin.Isometric.Point3();
     game.camera.follow(player);
+
   },
 
   update: function () {

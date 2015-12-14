@@ -5,5 +5,8 @@ var loadAll = function() {
   game.load.spritesheet('player', 'assets/figure.png', 50, 50);
   game.load.spritesheet('debugTile', 'assets/tiles/debug_tiles.png', 100, 50);
   game.load.image('emptyTile', 'assets/tiles/empty-tile.png');
-
+  game.load.image('hudFrame', 'assets/hud/hud-frame.png');
+  game.load.image('sideTable', 'assets/furniture/side-table.png')
+  game.load.spritesheet('key', 'assets/items/key.png', 35, 35);
+  game.load.spritesheet('wall', 'assets/furniture/wall.png', 100, 150);
 };

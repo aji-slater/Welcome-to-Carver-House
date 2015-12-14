@@ -4,43 +4,36 @@ BasicGame.Game.prototype =
 {
   preload: function () {
     game.time.advancedTiming = true;
-    game.world.setBounds(0, 0, 2048, 2048);
+    game.world.setBounds(0, 0, 3500, 3500);
+    game.iso.anchor.setTo(0.5, 0.2);
   },
 
   create: function () {
     floorGroup = game.add.group();
-    activeGroup = game.add.group();
+    furnishGroup = game.add.group();
     itemGroup = game.add.group();
+    activeGroup = game.add.group();
+    menuGroup = game.add.group();
 
     playerCreate();
     generateTiles();
+    generateWalls();
+    itemCreate();
+    itemInputs();
+    hudDisplay();
+    tableCreate();
 
     cursorPos = new Phaser.Plugin.Isometric.Point3();
     game.camera.follow(player);
   },
 
   update: function () {
-    playerUpdate();
-
     game.iso.unproject(game.input.activePointer.position, cursorPos);
-
-    floorGroup.forEach(function (tile) {
-
-      var inBounds = tile.isoBounds.containsXY(cursorPos.x, cursorPos.y);
-
-      if (!tile.selected && inBounds) {
-        tile.selected = true;
-        tile.tint = 0xffffff;
-        game.add.tween(tile).to({ isoZ: 4 }, 200, Phaser.Easing.Quadratic.InOut, true);
-      }
-
-      else if (tile.selected && !inBounds) {
-        tile.selected = false;
-        tile.tint = 0xffffff;
-        game.add.tween(tile).to({ isoZ: 0 }, 200, Phaser.Easing.Quadratic.InOut, true);
-        }
-    });
+    playerUpdate();
+    illuminate();
+    itemInteract();
   },
+
   quitGame: function(pointer) {
       this.state.start('MainMenu');
   }

@@ -1,5 +1,8 @@
 var ANCHOR_SET = 0.5;
 var TILE_POS = 55;
+gameBoard = new GameBoard();
+gameBoard.generateBoard();
+var board = gameBoard.board;
 
 var boardSides = board.length;
 
@@ -10,10 +13,10 @@ var xTilePosition = function(value){
   return TILE_POS * value;
 };
 
-var width = window.innerWidth;
-var height = window.innerHeight;
+var inventory = [];
 
-var floorGroup, activeGroup, itemGroup;
+var floorGroup, activeGroup, itemGroup, menuGroup, furnishGroup;
 var cursorPos, cursor;
-var floorTile, necklace, debugTile;
+var floorTile, necklace, key, debugTile;
 var yt, xt = 0;
+

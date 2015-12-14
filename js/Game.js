@@ -8,14 +8,11 @@ BasicGame.Game.prototype =
   },
 
   create: function () {
-    floorGroup = game.add.group();
-    activeGroup = game.add.group();
-    itemGroup = game.add.group();
 
     generateTiles();
+    playerCreate();
 
     cursorPos = new Phaser.Plugin.Isometric.Point3();
-    playerCreate();
     game.camera.follow(player);
   },
 

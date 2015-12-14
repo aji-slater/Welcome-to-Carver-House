@@ -25,9 +25,9 @@ BasicGame.Preloader.prototype = {
 
 
 	update: function() {
-		if (this.ready == false) {
+		// if (this.ready == false) {
 			this.ready = true;
-			this.state.start('MainMenu');
-		}
+		// 	this.state.start('MainMenu');
+		// }
 	}
 };

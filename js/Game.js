@@ -1,4 +1,7 @@
-BasicGame.Game = function(game) { };
+BasicGame.Game = function(game) {
+  var ghost;
+
+};
 
 BasicGame.Game.prototype =
 {
@@ -14,6 +17,7 @@ BasicGame.Game.prototype =
     itemGroup = game.add.group();
     activeGroup = game.add.group();
     menuGroup = game.add.group();
+    enemyGroup = game.add.group();
 
     playerCreate();
     generateTiles();
@@ -23,6 +27,9 @@ BasicGame.Game.prototype =
     hudDisplay();
     tableCreate();
     configPathFinding();
+    ghost = createGhost();
+    setPathFinderInterval();
+
 
     cursorPos = new Phaser.Plugin.Isometric.Point3();
     game.camera.follow(player);
@@ -31,8 +38,10 @@ BasicGame.Game.prototype =
   update: function () {
     game.iso.unproject(game.input.activePointer.position, cursorPos);
     playerUpdate();
+    moveGhost(ghost);
     illuminate();
     itemInteract();
+    checkGhostCollision();
   },
 
   quitGame: function(pointer) {

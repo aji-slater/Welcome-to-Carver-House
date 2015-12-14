@@ -10,4 +10,5 @@ var loadAll = function() {
   game.load.spritesheet('necklace', 'assets/items/necklace.png', 35, 35);
   game.load.spritesheet('key', 'assets/items/key.png', 35, 35);
   game.load.spritesheet('wall', 'assets/furniture/wall.png', 100, 150);
+  game.load.spritesheet('characterAnim','assets/characterAnim.png', 70, 74);
 };

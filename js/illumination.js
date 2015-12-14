@@ -72,6 +72,27 @@ itemGroup.forEach(function (tile) {
   if (game.physics.arcade.distanceBetween(tile, player) < 250 && game.physics.arcade.distanceBetween(tile, player) > 210) {
     tile.tint = 0x222222;
   };
+});
+
+enemyGroup.forEach(function (enemy) {
+  if (game.physics.arcade.distanceBetween(enemy, player) < 50) {
+    enemy.tint = 0xffffff;
+  };
+  if (game.physics.arcade.distanceBetween(enemy, player) < 90 && game.physics.arcade.distanceBetween(enemy, player) > 50) {
+    enemy.tint = 0xcccccc;
+  };
+  if (game.physics.arcade.distanceBetween(enemy, player) < 130 && game.physics.arcade.distanceBetween(enemy, player) > 90) {
+    enemy.tint = 0x999999;
+  };
+  if (game.physics.arcade.distanceBetween(enemy, player) < 170 && game.physics.arcade.distanceBetween(enemy, player) > 130) {
+    enemy.tint = 0x777777;
+  };
+  if (game.physics.arcade.distanceBetween(enemy, player) < 210 && game.physics.arcade.distanceBetween(enemy, player) > 170) {
+    enemy.tint = 0x444444;
+  };
+  if (game.physics.arcade.distanceBetween(enemy, player) < 250 && game.physics.arcade.distanceBetween(enemy, player) > 210) {
+    enemy.tint = 0x222222;
+  };
 
 });
 }

@@ -1,5 +1,4 @@
 BasicGame.Game = function(game) {
-  var ghost;
 
 };
 
@@ -41,7 +40,9 @@ BasicGame.Game.prototype =
     moveGhost(ghost);
     illuminate();
     itemInteract();
+
     checkGhostCollision();
+
   },
 
   quitGame: function(pointer) {

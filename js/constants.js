@@ -6,6 +6,7 @@ gameBoard.generateBoard();
 var board = gameBoard.board;
 var boardSides = board.length;
 var player;
+var ghost;
 
 var yTilePosition = function(value){
   return TILE_POS * value;

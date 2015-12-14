@@ -8,7 +8,10 @@ var currentGhostYtile;
 var currentNextPointX; // next movement point in X
 var currentNextPointY; // next movement point in Y
 var enemyDirection = "STOP";
-var ghost;
+
+function parishHandler(player, ghost){
+  console.log("overlapped!!!!");
+}
 
 function configPathFinding(){
   easyStar.setGrid(board);
@@ -37,7 +40,12 @@ function createGhost(){
 }
 
 function checkGhostCollision(){
-  this.game.physics.isoArcade.overlap(player, ghost, parishHandler(player, ghost), null, this);
+  // console.log(player);
+  // console.log(ghost);
+  this.game.physics.isoArcade.overlap(player, ghost, function(player){
+      console.log("overlap");
+      player.kill();
+    });
 }
 
 function setPathFinderInterval() {
@@ -195,6 +203,3 @@ function moveGhost(ghost){
           }
 }
 
-function parishHandler(player, ghost){
-  player.kill();
-}

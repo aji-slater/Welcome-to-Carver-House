@@ -32,7 +32,7 @@ BasicGame.Game.prototype =
   update: function () {
     game.iso.unproject(game.input.activePointer.position, cursorPos);
     playerUpdate();
-    illuminate();
+    // illuminate();
     itemInteract();
     this.game.physics.isoArcade.collide(player, emptyGroup);
 
@@ -43,9 +43,9 @@ BasicGame.Game.prototype =
   },
 
   render: function () {
-    emptyGroup.forEach(function (tile) {
-        game.debug.body(tile, 'rgba(189, 221, 235, 0.6)', false);
-    })
+    // emptyGroup.forEach(function (tile) {
+    //     game.debug.body(tile, 'rgba(189, 221, 235, 0.6)', false);
+    // })
     activeGroup.forEach(function (tile) {
     game.debug.body(tile, 'rgba(189, 221, 235, 0.6)', false);
     })

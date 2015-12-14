@@ -9,7 +9,7 @@ var generateTiles = function (){
                 woodFloorTile = this.game.add.isoSprite(xx, yy, 0, 'woodTile', 0, floorGroup);
                 woodFloorTile.anchor.set(0.5, 0);
             } else {
-                emptyTile = this.game.add.isoSprite(xx, yy, 0, 'emptyTile', 0, emptyGroup);
+                emptyTile = this.game.add.isoSprite(xx, yy, 0, 'emptySquare', 0, emptyGroup);
                 emptyTile.anchor.set(0.5, 0);
                 game.physics.isoArcade.enable(emptyTile);
                 emptyTile.body.collideWorldBounds = true;

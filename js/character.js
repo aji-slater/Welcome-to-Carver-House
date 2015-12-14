@@ -1,9 +1,10 @@
 var playerCreate = function(){
 
-   player = game.add.isoSprite(400, -250, 0, 'player', 15, activeGroup);
+   player = game.add.isoSprite(xTilePosition(10), yTilePosition(10), 0, 'player', 15, activeGroup);
    game.physics.isoArcade.enable(player);
    player.body.collideWorldBounds = true;
-   player.body.setSize(10, 10, 30);
+   player.body.setSize(10, 10, 40);
+   player.anchor.set(0.5, 0);
 
 
 

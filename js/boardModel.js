@@ -15,16 +15,16 @@ function Room(x, y, w, h){
 
 Room.prototype.centerX = function(){
       return Math.floor(this.x +(this.width/2));
-};
+}
 
 Room.prototype.centerY = function(){
       return Math.floor(this.y +(this.height/2));
-};
+}
 
 Room.prototype.intersects = function(room2){
       // return (room2.x >= this.x && room2.x <= this.x2 && room2.y2 >= this.y && room2.y >= this.y);
-      return (this.x <= room2.x2 && this.x2 >= room2.x && this.y <= room2.y2 && this.y2 >= room2.y);
-};
+      return (this.x <= room2.x2 && this.x2 >= room2.x && this.y <= room2.y2 && this.y2 >= room2.y)
+}
 
 
 function GameBoard(){
@@ -48,7 +48,7 @@ GameBoard.prototype.generateRoom = function(room){
             }
       }
       console.log(this.board);
-};
+}
 
 GameBoard.prototype.generateEmptyBoard = function(width, height){
             for(var y = height; y >= 1 ; --y){
@@ -61,7 +61,7 @@ GameBoard.prototype.generateEmptyBoard = function(width, height){
       this.boardWidth = width;
       this.boardHeight = height;
       return this.board;
-};
+}
 
 // GameBoard.prototype.generateHorizontal = function(room1, room2, hallV){
 //       console.log(room1);
@@ -214,7 +214,7 @@ this.generateEmptyBoard(50, 50);
 
       var newRoom = new Room(x, y, w, h);
       var intersect = false;
-      for(var roomIndex in rooms){
+      for(roomIndex in rooms){
             if(newRoom.intersects(rooms[roomIndex])){
                   intersect = true;
                   break;
@@ -236,7 +236,7 @@ this.generateEmptyBoard(50, 50);
                         this.board[newRoom.centerY() + z][xx] = 1;
                         this.board[newRoom.centerY()][xx] = 1;
                         xx += z;
-                  }
+                  };
 
                   if ( newRoom.centerY() >= oldRoom.centerY() ){
                         z = -1;
@@ -249,7 +249,175 @@ this.generateEmptyBoard(50, 50);
                         this.board[yy][oldRoom.centerX() + z] = 1;
                         this.board[yy][oldRoom.centerX()] = 1;
                         yy += z;
-                  }
+                  } ;
+
+
+
+
+
+                  // if(Math.floor(Math.random() * 2) === 1){
+                  //       var hallwayData = this.generateHorizontal(newRoom, oldRoom, false);
+                  //       this.generateVertical(false, hallwayData["partner_room"], hallwayData["hallX"]);
+                  // }
+                  // else {
+                  //       var hallwayData = this.generateVertical(newRoom, oldRoom, false);
+                  //       this.generateHorizontal(false, hallwayData["partner_room"], hallwayData["hallY"]);
+                  // }
             }
+            rooms.push(newRoom);
       }
- }};
+ }
+}
+
+// // Room.prototype.getRoomCenter = function(){
+// //       var x = Math.floor(this.width/2);
+// //       var y = Math.floor(this.height/2);
+// //       return {x: x, y: y};
+// // }
+
+
+
+// // GameBoard.prototype.createHallways(){
+// //       if(this.eastHallway != null){
+
+// //       }
+// //       if(this.westHallway != null){
+
+// //       }
+// //       if(this.northHallway != null){
+
+// //       }
+// //       if(this.southHallway != null){
+
+// //       }
+// // }
+
+// // //return an offset value and direction
+// // GameBoard.prototype.pickOffset = function(newRoom, oldRoom){
+// //       var offsets = [1,2,3,4];
+
+// //       while(offsets.length != 0){
+// //       // generates a random number for array index to select direction
+// //       var offsetIndex = Math.floor(Math.random() * offsets.length);
+// //       var offsetType = offsets.splice(offsetIndex, 1)[0];
+// //       var  offsetDistance = Math.floor(Math.random() * 4 ) + 1;
+// //             switch(offsetType){
+// //                   //south y+
+// //                   case 1:
+// //                         newRoom.x = oldRoom.x;
+// //                         newRoom.y = offsetDistance + oldRoom.y + oldRoom.height;
+// //                         // check if the new room is in bounds
+// //                         if(newRoom.y <= this.board.length - 1 && this.board[newRoom.y][newRoom.x] != 1){
+// //                               newRoom.northHallway = oldRoom;
+// //                               this.createHallway(newRoom, oldRoom);
+// //                               return newRoom;
+// //                         }
+// //                         break;
+// //                   //north y-
+// //                   case 2:
+// //                         newRoom.x = oldRoom.x;
+// //                         newRoom.y = newRoom.height - offsetDistance;
+// //                         // check if the new room is in bounds
+// //                         if(newRoom.y + newRoom.height >= 0 && this.board[newRoom.y][newRoom.x] != 1){
+// //                               newRoom.southHallway = oldRoom;
+// //                               this.createHallway(newRoom, oldRoom);
+// //                               return newRoom;
+// //                         }
+// //                         break;
+// //                   //east x+
+// //                   case 3:
+// //                         newRoom.x = offsetDistance + oldRoom.x + oldRoom.width;
+// //                         newRoom.y = oldRoom.y
+// //                         if(newRoom.x + newRoom.width <= this.board[0].length - 1 && this.board[newRoom.y][newRoom.x] != 1){
+// //                               newRoom.westHallway = oldRoom;
+// //                               this.createHallway(newRoom, oldRoom);
+// //                               return newRoom;
+// //                         }
+// //                         break;
+// //                   //west x-
+// //                   case 4:
+// //                         newRoom.x = oldRoom.x - offsetDistance - newRoom.width;
+// //                         newRoom.y = oldRoom.y;
+// //                         if(newRoom.x >= 0 && this.board[newRoom.y][newRoom.x] != 1){
+// //                               newRoom.eastHallway = oldRoom;
+// //                               this.createHallway(newRoom, oldRoom);
+// //                               return newRoom;
+// //                         }
+// //                         break;
+// //                   // ERROR
+// //                   default:
+// //                         console.log("Error");
+// //             }
+// //       }
+// //       console.log("returns false");
+// //       return false;
+// // }
+
+// GameBoard.prototype.generateMap = function(room){
+//       this.roomCount ++;
+//       this.generateRoom(room);
+//       var id = this.roomCount;
+//       var height = Math.floor(Math.random() * 8) + 4;
+//       var width = Math.floor(Math.random() * 8) + 4;
+//       var Math.floor(Math.random() * 40) + 1;
+//       var newRoom = new Room();
+//       if(newRoom = this.pickOffset(newRoom, room)){
+//             this.generateRoom(newRoom);
+//             this.generateMap(newRoom);
+//             return this.board;
+//       }
+//       if(newRoom = this.pickOffset(newRoom, room)){
+//             this.generateRoom(newRoom);
+//             this.generateMap(newRoom);
+//             return this.board;
+//       }
+//       else{
+//             return false;
+//       }
+// }
+
+// GameBoard.prototype.checkBoardCoverage = function(board){
+//       var tileCount = 0;
+//       for(var y = 0; y < board.length; y++){
+//             for(var x = 0; x < board[0].length; x++){
+//                   if(board[y][x] === 1){
+//                         tileCount++;
+//                   }
+//             }
+//       }
+//       var coverage = tileCount / (this.board.length * this.board[0].length);
+//       console.log((this.board.length * this.board[0].length));
+//       console.log(coverage);
+//       return coverage;
+// }
+
+// //testing room build function
+// GameBoard.prototype.generateBoard = function(){
+
+//       board = this.generateEmptyBoard(50, 50);
+//       this.generateMap(this.entryRoom);
+//       var coverage = this.checkBoardCoverage(board)
+//       while(coverage > 0.2 || coverage < 0.14){
+//             this.generateEmptyBoard(50, 50);
+//             this.generateMap(this.entryRoom);
+//             coverage = this.checkBoardCoverage(board)
+//       }
+//       return this.board;
+// }
+
+
+// var board = [[0,0,0,0,0,0,0,1,1,0,0,0,0,0,0,0,0,0,0,0,0,0],
+//              [0,0,0,0,0,0,0,1,1,0,0,0,0,0,0,0,0,0,0,0,0,0],
+//              [0,0,0,1,1,1,1,1,1,1,1,1,1,1,1,1,0,0,0,0,0,0],
+//              [0,0,0,1,1,1,1,1,1,1,1,1,1,1,1,1,0,0,0,0,0,0],
+//              [0,0,0,1,1,1,1,1,1,1,1,1,1,1,1,1,0,0,0,0,0,0],
+//              [0,0,0,1,1,1,1,1,1,1,1,1,1,1,1,1,0,0,0,0,0,0],
+//              [0,0,0,1,1,1,1,1,1,1,1,1,1,1,1,1,0,0,0,0,0,0],
+//              [0,0,0,1,1,1,1,1,1,1,1,1,1,1,1,1,0,0,0,0,0,0],
+//              [0,0,0,1,1,1,1,1,1,1,1,1,1,1,1,1,0,0,0,0,0,0],
+//              [0,0,0,1,1,1,1,1,1,1,1,1,1,1,1,1,0,0,0,0,0,0],
+//              [0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,1,0,0,0,0,0,0],
+//              [0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,1,0,0,0,0,0,0],
+//              [0,0,0,0,0,0,0,1,1,1,1,1,1,1,1,1,0,0,0,0,0,0],
+//              [0,0,0,0,0,0,0,1,1,1,1,1,1,1,1,1,0,0,0,0,0,0],
+//              [0,0,0,0,0,0,0,1,1,1,1,1,1,1,1,1,0,0,0,0,0,0]];

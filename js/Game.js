@@ -32,7 +32,7 @@ BasicGame.Game.prototype =
   update: function () {
     game.iso.unproject(game.input.activePointer.position, cursorPos);
     playerUpdate();
-    // illuminate();
+    illuminate();
     itemInteract();
     this.game.physics.isoArcade.collide(player, emptyGroup);
 

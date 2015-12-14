@@ -9,8 +9,11 @@ var generateTiles = function (){
                 woodFloorTile = this.game.add.isoSprite(xx, yy, 0, 'woodTile', 0, floorGroup);
                 woodFloorTile.anchor.set(0.5, 0);
             } else {
-                // emptyFloorTile = this.game.add.isoSprite(xx, yy, 0, 'emptyTile', 0, floorGroup);
-                // emptyFloorTile.anchor.set(0.5, 0);
+                emptySquare = this.game.add.isoSprite(xx, yy, 0, 'emptySquare', 0, emptyGroup);
+                emptySquare.anchor.set(0.5, 0);
+                game.physics.isoArcade.enable(emptySquare);
+                emptySquare.body.collideWorldBounds = true;
+                emptySquare.body.immovable = true;
             };
             xx += TILE_POS;
         };

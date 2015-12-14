@@ -9,6 +9,8 @@ BasicGame.Game.prototype =
   },
 
   create: function () {
+    game.physics.isoArcade.gravity.setTo(0, 0, -500);
+    emptyGroup = game.add.group();
     floorGroup = game.add.group();
     furnishGroup = game.add.group();
     itemGroup = game.add.group();
@@ -18,8 +20,8 @@ BasicGame.Game.prototype =
     playerCreate();
     generateTiles();
     generateWalls();
-    itemCreate();
-    itemInputs();
+    // itemCreate();
+    // itemInputs();
     hudDisplay();
     tableCreate();
 
@@ -32,6 +34,8 @@ BasicGame.Game.prototype =
     playerUpdate();
     illuminate();
     itemInteract();
+    game.physics.isoArcade.collide(emptyGroup, player);
+
   },
 
   quitGame: function(pointer) {

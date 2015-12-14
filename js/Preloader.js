@@ -1,5 +1,8 @@
 BasicGame.Preloader = function (game) {
+<<<<<<< HEAD
 	// this.background = null;
+=======
+>>>>>>> 5c284fbcb356ab883ce40ae1fa8b5a0dc5a874a5
 	this.preloadBar = null;
 	this.ready = false;
 };
@@ -7,8 +10,10 @@ BasicGame.Preloader = function (game) {
 BasicGame.Preloader.prototype = {
 
 	preload: function() {
+
 		// this.background = this.add.sprite(0, 0, 'lovecraft_mansion');
     loadAll();
+
 		sprite = this.add.sprite(0, 0, 'lovecraft_mansion');
 		this.preloadBar = this.add.sprite(300, 400, 'preload_bar');
 

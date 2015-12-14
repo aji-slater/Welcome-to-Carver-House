@@ -2,46 +2,47 @@ BasicGame.Game = function(game) { };
 
 BasicGame.Game.prototype =
 {
-    preload: function () {
-        game.time.advancedTiming = true;
-        game.world.setBounds(0, 0, 2048, 2048);
-    },
-    create: function () {
-        floorGroup = game.add.group();
-        activeGroup = game.add.group();
-        itemGroup = game.add.group();
+  preload: function () {
+    game.time.advancedTiming = true;
+    game.world.setBounds(0, 0, 2048, 2048);
+  },
 
-        generateTiles();
+  create: function () {
+    floorGroup = game.add.group();
+    activeGroup = game.add.group();
+    itemGroup = game.add.group();
 
-        cursorPos = new Phaser.Plugin.Isometric.Point3();
-        playerCreate();
-        game.camera.follow(player);
+    generateTiles();
 
-    },
-    update: function () {
-        playerUpdate();
+    cursorPos = new Phaser.Plugin.Isometric.Point3();
+    playerCreate();
+    game.camera.follow(player);
+  },
 
-        game.iso.unproject(game.input.activePointer.position, cursorPos);
+  update: function () {
+    playerUpdate();
 
-        floorGroup.forEach(function (tile) {
+    game.iso.unproject(game.input.activePointer.position, cursorPos);
 
-            var inBounds = tile.isoBounds.containsXY(cursorPos.x, cursorPos.y);
+    floorGroup.forEach(function (tile) {
 
-            if (!tile.selected && inBounds) {
-                tile.selected = true;
-                tile.tint = 0xffffff;
-                game.add.tween(tile).to({ isoZ: 4 }, 200, Phaser.Easing.Quadratic.InOut, true);
-            }
+      var inBounds = tile.isoBounds.containsXY(cursorPos.x, cursorPos.y);
 
-            else if (tile.selected && !inBounds) {
-                tile.selected = false;
-                tile.tint = 0xffffff;
-                game.add.tween(tile).to({ isoZ: 0 }, 200, Phaser.Easing.Quadratic.InOut, true);
-            }
-        });
-    },
-    quitGame: function(pointer) {
-        this.state.start('MainMenu');
-    }
+      if (!tile.selected && inBounds) {
+        tile.selected = true;
+        tile.tint = 0xffffff;
+        game.add.tween(tile).to({ isoZ: 4 }, 200, Phaser.Easing.Quadratic.InOut, true);
+      }
+
+      else if (tile.selected && !inBounds) {
+        tile.selected = false;
+        tile.tint = 0xffffff;
+        game.add.tween(tile).to({ isoZ: 0 }, 200, Phaser.Easing.Quadratic.InOut, true);
+        }
+    });
+  },
+  quitGame: function(pointer) {
+      this.state.start('MainMenu');
+  }
 
 };

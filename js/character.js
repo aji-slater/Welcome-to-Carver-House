@@ -3,6 +3,8 @@ var playerCreate = function(){
    player = game.add.isoSprite(400, -250, 0, 'player', 15, activeGroup);
    game.physics.isoArcade.enable(player);
    player.body.collideWorldBounds = true;
+   player.body.setSize(10, 10, 30);
+
 
 
    player.animations.add('left', [41, 42, 43, 44, 45, 46, 47], 10, true);

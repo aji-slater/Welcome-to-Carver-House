@@ -15,7 +15,8 @@ var xTilePosition = function(value){
   return TILE_POS * value;
 };
 
-var inventory = ["skull", "key", "musicBox"];
+var inventory = ["Skull", "Key", "MusicBox"];
+var invcheck = "inv" + inventory[1];
 
 var floorGroup, activeGroup, itemGroup, menuGroup, furnishGroup, exitGroup;
 var cursorPos, cursor;

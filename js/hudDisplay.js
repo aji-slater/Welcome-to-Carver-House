@@ -15,14 +15,14 @@ var hudClick = function(){
 };
 
 var pause = function(){
-  popup = this.game.add.sprite(game.camera.width / 2, game.camera.height / 2, 'inventoryMenu', menuGroup);
+  popup = this.game.add.sprite(game.camera.width / 2, game.camera.height / 2, 'inventoryMenu');
   popup.alpha = 0;
   popup.fixedToCamera = true;
   popup.anchor.setTo(0.5, 0.5);
   hudFrame.tint = 0x777777;
-  game.add.tween(popup).to( { alpha: 1 }, 120, Phaser.Easing.Linear.None, true, 0, 0, false);
+  var menuAppear = game.add.tween(popup).to( { alpha: 1 }, 120, Phaser.Easing.Linear.None, true, 0, 0, false);
   isPaused = true;
-  // populateInventory();
+  menuAppear.onComplete.add(function(){ populateInventory(); }, this);
 };
 
 var unPause = function(){
@@ -33,7 +33,15 @@ var unPause = function(){
   hudFrame.tint = 0xffffff;
 };
 //
-// var populateInventory = function() {
+var populateInventory = function() {
+  for (i = 0; i <= inventory.length -1; i++ ){
+    inventoryItem = game.add.sprite(itemMenuX(i), itemMenuY(i), "inv" + inventory[i], 0, menuGroup);
+    inventoryItem.fixedToCamera = true;
+    inventoryItem.bringToTop();
+
+  }
+};
+
 //   inventory.push("skull");
 //   inventory.push("skull");
 //   i = 0;
@@ -42,23 +50,23 @@ var unPause = function(){
 //     item.fixedToCamera = true;
 //     i++;
 //   });
-// };
+
 //
-// var itemMenuX = function(index){
-//   if ( i <= 3 ){
-//   return game.camera.width/2-200 + index * 100;
-// } else {
-//   return game.camera.width/2-200 + (index-4) * 100;
-// }
-// };
-//
-// var itemMenuY = function(index){
-//   if ( i <= 3 ){
-//     return game.camera.height/2 - 150;
-//   } else {
-//     return game.camera.height/2;
-//   }
-// };
+var itemMenuX = function(index){
+  if ( index <= 3 ){
+  return game.camera.width/2-200 + index * 100;
+} else {
+  return game.camera.width/2-200 + (index-4) * 100;
+}
+};
+
+var itemMenuY = function(index){
+  if ( index <= 3 ){
+    return game.camera.height/2 - 150;
+  } else {
+    return game.camera.height/2;
+  }
+};
 //
 // var clearMenu = function(){
 //   popup.kill();

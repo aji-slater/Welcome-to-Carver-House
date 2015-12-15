@@ -10,7 +10,6 @@ var playerAlive = true;
 function Ghost(sprite){
   this.sprite = sprite;
   this.enemyDirection = "STOP";
-
 }
 
 
@@ -27,7 +26,6 @@ function placeGhost(){
   var randY;
   var posX = 0;
   var posY = 0;
-
   var posData = {
     ghostX: 0,
     ghostY: 0

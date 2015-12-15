@@ -1,5 +1,7 @@
+var playerStartingPosition = {};
 var playerCreate = function(){
 
+  playerStartingPosition = determinePlayerStart();
   player = game.add.isoSprite(xTilePosition(10), yTilePosition(10), 0, 'testingPlayer', 15, activeGroup);
   game.physics.isoArcade.enable(player);
   player.body.setSize(10, 10, 40);

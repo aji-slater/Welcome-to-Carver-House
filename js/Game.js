@@ -8,8 +8,8 @@ BasicGame.Game.prototype =
     game.time.advancedTiming = true;
     game.world.setBounds(0, 0, 5000, 6000);
     game.iso.anchor.setTo(0.5, 0.2);
-    // game.world.scale.setTo(0.5, 0.5);
 
+    // game.world.scale.setTo(0.2, 0.2);
   },
 
   create: function () {
@@ -21,7 +21,6 @@ BasicGame.Game.prototype =
     menuGroup = game.add.group();
     enemyGroup = game.add.group();
     itemGroup = game.add.group();
-
 
     playerCreate();
     generateTiles();
@@ -45,7 +44,7 @@ BasicGame.Game.prototype =
     if (!isPaused){
       game.iso.unproject(game.input.activePointer.position, cursorPos);
       playerUpdate();
-      illuminate();
+      // illuminate();
       itemInteract();
       moveGhosts();
       checkGhostCollision();

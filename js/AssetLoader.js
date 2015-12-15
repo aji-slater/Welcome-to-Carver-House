@@ -31,5 +31,6 @@ var loadAll = function() {
   game.load.spritesheet('key', 'assets/items/key.png', 35, 35);
   game.load.spritesheet('wall', 'assets/furniture/wall.png', 100, 150);
   game.load.spritesheet('characterAnim','assets/characterAnim.png', 70, 74);
+  game.load.spritesheet('badGuy','assets/peculiar_gentleman.png', 75, 75);
   // game.load.spritesheet('kill', 'assets/perish_investigator.png', 123, 86);
 };

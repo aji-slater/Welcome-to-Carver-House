@@ -1,5 +1,5 @@
 BasicGame.Game = function(game) {
-
+  this.collision = false;
 };
 
 BasicGame.Game.prototype =
@@ -8,6 +8,8 @@ BasicGame.Game.prototype =
     game.time.advancedTiming = true;
     game.world.setBounds(0, 0, 5000, 6000);
     game.iso.anchor.setTo(0.5, 0.2);
+    // game.world.scale.setTo(0.2, 0.2);
+
   },
 
   create: function () {
@@ -26,8 +28,9 @@ BasicGame.Game.prototype =
     hudDisplay();
     tableCreate();
     configPathFinding();
-    ghost = createGhost();
-    setPathFinderInterval();
+    createGhosts();
+    setGhostPaths();
+    // setPathFinderInterval();
 
 
     cursorPos = new Phaser.Plugin.Isometric.Point3();
@@ -37,10 +40,9 @@ BasicGame.Game.prototype =
   update: function () {
     game.iso.unproject(game.input.activePointer.position, cursorPos);
     playerUpdate();
-    moveGhost(ghost);
     illuminate();
     itemInteract();
-
+    moveGhosts();
     checkGhostCollision();
 
   },

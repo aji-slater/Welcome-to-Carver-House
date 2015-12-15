@@ -8,14 +8,14 @@ var itemCreate = function(){
 
 var pickUpNecklace = function(event, sprite){
   if (game.physics.arcade.distanceBetween(necklace, player) < 100) {
-    inventory.push("necklace");
+    inventory.push("Necklace");
     necklace.kill();
     console.log(inventory); }
 };
 
 var pickUpKey = function(event, sprite){
   if (game.physics.arcade.distanceBetween(key, player) < 100) {
-    inventory.push("key");
+    inventory.push("Key");
     key.kill();
     console.log(inventory); }
 };

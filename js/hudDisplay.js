@@ -3,12 +3,15 @@ var activeItem, hudItem, hudFrame;
 var hudDisplay = function(){
   hudFrame = this.game.add.sprite(30, 30, 'hudFrame');
   hudFrame.fixedToCamera = true;
-  hudFrame.inputEnabled = true;
+  hudInv = this.game.add.sprite(35, 160, 'hudInvButton');
+  hudInv.fixedToCamera = true;
+  hudInv.inputEnabled = true;
+
 };
 
 var hudClick = function(){
   // hudFrame.inputEnabled = true;
-  hudFrame.events.onInputDown.add(function(){
+  hudInv.events.onInputDown.add(function(){
     if (isPaused){
       unPause();
     } else {
@@ -25,6 +28,7 @@ var pause = function(){
   popup.fixedToCamera = true;
   popup.anchor.setTo(0.5, 0.5);
   hudFrame.tint = 0x777777;
+  hudInv.tint = 0x777777;
   if (hudItem){ hudItem.tint = 0x777777; }
   var menuAppear = game.add.tween(popup).to( { alpha: 1 }, 120, Phaser.Easing.Linear.None, true, 0, 0, false);
   isPaused = true;
@@ -37,10 +41,10 @@ var unPause = function(){
   var disappear = game.add.tween(popup).to( { alpha: 0 }, 115, Phaser.Easing.Linear.None, true, 0, 0, false);
   disappear.onComplete.add(function(){ popup.kill(); }, this);
   hudFrame.tint = 0xffffff;
-  hudItem = hudFrame.addChild(game.make.sprite(hudFrame.width/2, hudFrame.height/2, activeItem, menuGroup));
-  hudItem.scale.setTo(0.75, 0.75);
-  hudItem.anchor.set(0.5);
-
+  hudInv.tint = 0xffffff;
+  if (activeItem) {
+    hudItemImplementation();
+  }
 };
 
 var invClickFunction = function(inventoryItem, pointer){
@@ -71,4 +75,23 @@ var itemMenuY = function(index){
   } else {
     return 0;
   }
+};
+
+var hudItemImplementation = function(){
+  hudItem = hudFrame.addChild(game.make.sprite(hudFrame.width/2, hudFrame.height/2, activeItem, menuGroup));
+  hudItem.scale.setTo(0.75, 0.75);
+  hudItem.anchor.set(0.5);
+  hudItem.inputEnabled = true;
+  hudItem.input.enableDrag(true);
+  hudItem.originalPosition = hudItem.position.clone();
+  hudItem.events.onDragStart.add(function(){ hudItem.scale.setTo(0.4, 0.4);}, this);
+  hudItem.events.onDragStop.add(function(){
+    hudItem.position.copyFrom(hudItem.originalPosition);
+    hudItem.scale.setTo(0.75, 0.75);
+    hudItemDragCheck();
+  });
+};
+
+var hudItemDragCheck = function() {
+  
 };

@@ -48,9 +48,9 @@ BasicGame.Game.prototype =
     // emptyGroup.forEach(function (tile) {
     //     game.debug.body(tile, 'rgba(189, 221, 235, 0.6)', false);
     // })
-    activeGroup.forEach(function (tile) {
-    game.debug.body(tile, 'rgba(189, 221, 235, 0.6)', false);
-  });
+    // activeGroup.forEach(function (tile) {
+    // game.debug.body(tile, 'rgba(189, 221, 235, 0.6)', false);
+  // });
   }
 
 };

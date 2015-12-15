@@ -14,6 +14,7 @@ var playerCreate = function(){
    player.animations.add('nw', [9, 10, 11, 12, 13, 14, 15], 10, true);
    player.animations.add('se', [17, 18, 19, 20, 21, 22, 23], 10, true);
    player.animations.add('ne', [25, 26, 27, 28, 29, 30, 31], 10, true);
+   player.animations.add('death', [64, 65, 66, 67, 68], 5, true);
 
    player.anchor.set(0.5, 0);
  };

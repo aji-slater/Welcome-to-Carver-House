@@ -41,8 +41,11 @@ function checkGhostCollision(){
   // console.log(ghost);
   this.game.physics.isoArcade.overlap(player, ghost, function(player){
       console.log("overlap");
-      console.log(player);
-      player.kill();
+      player.animations.play("death");
+      player.body.velocity = 0;
+      player.body.velocity = 0;
+      // player.kill();
+
       // .position.x
       // var deadPlayer = game.add.isoSprite(player.position.x, player.position.y, 0, 'kill', 15, activeGroup);
       // player.kill;

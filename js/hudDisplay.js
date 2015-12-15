@@ -1,3 +1,5 @@
+var activeItem, hudItem, hudFrame;
+
 var hudDisplay = function(){
   hudFrame = this.game.add.sprite(30, 30, 'hudFrame');
   hudFrame.fixedToCamera = true;
@@ -16,13 +18,14 @@ var hudClick = function(){
 };
 
 var pause = function(){
-    // populateInventory();
+
   popup = this.game.add.sprite(game.camera.width / 2, game.camera.height / 2, 'inventoryMenu', menuGroup);
   popup.alpha = 0;
 
   popup.fixedToCamera = true;
   popup.anchor.setTo(0.5, 0.5);
   hudFrame.tint = 0x777777;
+  if (hudItem){ hudItem.tint = 0x777777; }
   var menuAppear = game.add.tween(popup).to( { alpha: 1 }, 120, Phaser.Easing.Linear.None, true, 0, 0, false);
   isPaused = true;
   menuAppear.onComplete.add(function(){ populateInventory(); }, this);
@@ -34,12 +37,15 @@ var unPause = function(){
   var disappear = game.add.tween(popup).to( { alpha: 0 }, 115, Phaser.Easing.Linear.None, true, 0, 0, false);
   disappear.onComplete.add(function(){ popup.kill(); }, this);
   hudFrame.tint = 0xffffff;
-  hudFrame.addChild(game.make.sprite(37,37, activeItem, menuGroup));
+  hudItem = hudFrame.addChild(game.make.sprite(hudFrame.width/2, hudFrame.height/2, activeItem, menuGroup));
+  hudItem.scale.setTo(0.75, 0.75);
+  hudItem.anchor.set(0.5);
+
 };
 
 var invClickFunction = function(inventoryItem, pointer){
+  if ( activeItem ){ hudItem.kill(); }
   activeItem = inventoryItem.key;
-  console.log(activeItem);
   unPause();
 };
 
@@ -48,26 +54,15 @@ var populateInventory = function() {
     inventoryItem = popup.addChild(game.make.sprite(itemMenuX(i), itemMenuY(i), "inv" + inventory[i], menuGroup));
     inventoryItem.inputEnabled = true;
     inventoryItem.events.onInputDown.add(invClickFunction, this);
-  // inventoryItem.fixedToCamera = true;
   }
 };
 
-//   inventory.push("skull");
-//   inventory.push("skull");
-//   i = 0;
-//   inventory.forEach( function(item){
-//     item = game.add.sprite(itemMenuX(i), itemMenuY(i), item + 'Inv', 1, menuGroup);
-//     item.fixedToCamera = true;
-//     i++;
-//   });
-
-//
 var itemMenuX = function(index){
   if ( index <= 3 ){
-  return -220 + index * 115;
-} else {
-  return -220 + (index-4) * 115;
-}
+    return -220 + index * 115;
+  } else {
+    return -220 + (index-4) * 115;
+  }
 };
 
 var itemMenuY = function(index){
@@ -77,10 +72,3 @@ var itemMenuY = function(index){
     return 0;
   }
 };
-//
-// var clearMenu = function(){
-//   popup.kill();
-//   // inventory.forEach( function(item){
-//   //   (item).kill();
-//   // });
-// };

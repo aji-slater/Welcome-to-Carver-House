@@ -1,8 +1,13 @@
 var playerCreate = function(){
 
-   player = game.add.isoSprite(400, -250, 0, 'player', 15, activeGroup);
-   game.physics.isoArcade.enable(player);
-   player.body.collideWorldBounds = true;
+  player = game.add.isoSprite(xTilePosition(10), yTilePosition(10), 0, 'testingPlayer', 15, activeGroup);
+  game.physics.isoArcade.enable(player);
+  player.body.setSize(10, 10, 40);
+  player.body.collideWorldBounds = true;
+
+
+  player.anchor.set(0.5);
+
 
 
    player.animations.add('left', [41, 42, 43, 44, 45, 46, 47], 10, true);
@@ -15,8 +20,6 @@ var playerCreate = function(){
    player.animations.add('se', [17, 18, 19, 20, 21, 22, 23], 10, true);
    player.animations.add('ne', [25, 26, 27, 28, 29, 30, 31], 10, true);
    player.animations.add('death', [68], 10, false);
-
-   player.anchor.set(0.5, 0);
  };
 
  var playerUpdate = function(){

@@ -13,24 +13,27 @@ BasicGame.Game.prototype =
   },
 
   create: function () {
+    game.physics.isoArcade.gravity.setTo(0, 0, -500);
+    emptyGroup = game.add.group();
     floorGroup = game.add.group();
     furnishGroup = game.add.group();
-    itemGroup = game.add.group();
     activeGroup = game.add.group();
     menuGroup = game.add.group();
     enemyGroup = game.add.group();
+    itemGroup = game.add.group();
+
 
     playerCreate();
     generateTiles();
     generateWalls();
     itemCreate();
     itemInputs();
-    hudDisplay();
     tableCreate();
     configPathFinding();
     createGhosts();
     setGhostPaths();
-    // setPathFinderInterval();
+    hudDisplay();
+    hudClick();
 
 
     cursorPos = new Phaser.Plugin.Isometric.Point3();
@@ -38,17 +41,30 @@ BasicGame.Game.prototype =
   },
 
   update: function () {
-    game.iso.unproject(game.input.activePointer.position, cursorPos);
-    playerUpdate();
-    illuminate();
-    itemInteract();
-    moveGhosts();
-    checkGhostCollision();
+
+    if (!isPaused){
+      game.iso.unproject(game.input.activePointer.position, cursorPos);
+      playerUpdate();
+      illuminate();
+      itemInteract();
+      moveGhosts();
+      checkGhostCollision();
+      this.game.physics.isoArcade.collide(player, emptyGroup);
+    }
 
   },
 
   quitGame: function(pointer) {
       this.state.start('MainMenu');
+  },
+
+  render: function () {
+    // emptyGroup.forEach(function (tile) {
+    //     game.debug.body(tile, 'rgba(189, 221, 235, 0.6)', false);
+    // })
+    // activeGroup.forEach(function (tile) {
+    // game.debug.body(tile, 'rgba(189, 221, 235, 0.6)', false);
+  // });
   }
 
 };

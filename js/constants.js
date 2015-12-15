@@ -16,9 +16,8 @@ var xTilePosition = function(value){
 };
 
 var inventory = ["Skull", "Key", "MusicBox"];
-var invcheck = "inv" + inventory[1];
 
 var floorGroup, activeGroup, itemGroup, menuGroup, furnishGroup, exitGroup;
-var cursorPos, cursor;
+var cursorPos, cursor, hudFrame;
 var floorTile, necklace, key, debugTile;
 var yt, xt = 0;

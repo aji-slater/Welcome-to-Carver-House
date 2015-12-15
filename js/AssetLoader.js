@@ -5,8 +5,8 @@ var loadAll = function() {
   game.load.image('hudFrame', 'assets/hud/hud-frame.png');
   game.load.image('sideTable', 'assets/furniture/side-table.png');
   game.load.image('emptySquare', 'assets/tiles/empty-square.png');
-  game.load.image('inventoryMenu', 'assets/hud/inventory-frame.png');
 
+  game.load.image('inventoryMenu', 'assets/hud/inventory-frame.png');
   game.load.spritesheet('invSkull', 'assets/items/inv-skull.png', 100, 150);
   game.load.spritesheet('invBook', 'assets/items/inv-book.png', 100, 150);
   game.load.spritesheet('invCoin', 'assets/items/inv-coin.png', 100, 150);

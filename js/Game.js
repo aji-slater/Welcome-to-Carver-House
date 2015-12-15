@@ -13,17 +13,17 @@ BasicGame.Game.prototype =
     emptyGroup = game.add.group();
     floorGroup = game.add.group();
     furnishGroup = game.add.group();
-    itemGroup = game.add.group();
     activeGroup = game.add.group();
     menuGroup = game.add.group();
+    itemGroup = game.add.group();
 
     playerCreate();
     generateTiles();
     generateWalls();
     itemCreate();
     itemInputs();
-    hudDisplay();
     tableCreate();
+    hudDisplay();
     hudClick();
 
     cursorPos = new Phaser.Plugin.Isometric.Point3();

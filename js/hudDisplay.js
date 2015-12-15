@@ -1,10 +1,11 @@
 var hudDisplay = function(){
   hudFrame = this.game.add.sprite(30, 30, 'hudFrame');
   hudFrame.fixedToCamera = true;
+  hudFrame.inputEnabled = true;
 };
 
 var hudClick = function(){
-  hudFrame.inputEnabled = true;
+  // hudFrame.inputEnabled = true;
   hudFrame.events.onInputDown.add(function(){
     if (isPaused){
       unPause();
@@ -15,14 +16,16 @@ var hudClick = function(){
 };
 
 var pause = function(){
-  popup = this.game.add.sprite(game.camera.width / 2, game.camera.height / 2, 'inventoryMenu');
+    populateInventory();
+  popup = this.game.add.sprite(game.camera.width / 2, game.camera.height / 2, 'inventoryMenu', menuGroup);
   popup.alpha = 0;
+
   popup.fixedToCamera = true;
   popup.anchor.setTo(0.5, 0.5);
   hudFrame.tint = 0x777777;
   var menuAppear = game.add.tween(popup).to( { alpha: 1 }, 120, Phaser.Easing.Linear.None, true, 0, 0, false);
   isPaused = true;
-  menuAppear.onComplete.add(function(){ populateInventory(); }, this);
+  // menuAppear.onComplete.add(function(){ populateInventory(); }, this);
 };
 
 var unPause = function(){

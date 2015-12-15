@@ -4,7 +4,7 @@ var itemCreate = function(){
   necklace.bringToTop();
   key = this.game.add.isoSprite(xTilePosition(14), yTilePosition(4), 0, 'key', 0, itemGroup);
   key.anchor.set(0.5, 0.5);
-  };
+};
 
 var pickUpNecklace = function(event, sprite){
   if (game.physics.arcade.distanceBetween(necklace, player) < 100) {

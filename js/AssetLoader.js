@@ -6,6 +6,8 @@ var loadAll = function() {
   game.load.image('sideTable', 'assets/furniture/side-table.png');
   game.load.image('emptySquare', 'assets/tiles/empty-square.png');
   game.load.image('hudInvButton', 'assets/HUD/inventory-icon.png');
+  game.load.image('westWall', 'assets/furniture/wall-w.png');
+  game.load.image('northWall', 'assets/furniture/wall-n.png');
 
   // game.load.spritesheet('player','assets/investigator_2.png', 70, 70);
   game.load.spritesheet('debugTile', 'assets/tiles/debug_tiles.png', 100, 50);

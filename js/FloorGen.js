@@ -38,20 +38,32 @@ var generateTiles = function (){
 };
 
 var generateWalls = function(){
-    for (var yi = 0; yi < board.length; yi++){
-        for (var xi = 0; xi < board[0].length; xi++){
-            if ( board[yi][xi] === 1 && board[yi][xi-1] === 0 ){
-                wall = this.game.add.isoSprite(xTilePosition(xi), yTilePosition(yi), 0, 'wall', 0, wallGroup);
-                wall.anchor.set(0.5, 0.66);
-            }
-        }
-    }
+  for (var yi = 0; yi < board.length; yi++){
     for (var xi = 0; xi < board[0].length; xi++){
-        for (var yi = 1; yi < board.length; yi++){
-            if ( board[yi][xi] === 1 && board[yi-1][xi] === 0 ){
-                wall = this.game.add.isoSprite(xTilePosition(xi), yTilePosition(yi), 0, 'wall', 1, wallGroup);
-                wall.anchor.set(0.5, 0.66);
-            }
-        }
+      if ( board[yi][xi] === 1 && board[yi][xi-1] === 0 ){
+        wall = this.game.add.isoSprite(xTilePosition(xi), yTilePosition(yi), 0, 'westWall', 0, wallGroup);
+        wall.anchor.set(0.5, 0.66);
+        wall.tint = 0x000000;
+      }
     }
+  }
+  for (var xi = 0; xi < board[0].length; xi++){
+    for (var yi = 1; yi < board.length; yi++){
+      if ( board[yi][xi] === 1 && board[yi-1][xi] === 0 ){
+        wall = this.game.add.isoSprite(xTilePosition(xi), yTilePosition(yi), 0, 'northWall', 1, wallGroup);
+        wall.anchor.set(0.5, 0.66);
+        wall.tint = 0x000000;
+      }
+    }
+  }
+};
+
+var wallCheck = function(){
+  wallGroup.forEach(function (wall){
+    if ( wall.isoX >= player.isoX && wall.isoY >= player.isoY ) {
+      wall.alpha = 0.3;
+    } else {
+      wall.alpha = 1;
+    }
+  });
 };

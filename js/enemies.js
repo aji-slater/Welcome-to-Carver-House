@@ -36,15 +36,12 @@ function placeGhost(){
   while(posX === 0 && posY === 0){
     randX = Math.floor(Math.random() * gameBoard.boardWidth);
     randY = Math.floor(Math.random() * gameBoard.boardHeight);
-    console.log(randX);
-    console.log(randY);
     posX = board[randX];
     posY = board[randY];
   }
 
   posData.ghostX = randX;
   posData.ghostY = randY;
-  console.log(posData);
 
   return posData;
 }
@@ -92,7 +89,7 @@ function checkGhostCollision(){
   // console.log(player);
   // console.log(ghost);
   this.game.physics.isoArcade.overlap(player, enemyGroup, function(player){
-      console.log("overlap");
+      // console.log("overlap");
       player.body.velocity = 0;
       player.body.velocity = 0;
       playerAlive = false;
@@ -110,7 +107,7 @@ function setPathFinderInterval(ghost) {
 
             easyStar.findPath(currentGhostXtile, currentGhostYtile, currentPlayerXtile, currentPlayerYtile, function( path ) {
                 if (path === null) {
-                    console.log("The path to the destination point was not found.");
+                    // console.log("The path to the destination point was not found.");
                 }
 
                 if (path) {
@@ -122,7 +119,7 @@ function setPathFinderInterval(ghost) {
                 {
                   // left up
 
-                  console.log("GO LEFT UP");
+                  // console.log("GO LEFT UP");
 
                   ghost.enemyDirection = "NW";
                 }
@@ -130,7 +127,7 @@ function setPathFinderInterval(ghost) {
                 {
                   // up
 
-                  console.log("GO UP");
+                  // console.log("GO UP");
 
                   ghost.enemyDirection = "N";
 
@@ -140,7 +137,7 @@ function setPathFinderInterval(ghost) {
                 {
                   // right up
 
-                  console.log("GO RIGHT UP");
+                  // console.log("GO RIGHT UP");
 
                   ghost.enemyDirection = "NE";
 
@@ -149,7 +146,7 @@ function setPathFinderInterval(ghost) {
                 {
                   // left
 
-                  console.log("GO LEFT");
+                  // console.log("GO LEFT");
 
                   ghost.enemyDirection = "W";
 
@@ -158,7 +155,7 @@ function setPathFinderInterval(ghost) {
                 {
                   // right
 
-                  console.log("GO RIGHT");
+                  // console.log("GO RIGHT");
 
                   ghost.enemyDirection = "E";
 
@@ -167,7 +164,7 @@ function setPathFinderInterval(ghost) {
                 {
                   // right down
 
-                  console.log("GO RIGHT DOWN");
+                  // console.log("GO RIGHT DOWN");
 
                   ghost.enemyDirection = "SE";
 
@@ -176,7 +173,7 @@ function setPathFinderInterval(ghost) {
                 {
                   // down
 
-                  console.log("GO DOWN");
+                  // console.log("GO DOWN");
 
                   ghost.enemyDirection = "S";
 
@@ -185,7 +182,7 @@ function setPathFinderInterval(ghost) {
                 {
                   // left down
 
-                  console.log("GO LEFT DOWN");
+                  // console.log("GO LEFT DOWN");
 
                   ghost.enemyDirection = "SW";
 

@@ -1,6 +1,6 @@
 
 var loadAll = function() {
-  game.load.image('woodTile', 'assets/tiles/wood-floor-tile.png');
+  game.load.image('woodTile', 'assets/tiles/wood-floor.png');
   game.load.image('emptyTile', 'assets/tiles/empty-tile.png');
   game.load.image('hudFrame', 'assets/hud/hud-frame.png');
   game.load.image('sideTable', 'assets/furniture/side-table.png');

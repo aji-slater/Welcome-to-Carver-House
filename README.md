@@ -1,2 +1,5 @@
 # Welcome-to-Carver-House
-Procedurally generated exploration game, lovecraftian setting and themes.
+
+Evelyn Carver, recently deceased...spent her final years keeping her stately Manor home under constant construction. Secret passages, stairways to nowhere, and other architectural curiosities. No one knows her true intention, some say it was to attract the spirits of the dead, so she may once again be with her dearly departed husband. Sent by the bank to appraise the property, the house seems impossibly vast...and you must have gotten lost amongst the shadow draped hallways...good thing you don't believe in ghosts. Welcome to Carver House.
+
+Welcome to Carver House is a procedurally generated exploration game. That means the sounds, the music, the house...and it's inhabitants, are built by algorithm, making it **literally infinite**. Built on html5's canvas, Phaser, and pixi javascript libraries, comes a game in which a player will explore the house gathering items and experiences while trying to leave it's labyrinthian hallways. The intrepid investigator will eventually come face to face with Evelyn Carver, an encounter which triggers a story shift generated in relation to the player's experiences exploring the house so far. Only then shall the exit become accessible.

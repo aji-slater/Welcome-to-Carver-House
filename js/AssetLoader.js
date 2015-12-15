@@ -7,7 +7,7 @@ var loadAll = function() {
   game.load.image('emptySquare', 'assets/tiles/empty-square.png');
   game.load.image('hudInvButton', 'assets/HUD/inventory-icon.png');
 
-  game.load.spritesheet('player','assets/investigator_2.png', 70, 70);
+  // game.load.spritesheet('player','assets/investigator_2.png', 70, 70);
   game.load.spritesheet('debugTile', 'assets/tiles/debug_tiles.png', 100, 50);
   game.load.image('inventoryMenu', 'assets/hud/inventory-frame.png');
   game.load.spritesheet('invSkull', 'assets/items/inv-skull.png', 100, 150);

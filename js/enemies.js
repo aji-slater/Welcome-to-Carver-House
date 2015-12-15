@@ -55,7 +55,7 @@ function createGhosts(){
   for (i = 0; i < ghostCount; i++ ){
     posData = placeGhost();
     var sprite = this.game.add.isoSprite(posData.ghostX * TILE_POS, posData.ghostY * TILE_POS, 0, 'characterAnim', 0, enemyGroup);
-    sprite.tint = 0x222222;
+    sprite.tint = 0x000000;
     // sprite.alpha = 0.6;
     sprite.animations.add('S', [0, 1, 2, 3, 4, 5, 6, 7], 10, true);
     sprite.animations.add('SW', [8, 9, 10, 11, 12, 13, 14, 15], 10, true);
@@ -95,9 +95,8 @@ function checkGhostCollision(){
       console.log("overlap");
       player.body.velocity = 0;
       player.body.velocity = 0;
-      player.animations.play('death');
       playerAlive = false;
-      return true;
+      //this.state.start("GameOver");
     }, function(){
       return playerAlive;
     });

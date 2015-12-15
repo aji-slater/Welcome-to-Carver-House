@@ -5,6 +5,23 @@ var loadAll = function() {
   game.load.image('hudFrame', 'assets/hud/hud-frame.png');
   game.load.image('sideTable', 'assets/furniture/side-table.png');
   game.load.image('emptySquare', 'assets/tiles/empty-square.png');
+  game.load.image('hudInvButton', 'assets/HUD/inventory-icon.png');
+
+  game.load.image('inventoryMenu', 'assets/hud/inventory-frame.png');
+  game.load.spritesheet('invSkull', 'assets/items/inv-skull.png', 100, 150);
+  game.load.spritesheet('invBook', 'assets/items/inv-book.png', 100, 150);
+  game.load.spritesheet('invCoin', 'assets/items/inv-coin.png', 100, 150);
+  game.load.spritesheet('invCrystalBall', 'assets/items/inv-crystalball.png', 100, 150);
+  game.load.spritesheet('invDice', 'assets/items/inv-dice.png', 100, 150);
+  game.load.spritesheet('invIdol', 'assets/items/inv-idol.png', 100, 150);
+  game.load.spritesheet('invKey', 'assets/items/inv-key.png', 100, 150);
+  game.load.spritesheet('invMusicBox', 'assets/items/inv-musicbox.png', 100, 150);
+  game.load.spritesheet('invNecklace', 'assets/items/inv-necklace.png', 100, 150);
+  game.load.spritesheet('invNeedle', 'assets/items/inv-needle.png', 100, 150);
+  game.load.spritesheet('invPuzzleBox', 'assets/items/inv-puzzlebox.png', 100, 150);
+  game.load.spritesheet('invRings', 'assets/items/inv-rings.png', 100, 150);
+  game.load.spritesheet('invSkull', 'assets/items/inv-skull.png', 100, 150);
+  game.load.spritesheet('invVoodoo', 'assets/items/inv-voodoo.png', 100, 150);
 
   game.load.spritesheet('testingPlayer', 'assets/investigator_new.png', 40, 70);
 

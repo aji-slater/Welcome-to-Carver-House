@@ -6,7 +6,7 @@ var playerCreate = function(){
   player.body.collideWorldBounds = true;
 
 
-  player.anchor.set(0.5)
+  player.anchor.set(0.5);
 
 
 

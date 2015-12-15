@@ -16,6 +16,7 @@ BasicGame.Game.prototype =
     game.physics.isoArcade.gravity.setTo(0, 0, -500);
     emptyGroup = game.add.group();
     floorGroup = game.add.group();
+    wallGroup = game.add.group();
     furnishGroup = game.add.group();
     activeGroup = game.add.group();
     menuGroup = game.add.group();
@@ -49,6 +50,7 @@ BasicGame.Game.prototype =
       moveGhosts();
       checkGhostCollision();
       this.game.physics.isoArcade.collide(player, emptyGroup);
+      wallCheck();
     }
 
   },

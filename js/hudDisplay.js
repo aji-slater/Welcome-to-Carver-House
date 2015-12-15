@@ -16,7 +16,7 @@ var hudClick = function(){
 };
 
 var pause = function(){
-    populateInventory();
+    // populateInventory();
   popup = this.game.add.sprite(game.camera.width / 2, game.camera.height / 2, 'inventoryMenu', menuGroup);
   popup.alpha = 0;
 
@@ -25,7 +25,7 @@ var pause = function(){
   hudFrame.tint = 0x777777;
   var menuAppear = game.add.tween(popup).to( { alpha: 1 }, 120, Phaser.Easing.Linear.None, true, 0, 0, false);
   isPaused = true;
-  // menuAppear.onComplete.add(function(){ populateInventory(); }, this);
+  menuAppear.onComplete.add(function(){ populateInventory(); }, this);
 };
 
 var unPause = function(){
@@ -34,14 +34,21 @@ var unPause = function(){
   var disappear = game.add.tween(popup).to( { alpha: 0 }, 115, Phaser.Easing.Linear.None, true, 0, 0, false);
   disappear.onComplete.add(function(){ popup.kill(); }, this);
   hudFrame.tint = 0xffffff;
+  hudFrame.addChild(game.make.sprite(37,37, activeItem, menuGroup));
 };
-//
+
+var invClickFunction = function(inventoryItem, pointer){
+  activeItem = inventoryItem.key;
+  console.log(activeItem);
+  unPause();
+};
+
 var populateInventory = function() {
   for (i = 0; i <= inventory.length -1; i++ ){
-    inventoryItem = game.add.sprite(itemMenuX(i), itemMenuY(i), "inv" + inventory[i], 0, menuGroup);
-    inventoryItem.fixedToCamera = true;
-    inventoryItem.bringToTop();
-
+    inventoryItem = popup.addChild(game.make.sprite(itemMenuX(i), itemMenuY(i), "inv" + inventory[i], menuGroup));
+    inventoryItem.inputEnabled = true;
+    inventoryItem.events.onInputDown.add(invClickFunction, this);
+  // inventoryItem.fixedToCamera = true;
   }
 };
 
@@ -57,17 +64,17 @@ var populateInventory = function() {
 //
 var itemMenuX = function(index){
   if ( index <= 3 ){
-  return game.camera.width/2-200 + index * 100;
+  return -220 + index * 115;
 } else {
-  return game.camera.width/2-200 + (index-4) * 100;
+  return -220 + (index-4) * 115;
 }
 };
 
 var itemMenuY = function(index){
   if ( index <= 3 ){
-    return game.camera.height/2 - 150;
+    return -150;
   } else {
-    return game.camera.height/2;
+    return 0;
   }
 };
 //

@@ -1,4 +1,6 @@
-BasicGame.Game = function(game) { };
+BasicGame.Game = function(game) {
+  this.collision = false;
+};
 
 BasicGame.Game.prototype =
 {
@@ -6,6 +8,8 @@ BasicGame.Game.prototype =
     game.time.advancedTiming = true;
     game.world.setBounds(0, 0, 5000, 6000);
     game.iso.anchor.setTo(0.5, 0.2);
+    // game.world.scale.setTo(0.2, 0.2);
+
   },
 
   create: function () {
@@ -15,7 +19,9 @@ BasicGame.Game.prototype =
     furnishGroup = game.add.group();
     activeGroup = game.add.group();
     menuGroup = game.add.group();
+    enemyGroup = game.add.group();
     itemGroup = game.add.group();
+
 
     playerCreate();
     generateTiles();
@@ -23,21 +29,29 @@ BasicGame.Game.prototype =
     itemCreate();
     itemInputs();
     tableCreate();
+    configPathFinding();
+    createGhosts();
+    setGhostPaths();
     hudDisplay();
     hudClick();
+
 
     cursorPos = new Phaser.Plugin.Isometric.Point3();
     game.camera.follow(player);
   },
 
   update: function () {
+
     if (!isPaused){
       game.iso.unproject(game.input.activePointer.position, cursorPos);
       playerUpdate();
       illuminate();
       itemInteract();
+      moveGhosts();
+      checkGhostCollision();
       this.game.physics.isoArcade.collide(player, emptyGroup);
     }
+
   },
 
   quitGame: function(pointer) {

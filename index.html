@@ -25,6 +25,7 @@
     <script src="js/illumination.js" type="text/javascript"></script>
     <script src="js/Character.js"></script>
     <script src="js/FloorGen.js"></script>
+    <script src="js/GameOver.js"></script>
 </head>
 <body>
 
@@ -41,6 +42,7 @@ window.onload = function() {
     game.state.add('AssetLoader', BasicGame.AssetLoader);
     game.state.add('MainMenu', BasicGame.MainMenu);
     game.state.add('Game', BasicGame.Game);
+    game.state.add('GameOver', BasicGame.GameOver);
 
     game.state.start('Boot');
 };

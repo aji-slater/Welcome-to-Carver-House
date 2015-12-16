@@ -40,5 +40,7 @@ function itemsUpdating() {
 }
 
 function newItemCreate() {
-  item = 
+  var possibleItems = ["Skull", "Key", "Necklace"];
+  
+  item = new Item();
 }

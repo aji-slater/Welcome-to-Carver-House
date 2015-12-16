@@ -8,6 +8,7 @@ var boardSides = board.length;
 
 var player;
 var ghosts = [];
+var exit;
 
 var easyStar = new EasyStar.js();
 var timeStep = 400

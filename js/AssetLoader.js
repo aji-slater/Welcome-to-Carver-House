@@ -43,6 +43,7 @@ var loadAll = function() {
   game.load.spritesheet('invRings', 'assets/items/inv-rings.png', 100, 150);
   game.load.spritesheet('invSkull', 'assets/items/inv-skull.png', 100, 150);
   game.load.spritesheet('invVoodoo', 'assets/items/inv-voodoo.png', 100, 150);
+  game.load.spritesheet('Skull', 'assets/items/skull.png', 100, 100);
 
   game.load.spritesheet('player', 'assets/investigator_new.png', 40, 70);
 

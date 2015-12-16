@@ -1,26 +1,70 @@
-function Item (name, x, y) {
+var allLocalItems = [];
+
+function sampleDestruct(array) {
+ returner =  array.splice(Math.floor(Math.random()*array.length), 1);
+ return returner[0];
+}
+
+function randomCoord(){
+  return Math.floor(Math.random()*board.length);
+}
+
+function checkForFloor(x, y){
+  if (board[y][x] === 1){
+    return true;
+  } else {
+    return false;
+  }
+}
+
+function placeItem(item, boardX, boardY){
+  item = game.add.isoSprite(xTilePosition(boardX), yTilePosition(boardY), 0, item, 0, itemGroup);
+  item.anchor.set(0.5, 0.5);
+  item.bringToTop();
+}
+
+function itemSeed(){
+  // var itemsToPlace = ["Skull", "Book", "Coin", "CrystalBall", "Dice", "Idol", "MusicBox", "Necklace", "Needle", "PuzzleBox", "Rings", "Voodoo"];
+  var itemsToPlace = ["Skull"];
+  var placed = false;
+  for ( i = 1; i <= 1; i++){
+    placed = false;
+    var newItem = sampleDestruct(itemsToPlace);
+    var itemString = newItem;
+    while ( placed === false ){
+      x = randomCoord();
+      y = randomCoord();
+      if (checkForFloor(x, y)){
+        newItem = new Item(itemString);
+        allLocalItems.push(newItem);
+        newItem.placeItem(itemString, x, y);
+        placed = true;
+      }
+    }
+  }
+}
+
+function Item (name) {
   this.name = name;
   this.sprite = null;
-  this.createSprite = function(x, y){
-    this.sprite = game.add.isoSprite(xTilePosition(x), yTilePosition(y), 0, this.name, 0, itemGroup);
-    this.sprite.anchor.set(0.5);
-    this.sprite.bringToTop();
-    this.sprite.inputEnabled = true;
-    this.sprite.useHandCursor = true;
-  };
 }
+
 Item.prototype = {
 
   pickUp: function(){
-    if (game.physics.arcade.distanceBetween(this.sprite, player) < 100);
+    if (game.physics.arcade.distanceBetween(this.sprite, player) < 100 ){
+      this.sprite.kill();
+      inventory.push(this.name);
+    }
   },
 
-  update: function(){
+  placeItem: function(item, boardX, boardY){
+    this.sprite = game.add.isoSprite(xTilePosition(boardX), yTilePosition(boardY), 0, item, 0, itemGroup);
+    this.sprite.anchor.set(0.5, 0.5);
+    this.sprite.inputEnabled = true;
+    this.sprite.events.onInputDown.add(this.pickUp, this);
     this.sprite.events.onInputOver.add(this.lightUp, this);
-    this.sprite.events.onInputOut.add(lightOff, this);
-    if (this.sprite.events.onUnputDown.add(pickUp, this)){
-      this.pickUp();
-    }
+    this.sprite.events.onInputOut.add(this.lightOff, this);
   },
 
   lightUp: function(){
@@ -31,16 +75,3 @@ Item.prototype = {
     this.sprite.frame = 0;
   }
 };
-
-
-function itemsUpdating() {
-  itemGroup.forEach(function(item) {
-    item.update();
-  });
-}
-
-function newItemCreate() {
-  var possibleItems = ["Skull", "Key", "Necklace"];
-  
-  item = new Item();
-}

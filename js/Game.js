@@ -6,11 +6,9 @@ BasicGame.Game.prototype =
 {
   preload: function () {
     game.time.advancedTiming = true;
-    game.world.setBounds(0, 0, 5000, 6000);
+    game.world.setBounds(0, 0, 5500, 6500);
     game.iso.anchor.setTo(0.5, 0.2);
-
-    // game.world.scale.setTo(0.7, 0.7);
-
+    // game.world.scale.setTo(0.2, 0.2);
   },
 
   create: function () {
@@ -29,7 +27,7 @@ BasicGame.Game.prototype =
     generateTiles();
     generateWalls();
     generateExit();
-    newItemCreate();
+    itemSeed();
     // itemCreate();
     // itemInputs();
     // tableCreate();
@@ -49,9 +47,6 @@ BasicGame.Game.prototype =
     if (!isPaused){
       game.iso.unproject(game.input.activePointer.position, cursorPos);
       playerUpdate();
-      // illuminate();
-      // itemInteract();
-      itemsUpdating();
       moveGhosts();
       checkGhostCollision();
       wallCheck();

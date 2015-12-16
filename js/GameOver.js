@@ -8,10 +8,13 @@ BasicGame.GameOver.prototype = {
 
 	preload: function() {
 
-		this.over = this.add.sprite(this.game.world.centerX, this.game.world.centerY, 'gameover');
-		this.over.anchor.setTo(0.5);
+
 	},
 	create: function () {
+
+		this.over = this.add.sprite(window.innerWidth/2, window.innerHeight/2, 'gameover');
+		this.over.anchor.setTo(0.5);
+
 		this.music = this.add.audio('Evelyn');
 		this.music.play();
 

@@ -91,9 +91,9 @@ function checkGhostCollision(){
       player.body.velocity = 0;
       player.body.velocity = 0;
       playerAlive = false;
-      alert("u wuz killed :(")
+      // alert("u wuz killed :(")
       player.kill();
-      //this.state.start("GameOver");
+      game.state.start("GameOver");
     }, function(){
       return playerAlive;
     });
@@ -246,14 +246,14 @@ function moveGhost(ghost){
           {
             ghost.sprite.body.velocity.x = enemySpeed;
             ghost.sprite.body.velocity.y = 0;
-            sprite.animations.play('SE');
+            ghost.sprite.animations.play('SE');
 
           }
           else if (ghost.enemyDirection == "NW")
           {
             ghost.sprite.body.velocity.x = -enemySpeed;
             ghost.sprite.body.velocity.y = 0;
-            sprite.animations.play('NW');
+            ghost.sprite.animations.play('NW');
 
           }
           else if (ghost.enemyDirection == "SW")

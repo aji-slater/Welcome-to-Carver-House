@@ -6,6 +6,8 @@ var loadAll = function() {
   game.load.image('sideTable', 'assets/furniture/side-table.png');
   game.load.image('emptySquare', 'assets/tiles/empty-square.png');
   game.load.image('hudInvButton', 'assets/HUD/inventory-icon.png');
+  game.load.image('exit-north', 'assets/tiles/exit-north.png');
+  game.load.image('exit-west', 'assets/tiles/exit-west.png');
   game.load.image('northWall', 'assets/furniture/wall-n.png');
   game.load.image('invExit', 'assets/hud/inventory-exit.png');
 

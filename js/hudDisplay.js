@@ -73,6 +73,7 @@ var populateInventory = function() {
     inventoryItem = popup.addChild(game.make.sprite(itemMenuX(i), itemMenuY(i), "inv" + inventory[i], menuGroup));
     inventoryItem.inputEnabled = true;
     inventoryItem.events.onInputDown.add(invClickFunction, this);
+    inventoryItem.events.hover
   }
 };
 

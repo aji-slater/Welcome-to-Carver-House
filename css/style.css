@@ -1,0 +1,5 @@
+@font-face {
+	font-family: 'MORPHEUS';
+	src: url('../assets/fonts/morpheus/MORPHEUS.eot');
+	src: local('MORPHEUS'), url('../assets/fonts/morpheus/MORPHEUS.woff') format('woff'), url('../assets/fonts/morpheus/MORPHEUS.ttf') format('truetype');
+}

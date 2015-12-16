@@ -1,4 +1,5 @@
 BasicGame.Preloader = function (game) {
+	this.backgroundImage = null;
 	this.preloadBar = null;
 	this.ready = false;
 };
@@ -6,17 +7,14 @@ BasicGame.Preloader = function (game) {
 BasicGame.Preloader.prototype = {
 
 	preload: function() {
+		this.stage.backgroundColor = '#333333';
 
-		// this.background = this.add.sprite(0, 0, 'lovecraft_mansion');
-    loadAll();
+		this.backgroundImage = this.add.sprite(this.game.world.centerX, this.game.world.centerY, 'lovecraft_mansion');
+		this.backgroundImage.anchor.setTo(0.5);
 
-		sprite = this.add.sprite(0, 0, 'lovecraft_mansion');
-		this.preloadBar = this.add.sprite(300, 400, 'preload_bar');
+		this.preloadBar = this.add.sprite(this.game.world.centerX, this.game.world.centerY + 228, 'preload_bar');
+		this.preloadBar.anchor.setTo(0.5);
 
-		var style = { font: "67px Morpheus", fill: "#ffffff", wordWrap: true, wordWrapWidth: sprite.width, align: "center" };
-
-    text = this.add.text(400, 100, "Welcome to Carver House", style);
-    text.anchor.set(0.5);
 	},
 
 	create: function() {
@@ -26,9 +24,9 @@ BasicGame.Preloader.prototype = {
 
 
 	update: function() {
-		// if (this.ready == false) {
+		if (this.ready == false) {
 		this.ready = true;
 		this.state.start('MainMenu');
-		// }
+		}
 	}
 };

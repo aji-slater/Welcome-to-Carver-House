@@ -94,6 +94,22 @@ var itemMenuY = function(index){
   }
 };
 
+function dragStop(sprite, pointer){
+  sprite.position.copyFrom(hudItem.originalPosition);
+  sprite.scale.setTo(0.75, 0.75);
+  game.iso.unproject(game.input.activePointer.position, pointer);
+  var inBound = exit.isoBounds.containsXY(pointer.x - 24, pointer.y - 14);
+  console.log(inBound);
+  if(inBound){
+    if(exit.key === "exit-north"){
+      exit.loadTexture("exit-north-unlock", 0, false);
+    }
+    else{
+      exit.loadTexture("exit-west-unlock", 0, false);
+    }
+  }
+}
+
 var hudItemImplementation = function(){
   hudItem = hudFrame.addChild(game.make.sprite(hudFrame.width/2, hudFrame.height/2, activeItem, menuGroup));
   hudItem.scale.setTo(0.75, 0.75);
@@ -102,11 +118,7 @@ var hudItemImplementation = function(){
   hudItem.input.enableDrag(true);
   hudItem.originalPosition = hudItem.position.clone();
   hudItem.events.onDragStart.add(function(){ hudItem.scale.setTo(0.4, 0.4);}, this);
-  hudItem.events.onDragStop.add(function(){
-    hudItem.position.copyFrom(hudItem.originalPosition);
-    hudItem.scale.setTo(0.75, 0.75);
-    hudItemDragCheck();
-  });
+  hudItem.events.onDragStop.add(dragStop, this);
 };
 
 var inventoryHover = function(){
@@ -139,6 +151,6 @@ function out(){
   text.destroy();
 }
 
-var hudItemDragCheck = function() {
+var hudItemDragCheck = function(hudItem) {
 
 };

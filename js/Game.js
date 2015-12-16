@@ -32,9 +32,9 @@ BasicGame.Game.prototype =
     itemCreate();
     itemInputs();
     tableCreate();
-    configPathFinding();
-    createGhosts();
-    setGhostPaths();
+    // configPathFinding();
+    // createGhosts();
+    // setGhostPaths();
     hudDisplay();
     hudClick();
 
@@ -48,10 +48,10 @@ BasicGame.Game.prototype =
     if (!isPaused){
       game.iso.unproject(game.input.activePointer.position, cursorPos);
       playerUpdate();
-      illuminate();
+      // illuminate();
       itemInteract();
-      moveGhosts();
-      checkGhostCollision();
+      // moveGhosts();
+      // checkGhostCollision();
       this.game.physics.isoArcade.collide(player, emptyGroup);
       wallCheck();
 

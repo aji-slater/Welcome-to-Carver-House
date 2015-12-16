@@ -1,0 +1,11 @@
+@font-face {
+	font-family: 'MORPHEUS';
+	src: url('./MORPHEUS.eot');
+	src: local('MORPHEUS'), url('./MORPHEUS.woff') format('woff'), url('./MORPHEUS.ttf') format('truetype');
+}
+/* use this class to attach this font to any element i.e. <p class="fontsforweb_fontid_12916">Text with this font applied</p> */
+.fontsforweb_fontid_12916 {
+	font-family: 'MORPHEUS' !important;
+}
+
+/* Font downloaded from FontsForWeb.com */

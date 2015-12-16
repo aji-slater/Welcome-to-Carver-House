@@ -1,5 +1,16 @@
 
 var loadAll = function() {
+  game.load.image('lovecraft_mansion', 'assets/welcome.png');
+  game.load.image('preload_bar', 'assets/preload_bar.png');
+  // game.load.spritesheet('timer', 'assets/timer.png', 150, 20);
+  game.load.bitmapFont('MORPHEUS', 'assets/fonts/morpheus/MORPHEUS.png', 'assets/fonts/morpheus/MORPHEUS.xml');
+  game.load.audio('Evelyn', ['assets/audio/Evelyn.mp3']);
+  game.load.spritesheet('story', 'assets/buttons/story.png', 245, 84);
+  game.load.spritesheet('newgame', 'assets/buttons/newgame.png', 245, 84);
+  game.load.image('gameover', 'assets/over.png');
+  game.load.image('volume-glyph', 'assets/buttons/volume-glyph.png');
+  game.load.image('stop-volume-glyph', 'assets/buttons/stop-volume-glyph.png');
+  
   game.load.image('woodTile', 'assets/tiles/wood-floor.png');
   game.load.image('emptyTile', 'assets/tiles/empty-tile.png');
   game.load.image('hudFrame', 'assets/hud/hud-frame.png');

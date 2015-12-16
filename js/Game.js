@@ -52,9 +52,11 @@ BasicGame.Game.prototype =
       itemInteract();
       moveGhosts();
       checkGhostCollision();
-      this.game.physics.isoArcade.collide(player, emptyGroup);
       wallCheck();
 
+      this.game.physics.isoArcade.collide(player, emptyGroup);
+
+      this.game.physics.isoArcade.collide(enemyGroup, emptyGroup);
 
       this.game.physics.isoArcade.collide(player, exitGroup, function(player){
         player.kill();

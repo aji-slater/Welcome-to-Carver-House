@@ -10,7 +10,6 @@ var playerAlive = true;
 function Ghost(sprite){
   this.sprite = sprite;
   this.enemyDirection = "STOP";
-
 }
 
 
@@ -27,24 +26,20 @@ function placeGhost(){
   var randY;
   var posX = 0;
   var posY = 0;
-
   var posData = {
     ghostX: 0,
     ghostY: 0
-  }
+  };
 
   while(posX === 0 && posY === 0){
     randX = Math.floor(Math.random() * gameBoard.boardWidth);
     randY = Math.floor(Math.random() * gameBoard.boardHeight);
-    console.log(randX);
-    console.log(randY);
     posX = board[randX];
     posY = board[randY];
   }
 
   posData.ghostX = randX;
   posData.ghostY = randY;
-  console.log(posData);
 
   return posData;
 }
@@ -54,17 +49,17 @@ function createGhosts(){
   var posData;
   for (i = 0; i < ghostCount; i++ ){
     posData = placeGhost();
-    var sprite = this.game.add.isoSprite(posData.ghostX * TILE_POS, posData.ghostY * TILE_POS, 0, 'characterAnim', 0, enemyGroup);
+    var sprite = this.game.add.isoSprite(posData.ghostX * TILE_POS, posData.ghostY * TILE_POS, 0, 'badGuy', 0, enemyGroup);
     sprite.tint = 0x000000;
     // sprite.alpha = 0.6;
     sprite.animations.add('S', [0, 1, 2, 3, 4, 5, 6, 7], 10, true);
-    sprite.animations.add('SW', [8, 9, 10, 11, 12, 13, 14, 15], 10, true);
-    sprite.animations.add('W', [16, 17, 18, 19, 20, 21, 22, 23], 10, true);
-    sprite.animations.add('NW', [24, 25, 26, 27, 28, 29, 30, 31], 10, true);
-    sprite.animations.add('N', [32, 33, 34, 35, 36, 37, 38, 39], 10, true);
-    sprite.animations.add('NE', [40, 41, 42, 43, 44, 45, 46, 47], 10, true);
-    sprite.animations.add('E', [48, 49, 50, 51, 52, 53, 54, 55], 10, true);
-    sprite.animations.add('SE', [56, 57, 58, 59, 60, 61, 62, 63], 10, true);
+    sprite.animations.add('W', [8, 9, 10, 11, 12, 13, 14, 15], 10, true);
+    sprite.animations.add('E', [16, 17, 18, 19, 20, 21, 22, 23], 10, true);
+    sprite.animations.add('N', [24, 25, 26, 27, 28, 29, 30, 31], 10, true);
+    sprite.animations.add('SW', [32, 33, 34, 35, 36, 37, 38, 39], 10, true);
+    sprite.animations.add('NW', [40, 41, 42, 43, 44, 45, 46, 47], 10, true);
+    sprite.animations.add('SE', [48, 49, 50, 51, 52, 53, 54, 55], 10, true);
+    sprite.animations.add('NE', [56, 57, 58, 59, 60, 61, 62, 63], 10, true);
     this.game.physics.isoArcade.enable(sprite);
 
     sprite.body.collideWorldBounds = true;
@@ -92,7 +87,7 @@ function checkGhostCollision(){
   // console.log(player);
   // console.log(ghost);
   this.game.physics.isoArcade.overlap(player, enemyGroup, function(player){
-      console.log("overlap");
+      // console.log("overlap");
       player.body.velocity = 0;
       player.body.velocity = 0;
       playerAlive = false;
@@ -112,7 +107,7 @@ function setPathFinderInterval(ghost) {
 
             easyStar.findPath(currentGhostXtile, currentGhostYtile, currentPlayerXtile, currentPlayerYtile, function( path ) {
                 if (path === null) {
-                    console.log("The path to the destination point was not found.");
+                    // console.log("The path to the destination point was not found.");
                 }
 
                 if (path) {
@@ -124,7 +119,7 @@ function setPathFinderInterval(ghost) {
                 {
                   // left up
 
-                  console.log("GO LEFT UP");
+                  // console.log("GO LEFT UP");
 
                   ghost.enemyDirection = "NW";
                 }
@@ -132,16 +127,17 @@ function setPathFinderInterval(ghost) {
                 {
                   // up
 
-                  console.log("GO UP");
+                  // console.log("GO UP");
 
                   ghost.enemyDirection = "N";
+
 
                 }
                 else if (currentNextPointX > currentGhostXtile && currentNextPointY < currentGhostYtile)
                 {
                   // right up
 
-                  console.log("GO RIGHT UP");
+                  // console.log("GO RIGHT UP");
 
                   ghost.enemyDirection = "NE";
 
@@ -150,7 +146,7 @@ function setPathFinderInterval(ghost) {
                 {
                   // left
 
-                  console.log("GO LEFT");
+                  // console.log("GO LEFT");
 
                   ghost.enemyDirection = "W";
 
@@ -159,7 +155,7 @@ function setPathFinderInterval(ghost) {
                 {
                   // right
 
-                  console.log("GO RIGHT");
+                  // console.log("GO RIGHT");
 
                   ghost.enemyDirection = "E";
 
@@ -168,7 +164,7 @@ function setPathFinderInterval(ghost) {
                 {
                   // right down
 
-                  console.log("GO RIGHT DOWN");
+                  // console.log("GO RIGHT DOWN");
 
                   ghost.enemyDirection = "SE";
 
@@ -177,7 +173,7 @@ function setPathFinderInterval(ghost) {
                 {
                   // down
 
-                  console.log("GO DOWN");
+                  // console.log("GO DOWN");
 
                   ghost.enemyDirection = "S";
 
@@ -186,7 +182,7 @@ function setPathFinderInterval(ghost) {
                 {
                   // left down
 
-                  console.log("GO LEFT DOWN");
+                  // console.log("GO LEFT DOWN");
 
                   ghost.enemyDirection = "SW";
 
@@ -203,7 +199,7 @@ function setPathFinderInterval(ghost) {
             easyStar.calculate();
 
           }, timeStep - Math.floor((Math.random() + 10) + 1));
-  };
+  }
 
 function setGhostPaths(){
   for(i = 0; i < ghosts.length; i++){
@@ -218,51 +214,68 @@ function moveGhost(ghost){
 
 
           // Move the ENEMY
-          var enemySpeed = 90;
+          var enemySpeed = (Math.random() * 10) + 150;
 
           if (ghost.enemyDirection == "N") {
             ghost.sprite.body.velocity.x = -enemySpeed;
             ghost.sprite.body.velocity.y = -enemySpeed;
+            ghost.sprite.animations.play('N');
+
           }
           else if (ghost.enemyDirection == "S")
           {
             ghost.sprite.body.velocity.x = enemySpeed;
             ghost.sprite.body.velocity.y = enemySpeed;
+            ghost.sprite.animations.play('S');
+
           }
           else if (ghost.enemyDirection == "E") {
             ghost.sprite.body.velocity.x = enemySpeed;
             ghost.sprite.body.velocity.y = -enemySpeed;
+            ghost.sprite.animations.play('E');
+
           }
           else if (ghost.enemyDirection == "W")
           {
             ghost.sprite.body.velocity.x = -enemySpeed;
             ghost.sprite.body.velocity.y = enemySpeed;
+            ghost.sprite.animations.play('W');
+
           }
           else if (ghost.enemyDirection == "SE")
           {
             ghost.sprite.body.velocity.x = enemySpeed;
             ghost.sprite.body.velocity.y = 0;
+            sprite.animations.play('SE');
+
           }
           else if (ghost.enemyDirection == "NW")
           {
             ghost.sprite.body.velocity.x = -enemySpeed;
             ghost.sprite.body.velocity.y = 0;
+            sprite.animations.play('NW');
+
           }
           else if (ghost.enemyDirection == "SW")
           {
             ghost.sprite.body.velocity.x = 0;
             ghost.sprite.body.velocity.y = enemySpeed;
+            ghost.sprite.animations.play('SW');
+
           }
 
           else if (ghost.enemyDirection == "NE")
           {
             ghost.sprite.body.velocity.x = 0;
             ghost.sprite.body.velocity.y = -enemySpeed;
+            ghost.sprite.animations.play('NE');
+
           }
           else if (ghost.enemyDirection == "STOP")
           {
             ghost.sprite.body.velocity.x = 0;
             ghost.sprite.body.velocity.y = 0;
+
           }
 }
 
@@ -272,4 +285,3 @@ function moveGhosts(){
     moveGhost(ghost);
   }
 }
-

@@ -13,31 +13,78 @@ function Room(x, y, w, h){
       this.ghostCount = 0;
 }
 
+Room.prototype.area = function(){
+  return this.height * this.width;
+};
+
 Room.prototype.centerX = function(){
       return Math.floor(this.x +(this.width/2));
-}
+};
 
 Room.prototype.centerY = function(){
       return Math.floor(this.y +(this.height/2));
-}
+};
 
 Room.prototype.intersects = function(room2){
       // return (room2.x >= this.x && room2.x <= this.x2 && room2.y2 >= this.y && room2.y >= this.y);
-      return (this.x <= room2.x2 && this.x2 >= room2.x && this.y <= room2.y2 && this.y2 >= room2.y)
-}
+      return (this.x <= room2.x2 && this.x2 >= room2.x && this.y <= room2.y2 && this.y2 >= room2.y);
+};
 
 
 function GameBoard(){
-      this.board = [];
-      this.roomCount = 0;
-      this.boardHeight;
-      this.boardWidth;
-      this.entryRoom = new Room();
-      this.entryRoom.x = 0;
-      this.entryRoom.y = 0;
-      this.entryRoom.height = 2;
-      this.entryRoom.width = 2;
+  this.board = [];
+  this.roomCount = 0;
+  this.boardHeight;
+  this.boardWidth;
+  this.entryRoom = new Room();
+  this.entryRoom.x = 0;
+  this.entryRoom.y = 0;
+  this.entryRoom.height = 2;
+  this.entryRoom.width = 2;
 }
+
+GameBoard.prototype.maxArea = function(){
+  var roomAreas = [];
+  for ( i = gameBoard.rooms.length - 1; i >= 0; i-- ){
+    currentRoom = gameBoard.rooms[i];
+    roomAreas.push(currentRoom.area());
+  }
+  var currentMax = 0;
+  for ( i = roomAreas.length - 1; i >= 0; i -- ){
+    if ( roomAreas[i] > currentMax ){
+      currentMax = roomAreas[i];
+    }
+  }
+  return currentMax;
+};
+
+GameBoard.prototype.minArea = function(){
+  var roomAreas = [];
+  for ( i = gameBoard.rooms.length - 1; i >= 0; i-- ){
+    currentRoom = gameBoard.rooms[i];
+    roomAreas.push(currentRoom.area());
+  }
+  var currentMin = 500;
+  for ( i = roomAreas.length - 1; i >= 0; i -- ){
+    if ( roomAreas[i] < currentMin ){
+      currentMin = roomAreas[i];
+    }
+  }
+  return currentMin;
+};
+
+GameBoard.prototype.avgArea = function(){
+  var roomAreas = [];
+  for ( i = gameBoard.rooms.length - 1; i >= 0; i-- ){
+    currentRoom = gameBoard.rooms[i];
+    roomAreas.push(currentRoom.area());
+  }
+  var sum = 0;
+  for ( i = roomAreas.length - 1; i >= 0; i-- ){
+    sum += roomAreas[i];
+  }
+  return Math.floor(sum/roomAreas.length);
+};
 
 //pick point on the board corresponding to the top left corner of room, build room from that origin column by column until the room width is reached, or the edge of the map.
 GameBoard.prototype.generateRoom = function(room){
@@ -198,9 +245,9 @@ GameBoard.prototype.generateEmptyBoard = function(width, height){
 
 GameBoard.prototype.generateBoard = function(){
 this.generateEmptyBoard(50, 50);
- var rooms = [];
- maxrooms = 200;
- for (var r = 0 ; r < maxrooms; r++){
+  this.rooms = [];
+  maxrooms = 200;
+  for (var r = 0 ; r < maxrooms; r++){
       var w = Math.floor(Math.random() * 16) + 4;
       var h = Math.floor(Math.random() * 16) + 4;
       var x = Math.floor(Math.random() * this.boardWidth - w) + 1;
@@ -214,8 +261,8 @@ this.generateEmptyBoard(50, 50);
 
       var newRoom = new Room(x, y, w, h);
       var intersect = false;
-      for(roomIndex in rooms){
-            if(newRoom.intersects(rooms[roomIndex])){
+      for(roomIndex in this.rooms){
+            if(newRoom.intersects(this.rooms[roomIndex])){
                   intersect = true;
                   break;
             }
@@ -223,8 +270,8 @@ this.generateEmptyBoard(50, 50);
       if(!intersect){
             var z = 0;
             this.generateRoom(newRoom);
-            if(rooms.length > 0){
-                  var oldRoom = rooms[rooms.length -1];
+            if(this.rooms.length > 0){
+                  var oldRoom = this.rooms[this.rooms.length -1];
                   if ( newRoom.centerX() >= oldRoom.centerX() ){
                         z = -1;
                   } else {
@@ -264,10 +311,14 @@ this.generateEmptyBoard(50, 50);
                   //       this.generateHorizontal(false, hallwayData["partner_room"], hallwayData["hallY"]);
                   // }
             }
-            rooms.push(newRoom);
+            this.rooms.push(newRoom);
       }
  }
-}
+};
+
+
+
+
 
 // // Room.prototype.getRoomCenter = function(){
 // //       var x = Math.floor(this.width/2);

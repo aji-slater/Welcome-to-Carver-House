@@ -11,7 +11,7 @@ var ghosts = [];
 var exit;
 
 var easyStar = new EasyStar.js();
-var timeStep = 400
+var timeStep = 400;
 var isPaused = false;
 
 
@@ -24,7 +24,7 @@ var xTilePosition = function(value){
 
 var inventory = [];
 
-var floorGroup, activeGroup, itemGroup, menuGroup, furnishGroup, enemyGroup, exitGroup;
+var floorGroup, activeGroup, itemGroup, menuGroup, furnishGroup, enemyGroup, exitGroup, wallGroup;
 
 var cursorPos, cursor;
 var floorTile, necklace, key, debugTile;

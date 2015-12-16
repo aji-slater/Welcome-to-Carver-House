@@ -1,6 +1,9 @@
+var playerStartingRoom;
 var playerCreate = function(){
-
-  player = game.add.isoSprite(xTilePosition(10), yTilePosition(10), 0, 'testingPlayer', 15, activeGroup);
+  playerStartingRoom = determinePlayerStart();
+  var startingX = playerStartingRoom.centerX();
+  var startingY = playerStartingRoom.centerY();
+  player = game.add.isoSprite(xTilePosition(startingX), yTilePosition(startingY), 0, 'player', 15, activeGroup);
   game.physics.isoArcade.enable(player);
   player.body.setSize(10, 10, 40);
   player.body.collideWorldBounds = true;
@@ -69,4 +72,17 @@ var playerCreate = function(){
     player.body.velocity.x = 0;
     player.body.velocity.y = 0;
   }
+};
+
+var determinePlayerStart = function(){
+  var aboveAverageRooms = [];
+  var meanArea = gameBoard.avgArea();
+  for ( i = gameBoard.rooms.length - 1; i >= 0; i-- ){
+    if (gameBoard.rooms[i].area() >= meanArea) {
+      aboveAverageRooms.push(gameBoard.rooms[i]);
+    }
+  }
+  var index = Math.floor(Math.random() * aboveAverageRooms.length);
+  return aboveAverageRooms[index];
+
 };

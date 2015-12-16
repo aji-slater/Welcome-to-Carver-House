@@ -9,13 +9,13 @@ BasicGame.Game.prototype =
     game.world.setBounds(0, 0, 5000, 6000);
     game.iso.anchor.setTo(0.5, 0.2);
     // game.world.scale.setTo(0.7, 0.7);
-
   },
 
   create: function () {
     game.physics.isoArcade.gravity.setTo(0, 0, -500);
     emptyGroup = game.add.group();
     floorGroup = game.add.group();
+    wallGroup = game.add.group();
     furnishGroup = game.add.group();
     exitGroup = game.add.group();
     activeGroup = game.add.group();
@@ -46,16 +46,18 @@ BasicGame.Game.prototype =
     if (!isPaused){
       game.iso.unproject(game.input.activePointer.position, cursorPos);
       playerUpdate();
-      // illuminate();
+      illuminate();
       itemInteract();
       moveGhosts();
       checkGhostCollision();
       this.game.physics.isoArcade.collide(player, emptyGroup);
-      this.game.physics.isoArcade.collide(player, exitGroup, function(player){
-          this.player.kill();
-         alert("You won!");
 
-     });
+      this.game.physics.isoArcade.collide(player, exitGroup, function(player){
+        player.kill();
+        alert("You won!");
+      wallCheck();
+    });
+
     }
 
   },

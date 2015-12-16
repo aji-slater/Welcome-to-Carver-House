@@ -40,6 +40,6 @@ BasicGame.GameOver.prototype = {
 	},
   	mainMenu: function (pointer) {
   		// game.world.removeAll();
-    	this.state.start('MainMenu');
+    	this.game.state.start('MainMenu');
 	}
 }

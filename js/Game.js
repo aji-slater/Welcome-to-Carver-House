@@ -53,11 +53,12 @@ BasicGame.Game.prototype =
       moveGhosts();
       checkGhostCollision();
       this.game.physics.isoArcade.collide(player, emptyGroup);
+      wallCheck();
+
 
       this.game.physics.isoArcade.collide(player, exitGroup, function(player){
         player.kill();
         alert("You won!");
-      wallCheck();
     });
 
     }

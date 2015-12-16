@@ -91,7 +91,7 @@ function checkGhostCollision(){
       player.body.velocity = 0;
       player.body.velocity = 0;
       playerAlive = false;
-      alert("u wuz killed :(")
+      alert("u dead az fuckkk :(")
       player.kill();
       //this.state.start("GameOver");
     }, function(){
@@ -214,7 +214,7 @@ function moveGhost(ghost){
 
 
           // Move the ENEMY
-          var enemySpeed = (Math.random() * 10) + 150;
+          var enemySpeed = (Math.random() * 10) + 50;
 
           if (ghost.enemyDirection == "N") {
             ghost.sprite.body.velocity.x = -enemySpeed;

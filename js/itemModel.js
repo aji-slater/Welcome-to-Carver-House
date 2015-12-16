@@ -14,8 +14,7 @@ function checkForFloor(x, y){
     return true;
   } else {
     return false;
-  }
-}
+  }}
 
 function placeItem(item, boardX, boardY){
   item = game.add.isoSprite(xTilePosition(boardX), yTilePosition(boardY), 0, item, 0, itemGroup);
@@ -25,24 +24,24 @@ function placeItem(item, boardX, boardY){
 
 function itemSeed(){
   var itemsToPlace = ["Skull", "Book", "Coin", "CrystalBall", "Dice", "Idol", "MusicBox", "Necklace", "Needle", "PuzzleBox", "Rings", "Voodoo"];
-  // var itemsToPlace = ["Skull"];
   var placed = false;
   for ( i = 1; i <= 6; i++){
     placed = false;
     var newItem = sampleDestruct(itemsToPlace);
-    var itemString = newItem;
-    while ( placed === false ){
-      x = randomCoord();
-      y = randomCoord();
-      if (checkForFloor(x, y)){
-        newItem = new Item(itemString);
-        allLocalItems.push(newItem);
-        newItem.placeItem(itemString, x, y);
-        placed = true;
-      }
-    }
-  }
-}
+    instantiateItem(newItem);
+  }}
+
+function instantiateItem(itemName){
+  var itemString = itemName;
+  while ( placed === false ){
+    x = randomCoord();
+    y = randomCoord();
+    if (checkForFloor(x, y)){
+      itemName = new Item(itemString);
+      allLocalItems.push(itemName);
+      itemName.placeItem(itemString, x, y);
+      placed = true;
+    }}}
 
 function Item (name) {
   this.name = name;
@@ -55,8 +54,7 @@ Item.prototype = {
     if (game.physics.arcade.distanceBetween(this.sprite, player) < 100 ){
       this.sprite.kill();
       inventory.push(this.name);
-    }
-  },
+  }},
 
   placeItem: function(item, boardX, boardY){
     this.sprite = game.add.isoSprite(xTilePosition(boardX), yTilePosition(boardY), 0, item, 0, itemGroup);

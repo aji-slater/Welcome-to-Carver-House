@@ -29,12 +29,13 @@ BasicGame.Game.prototype =
     generateTiles();
     generateWalls();
     generateExit();
-    itemCreate();
-    itemInputs();
-    tableCreate();
-    configPathFinding();
-    createGhosts();
-    setGhostPaths();
+    newItemCreate();
+    // itemCreate();
+    // itemInputs();
+    // tableCreate();
+    // configPathFinding();
+    // createGhosts();
+    // setGhostPaths();
     hudDisplay();
     hudClick();
 
@@ -48,8 +49,9 @@ BasicGame.Game.prototype =
     if (!isPaused){
       game.iso.unproject(game.input.activePointer.position, cursorPos);
       playerUpdate();
-      illuminate();
-      itemInteract();
+      // illuminate();
+      // itemInteract();
+      itemsUpdating();
       moveGhosts();
       checkGhostCollision();
       wallCheck();

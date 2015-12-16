@@ -10,7 +10,6 @@ var playerAlive = true;
 function Ghost(sprite){
   this.sprite = sprite;
   this.enemyDirection = "STOP";
-
 }
 
 
@@ -27,7 +26,6 @@ function placeGhost(){
   var randY;
   var posX = 0;
   var posY = 0;
-
   var posData = {
     ghostX: 0,
     ghostY: 0
@@ -93,6 +91,8 @@ function checkGhostCollision(){
       player.body.velocity = 0;
       player.body.velocity = 0;
       playerAlive = false;
+      alert("u wuz killed :(")
+      player.kill();
       //this.state.start("GameOver");
     }, function(){
       return playerAlive;
@@ -214,7 +214,7 @@ function moveGhost(ghost){
 
 
           // Move the ENEMY
-          var enemySpeed = 90;
+          var enemySpeed = (Math.random() * 10) + 150;
 
           if (ghost.enemyDirection == "N") {
             ghost.sprite.body.velocity.x = -enemySpeed;

@@ -9,7 +9,8 @@ BasicGame.Game.prototype =
     game.world.setBounds(0, 0, 5000, 6000);
     game.iso.anchor.setTo(0.5, 0.2);
 
-    // game.world.scale.setTo(0.5, 0.5);
+    // game.world.scale.setTo(0.7, 0.7);
+
   },
 
   create: function () {
@@ -18,6 +19,7 @@ BasicGame.Game.prototype =
     floorGroup = game.add.group();
     wallGroup = game.add.group();
     furnishGroup = game.add.group();
+    exitGroup = game.add.group();
     activeGroup = game.add.group();
     menuGroup = game.add.group();
     enemyGroup = game.add.group();
@@ -26,6 +28,7 @@ BasicGame.Game.prototype =
     playerCreate();
     generateTiles();
     generateWalls();
+    generateExit();
     itemCreate();
     itemInputs();
     tableCreate();
@@ -50,7 +53,13 @@ BasicGame.Game.prototype =
       moveGhosts();
       checkGhostCollision();
       this.game.physics.isoArcade.collide(player, emptyGroup);
+
+      this.game.physics.isoArcade.collide(player, exitGroup, function(player){
+        player.kill();
+        alert("You won!");
       wallCheck();
+    });
+
     }
 
   },
@@ -63,9 +72,13 @@ BasicGame.Game.prototype =
     // emptyGroup.forEach(function (tile) {
     //     game.debug.body(tile, 'rgba(189, 221, 235, 0.6)', false);
     // })
-    // activeGroup.forEach(function (tile) {
-    // game.debug.body(tile, 'rgba(189, 221, 235, 0.6)', false);
+  //   exitGroup.forEach(function (exit) {
+  //     game.debug.body(exit, 'rgba(189, 221, 235, 0.6)', false);
+  //     game.debug.spriteBounds(exit, 'pink', false);
   // });
+
+  //   game.debug.body(player, 'rgba(189, 221, 235, 0.6)', false);
+
   }
 
 };

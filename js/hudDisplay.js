@@ -6,7 +6,14 @@ var hudDisplay = function(){
   hudInv = this.game.add.sprite(35, 160, 'hudInvButton');
   hudInv.fixedToCamera = true;
   hudInv.inputEnabled = true;
+  hudESC = game.input.keyboard.addKey(Phaser.Keyboard.ESC);
+    hudESC.onDown.add(hudEscape, this);
+};
 
+var hudEscape = function(){
+  if (isPaused){
+    unPause();
+  }
 };
 
 var hudClick = function(){
@@ -20,8 +27,9 @@ var hudClick = function(){
   }, this);
 };
 
-var pause = function(){
 
+
+var pause = function(){
   popup = this.game.add.sprite(game.camera.width / 2, game.camera.height / 2, 'inventoryMenu', menuGroup);
   popup.alpha = 0;
 
@@ -31,6 +39,13 @@ var pause = function(){
   hudInv.tint = 0x777777;
   if (hudItem){ hudItem.tint = 0x777777; }
   var menuAppear = game.add.tween(popup).to( { alpha: 1 }, 120, Phaser.Easing.Linear.None, true, 0, 0, false);
+  isPaused = true;
+  inventoryExit = popup.addChild(game.make.sprite(-300, -210, "invExit", menuGroup));
+  inventoryExit.inputEnabled = true;
+  inventoryExit.events.onInputDown.add(function(){
+    unPause();
+  });
+  var menuExitAppear = game.add.tween(inventoryExit).to( { alpha: 1 }, 100, Phaser.Easing.Linear.None, true, 0, 0, false);
   isPaused = true;
   menuAppear.onComplete.add(function(){ populateInventory(); }, this);
 };

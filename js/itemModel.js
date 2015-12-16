@@ -24,10 +24,10 @@ function placeItem(item, boardX, boardY){
 }
 
 function itemSeed(){
-  // var itemsToPlace = ["Skull", "Book", "Coin", "CrystalBall", "Dice", "Idol", "MusicBox", "Necklace", "Needle", "PuzzleBox", "Rings", "Voodoo"];
-  var itemsToPlace = ["Skull"];
+  var itemsToPlace = ["Skull", "Book", "Coin", "CrystalBall", "Dice", "Idol", "MusicBox", "Necklace", "Needle", "PuzzleBox", "Rings", "Voodoo"];
+  // var itemsToPlace = ["Skull"];
   var placed = false;
-  for ( i = 1; i <= 1; i++){
+  for ( i = 1; i <= 6; i++){
     placed = false;
     var newItem = sampleDestruct(itemsToPlace);
     var itemString = newItem;

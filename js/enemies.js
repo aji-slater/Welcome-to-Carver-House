@@ -214,7 +214,7 @@ function moveGhost(ghost){
 
 
           // Move the ENEMY
-          var enemySpeed = (Math.random() * 10) + 50;
+          var enemySpeed = (Math.random() * 10) + 120;
 
           if (ghost.enemyDirection == "N") {
             ghost.sprite.body.velocity.x = -enemySpeed;

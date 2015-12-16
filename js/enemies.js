@@ -51,7 +51,7 @@ function createGhosts(){
   var posData;
   for (i = 0; i < ghostCount; i++ ){
     posData = placeGhost();
-    var sprite = this.game.add.isoSprite(posData.ghostX * TILE_POS, posData.ghostY * TILE_POS, 0, 'badGuy', 0, enemyGroup);
+    var sprite = this.game.add.isoSprite(posData.ghostX * TILE_POS, posData.ghostY * TILE_POS, 0, 'scarecrow', 0, enemyGroup);
     sprite.tint = 0x000000;
     // sprite.alpha = 0.6;
     sprite.animations.add('S', [0, 1, 2, 3, 4, 5, 6, 7], 10, true);

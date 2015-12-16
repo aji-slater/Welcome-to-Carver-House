@@ -9,7 +9,7 @@ BasicGame.Game.prototype =
     game.world.setBounds(0, 0, 5000, 6000);
     game.iso.anchor.setTo(0.5, 0.2);
 
-    // game.world.scale.setTo(0.2, 0.2);
+    // game.world.scale.setTo(0.5, 0.5);
   },
 
   create: function () {

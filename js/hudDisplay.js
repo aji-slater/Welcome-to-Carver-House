@@ -58,6 +58,8 @@ var populateInventory = function() {
     inventoryItem = popup.addChild(game.make.sprite(itemMenuX(i), itemMenuY(i), "inv" + inventory[i], menuGroup));
     inventoryItem.inputEnabled = true;
     inventoryItem.events.onInputDown.add(invClickFunction, this);
+    inventoryItem.events.onInputOver.add(over, this);
+    inventoryItem.events.onInputOut.add(out, this);
   }
 };
 
@@ -92,6 +94,36 @@ var hudItemImplementation = function(){
   });
 };
 
+var inventoryHover = function(){
+  itemGroup.forEach(function (item) {
+    var inBounds = item.isoBounds.containsXY(cursorPos.x, cursorPos.y);
+    if (!item.selected && inBounds) {
+      item.selected = true;
+      item.frame = 1;
+      item.tint = 0xffffff;
+      game.add.tween(item).to({ isoZ: 4 }, 200, Phaser.Easing.Quadratic.InOut, true);
+    }
+    else if (item.selected && !inBounds) {
+      item.selected = false;
+      item.frame = 0;
+      item.tint = 0xffffff;
+      game.add.tween(item).to({ isoZ: 0 }, 200, Phaser.Easing.Quadratic.InOut, true);
+    }
+  });
+};
+
+function over(){
+  var style = { font: "25px Morpheus", fill: "#ffffff", align: "center" };
+  text = game.add.text(550, 650, "The Carver Key", style);
+  console.log(text);
+  text.anchor.set(0.5);
+  text.fixedToCamera = true;
+}
+
+function out(){
+  text.destroy();
+}
+
 var hudItemDragCheck = function() {
-  
+
 };

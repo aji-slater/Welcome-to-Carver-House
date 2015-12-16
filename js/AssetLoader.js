@@ -7,6 +7,7 @@ var loadAll = function() {
   game.load.audio('Evelyn', ['assets/audio/Evelyn.mp3']);
   game.load.spritesheet('story', 'assets/buttons/story.png', 245, 84);
   game.load.spritesheet('newgame', 'assets/buttons/newgame.png', 245, 84);
+  game.load.spritesheet('mainmenu', 'assets/buttons/mainmenu.png', 245, 84);
   game.load.image('gameover', 'assets/over.png');
   game.load.image('volume-glyph', 'assets/buttons/volume-glyph.png');
   game.load.image('stop-volume-glyph', 'assets/buttons/stop-volume-glyph.png');

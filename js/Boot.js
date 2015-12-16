@@ -10,6 +10,7 @@ BasicGame.Boot.prototype = {
 			game.scale.pageAlignHorizontally = true;
 		} else {
 		game.scale.scaleMode = Phaser.ScaleManager.SHOW_ALL;
+		game.stage.scale.setShowAll();
       	game.scale.setMinMax(480, 260, 1024, 768);
       	game.scale.forceLandscape = true;
       	game.scale.pageAlignHorizontally = true;

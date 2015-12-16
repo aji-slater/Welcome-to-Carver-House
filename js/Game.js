@@ -52,7 +52,9 @@ BasicGame.Game.prototype =
       checkGhostCollision();
       this.game.physics.isoArcade.collide(player, emptyGroup);
       this.game.physics.isoArcade.collide(player, exitGroup, function(player){
-         console.log("collides!");
+          this.player.kill();
+         alert("You won!");
+
      });
     }
 

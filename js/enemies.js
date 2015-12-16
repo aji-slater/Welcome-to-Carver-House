@@ -96,6 +96,8 @@ function checkGhostCollision(){
       player.body.velocity = 0;
       player.body.velocity = 0;
       playerAlive = false;
+      alert("u wuz killed :(")
+      player.kill();
       //this.state.start("GameOver");
     }, function(){
       return playerAlive;

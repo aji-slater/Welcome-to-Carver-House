@@ -48,9 +48,11 @@ BasicGame.Game.prototype =
     if (!isPaused){
       game.iso.unproject(game.input.activePointer.position, cursorPos);
       playerUpdate();
-      moveGhosts();
-      illuminate();
-      checkGhostCollision();
+      if (playerAlive){
+        moveGhosts();
+        illuminate();
+        checkGhostCollision();
+      }
       wallCheck();
       game.physics.isoArcade.collide(player, emptyGroup);
       game.physics.isoArcade.collide(enemyGroup, emptyGroup);

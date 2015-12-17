@@ -1,4 +1,3 @@
-
 var easyStar = new EasyStar.js();
 var timeStep = 400;
 var currentPlayerXtile;
@@ -81,20 +80,31 @@ function createGhosts(){
    //    return ghost;
 }
 
+function enemyGroupKill(){
+  enemyGroup.forEach(function (enemy) {
+    enemy.kill();
+  });
+}
+
 function checkGhostCollision(){
   // console.log(player);
   // console.log(ghost);
   this.game.physics.isoArcade.overlap(player, enemyGroup, function(player){
       // console.log("overlap");
-      player.body.velocity = 0;
-      player.body.velocity = 0;
+      // player.moves = false;
       playerAlive = false;
       // alert("u dead az fuckkk :(")
-      player.kill();
-      game.state.start("GameOver");
+      enemyGroupKill();
+      // zoomForDeath();
+      playerPerish();
+      game.time.events.add(Phaser.Timer.SECOND * 2, gameOver, this).autoDestroy = true;
     }, function(){
       return playerAlive;
     });
+}
+
+function gameOver(){
+  game.state.start("GameOver");
 }
 
 function setPathFinderInterval(ghost) {

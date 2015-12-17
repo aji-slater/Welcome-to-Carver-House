@@ -22,7 +22,7 @@ var playerCreate = function(){
    player.animations.add('nw', [9, 10, 11, 12, 13, 14, 15], 10, true);
    player.animations.add('se', [17, 18, 19, 20, 21, 22, 23], 10, true);
    player.animations.add('ne', [25, 26, 27, 28, 29, 30, 31], 10, true);
-   // player.animations.add('death', [68], 10, false);
+   player.animations.add('player_perish', [4], 10, false);
  };
 
  var playerUpdate = function(){
@@ -36,41 +36,42 @@ var playerCreate = function(){
             };
    player.body.velocity.x = 0;
    player.body.velocity.y = 0;
+   var playerSpeed = 175;
 
   if ((cursors.down.isDown && cursors.left.isDown )||(wasd.down.isDown && wasd.left.isDown )){
-     player.body.velocity.y = 150;
+     player.body.velocity.y = playerSpeed;
      player.animations.play('sw');
    }
    else if ((cursors.up.isDown && cursors.left.isDown)||(wasd.up.isDown && wasd.left.isDown)){
-      player.body.velocity.x = -150;
+      player.body.velocity.x = -playerSpeed;
       player.animations.play('nw');
      }
    else if ((cursors.up.isDown && cursors.right.isDown)||(wasd.up.isDown && wasd.right.isDown)){
-      player.body.velocity.y = -150;
+      player.body.velocity.y = -playerSpeed;
       player.animations.play('ne');
      }
    else if ((cursors.down.isDown && cursors.right.isDown)||(wasd.down.isDown && wasd.right.isDown)){
-      player.body.velocity.x = 150;
+      player.body.velocity.x = playerSpeed;
       player.animations.play('se');
      }
   else if ((cursors.up.isDown)||(wasd.up.isDown)){
-     player.body.velocity.x = -150;
-     player.body.velocity.y = -150;
+     player.body.velocity.x = -playerSpeed;
+     player.body.velocity.y = -playerSpeed;
      player.animations.play('up');
     }
   else if ((cursors.down.isDown)||(wasd.down.isDown)){
-     player.body.velocity.x = 150;
-     player.body.velocity.y = 150;
+     player.body.velocity.x = playerSpeed;
+     player.body.velocity.y = playerSpeed;
      player.animations.play('down');
     }
   else if((cursors.left.isDown)||(wasd.left.isDown)){
-    player.body.velocity.x = -100;
-    player.body.velocity.y = 100;
+    player.body.velocity.x = -playerSpeed;
+    player.body.velocity.y = playerSpeed;
     player.animations.play('left');
   }
   else if ((cursors.right.isDown)||(wasd.right.isDown)){
-    player.body.velocity.x = 100;
-    player.body.velocity.y = -100;
+    player.body.velocity.x = playerSpeed;
+    player.body.velocity.y = -playerSpeed;
     player.animations.play('right');
   }
   else {
@@ -92,3 +93,17 @@ var determinePlayerStart = function(){
   return aboveAverageRooms[index];
 
 };
+
+function playerPerish(){
+  player.kill();
+  var perish = game.add.sprite(game.camera.x + window.innerWidth/2, game.camera.y + window.innerHeight/2, 'player_perish');
+  perish.anchor.set(0.5);
+  perish.animations.add('player_perish', [0, 1, 2, 3, 4], 3, false);
+  perish.animations.play('player_perish', 5, false);
+
+  // perish.animations.stop('player_perish', [0, 1, 2, 3, 4], 5, false);
+}
+
+function zoomForDeath(){
+  game.world.scale.setTo(1.3, 1.3);
+}

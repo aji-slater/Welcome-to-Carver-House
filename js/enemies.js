@@ -98,16 +98,14 @@ function checkGhostCollision(){
       enemyGroupKill();
       // zoomForDeath();
       playerPerish();
-      // this.time.events.add(Phaser.Timer.SECOND * 200, this.transition, this);
-      // game.state.start("GameOver");
+      game.time.events.add(Phaser.Timer.SECOND * 2, gameOver, this).autoDestroy = true;
     }, function(){
       return playerAlive;
     });
 }
 
-function gameOver() {
-  this.game.state.clearCurrentState();
-  this.game.state.start('GameOver');
+function gameOver(){
+  game.state.start("GameOver");
 }
 
 function setPathFinderInterval(ghost) {
@@ -225,7 +223,7 @@ function moveGhost(ghost){
             ghost.sprite.body.velocity.x = -enemySpeed;
             ghost.sprite.body.velocity.y = -enemySpeed;
             ghost.sprite.animations.play('N');
-            
+
           }
           else if (ghost.enemyDirection == "S")
           {

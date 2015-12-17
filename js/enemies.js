@@ -111,12 +111,14 @@ function checkGhostCollision(){
       // alert("u dead az fuckkk :(")
       player.kill();
       gameOver();
-    }, function(){
-      return playerAlive;
-    });
+    }); 
+    // function(){
+    //   return playerAlive;
+    // });
 }
 
 function gameOver() {
+  this.game.state.clearCurrentState();
   this.game.state.start('GameOver');
 }
 

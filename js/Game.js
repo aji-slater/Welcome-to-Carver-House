@@ -56,8 +56,7 @@ BasicGame.Game.prototype =
 
       this.game.physics.isoArcade.collide(player, exitGroup, function(player){
         player.kill();
-        gameWin();
-        // alert("You won!");
+        game.state.start('Win');
       wallCheck();
     });
 
@@ -65,9 +64,9 @@ BasicGame.Game.prototype =
 
   },
 
-  gameWin: function() {
-  this.game.state.start('Win');
-},
+//   gameWin: function() {
+//   this.game.state.start('Win');
+// },
 
   quitGame: function(pointer) {
       this.state.start('MainMenu');

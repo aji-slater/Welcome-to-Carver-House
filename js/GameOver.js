@@ -26,7 +26,7 @@ BasicGame.GameOver.prototype = {
 		this.mainMenu.anchor.setTo(0.5);
   	},
 
-	update: function () {
+	update: function() {
 	},
 
 	transition : function() {
@@ -40,8 +40,9 @@ BasicGame.GameOver.prototype = {
 	},
 	newGame: function (pointer) {
 		this.music.stop();
-		// this.game.state.clearCurrentState();
+		this.game.state.clearCurrentState();
 		this.game.state.start('Game', true, false);
+		// this.game.state.start(game.state.current);
 
 	}
 }

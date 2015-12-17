@@ -17,9 +17,9 @@ BasicGame.MainMenu.prototype = {
 		this.backgroundImage = this.add.sprite(this.game.world.centerX, this.game.world.centerY, 'lovecraft_mansion');
 		this.backgroundImage.anchor.setTo(0.5);
 
-		var style = { font: "99px MORPHEUS", fill: "#ffffff", wordWrap: true, wordWrapWidth: this.backgroundImage.width, align: "center" };
-		text = this.add.text(this.game.world.centerX, this.game.world.centerY -128, "Welcome to Carver House", style);
-		text.anchor.setTo(0.5);
+		// var style = { font: "99px MORPHEUS", fill: "#ffffff", wordWrap: true, wordWrapWidth: this.backgroundImage.width, align: "center" };
+		// text = this.add.text(this.game.world.centerX, this.game.world.centerY -128, "Welcome to Carver House", style);
+		// text.anchor.setTo(0.5);
 
 		this.playButton = this.add.button(this.game.world.centerX -140, this.game.world.centerY +70, 'newgame', this.startGame, this, 1, 0, 2);
 		this.playButton.anchor.setTo(0.5);

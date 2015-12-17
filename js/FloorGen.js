@@ -42,7 +42,7 @@ function generateExit(){
         console.log(x - (TILE_POS * 2) - 30);
         console.log(y - (TILE_POS) - 18);
     }
-
+    exit.tint = 0x000000;
     exit.body.collideWorldBounds = true;
     exit.body.immovable = true;
     exit.body.moves = false;

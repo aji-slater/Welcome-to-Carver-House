@@ -10,6 +10,57 @@ furnishGroup.forEach(function (item) {
   item.tint = 0x000000;
 });
 
+exitGroup.forEach(function (exit) {
+  if (game.physics.arcade.distanceBetween(exit, player) < 100) {
+    exit.tint = 0xffffff;
+  }
+  if (game.physics.arcade.distanceBetween(exit, player) < 110 && game.physics.arcade.distanceBetween(exit, player) > 100) {
+    exit.tint = 0xeeeeee;
+  }
+  if (game.physics.arcade.distanceBetween(exit, player) < 120 && game.physics.arcade.distanceBetween(exit, player) > 110) {
+    exit.tint = 0xdddddd;
+  }
+  if (game.physics.arcade.distanceBetween(exit, player) < 130 && game.physics.arcade.distanceBetween(exit, player) > 120) {
+    exit.tint = 0xcccccc;
+  }
+  if (game.physics.arcade.distanceBetween(exit, player) < 140 && game.physics.arcade.distanceBetween(exit, player) > 130) {
+    exit.tint = 0xbbbbbb;
+  }
+  if (game.physics.arcade.distanceBetween(exit, player) < 150 && game.physics.arcade.distanceBetween(exit, player) > 140) {
+    exit.tint = 0xaaaaaa;
+  }
+  if (game.physics.arcade.distanceBetween(exit, player) < 160 && game.physics.arcade.distanceBetween(exit, player) > 150) {
+    exit.tint = 0x999999;
+  }
+  if (game.physics.arcade.distanceBetween(exit, player) < 170 && game.physics.arcade.distanceBetween(exit, player) > 160) {
+    exit.tint = 0x888888;
+  }
+  if (game.physics.arcade.distanceBetween(exit, player) < 180 && game.physics.arcade.distanceBetween(exit, player) > 170) {
+    exit.tint = 0x777777;
+  }
+  if (game.physics.arcade.distanceBetween(exit, player) < 190 && game.physics.arcade.distanceBetween(exit, player) > 180) {
+    exit.tint = 0x666666;
+  }
+  if (game.physics.arcade.distanceBetween(exit, player) < 200 && game.physics.arcade.distanceBetween(exit, player) > 190) {
+    exit.tint = 0x555555;
+  }
+  if (game.physics.arcade.distanceBetween(exit, player) < 210 && game.physics.arcade.distanceBetween(exit, player) > 200) {
+    exit.tint = 0x444444;
+  }
+  if (game.physics.arcade.distanceBetween(exit, player) < 220 && game.physics.arcade.distanceBetween(exit, player) > 210) {
+    exit.tint = 0x333333;
+  }
+  if (game.physics.arcade.distanceBetween(exit, player) < 230 && game.physics.arcade.distanceBetween(exit, player) > 220) {
+    exit.tint = 0x222222;
+  }
+  if (game.physics.arcade.distanceBetween(exit, player) < 240 && game.physics.arcade.distanceBetween(exit, player) > 230) {
+    exit.tint = 0x111111;
+  }
+  if (game.physics.arcade.distanceBetween(exit, player) < 250 && game.physics.arcade.distanceBetween(exit, player) > 240) {
+exit
+  }
+});
+
 furnishGroup.forEach(function (tile) {
   if (game.physics.arcade.distanceBetween(tile, player) < 100) {
     tile.tint = 0xffffff;

@@ -27,9 +27,20 @@ var hudClick = function(){
   }, this);
 };
 
+function stopSprites(){
+  enemyGroup.forEach(function(enemy){
+    enemy.body.velocity.x = 0;
+    enemy.body.velocity.y = 0;
+  });
+
+  player.body.velocity.x = 0;
+  player.body.velocity.y = 0;
+}
+
 
 
 var pause = function(){
+  stopSprites();
   popup = this.game.add.sprite(game.camera.width / 2, game.camera.height / 2, 'inventoryMenu', menuGroup);
   popup.alpha = 0;
 
@@ -73,6 +84,7 @@ var populateInventory = function() {
     inventoryItem = popup.addChild(game.make.sprite(itemMenuX(i), itemMenuY(i), "inv" + inventory[i], menuGroup));
     inventoryItem.inputEnabled = true;
     inventoryItem.events.onInputDown.add(invClickFunction, this);
+    // inventoryItem.events.hover
     inventoryItem.events.onInputOver.add(over, this);
     inventoryItem.events.onInputOut.add(out, this);
   }

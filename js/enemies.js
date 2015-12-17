@@ -117,16 +117,14 @@ function checkGhostCollision(){
       enemyGroupKill();
       // zoomForDeath();
       playerPerish();
-      gameOver();
+      game.time.events.add(Phaser.Timer.SECOND * 2, gameOver, this).autoDestroy = true;
     }, function(){
       return playerAlive;
     });
 }
 
 function gameOver(){
-  game.time.events.add(Phaser.Timer.SECOND * 3.85);
   game.state.start("GameOver");
-
 }
 
 function setPathFinderInterval(ghost) {

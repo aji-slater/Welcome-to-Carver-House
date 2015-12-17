@@ -48,10 +48,10 @@ function selectGhostType(){
   var ghostType = Math.floor(Math.random() * 3);
   switch(ghostType){
     case 0:
-        return "peculiar_gentleman";
+      return "peculiar_gentleman";
       break;
     case 1:
-        return "priestess";
+      return "priestess";
       break;
     case 2:
       return "scarecrow";
@@ -60,7 +60,7 @@ function selectGhostType(){
 }
 
 function createGhosts(){
-  var ghostCount = Math.floor(Math.random() * 6) + 1;
+  var ghostCount = Math.floor(Math.random() * 7) + 1;
   var posData;
   for (i = 0; i < ghostCount; i++ ){
 
@@ -226,7 +226,7 @@ function moveGhost(ghost){
 
 
           // Move the ENEMY
-          var enemySpeed = (Math.random() * 100) + 60;
+          var enemySpeed = (Math.random() * 100) + 30;
 
           if (ghost.enemyDirection == "N") {
             ghost.sprite.body.velocity.x = -enemySpeed;

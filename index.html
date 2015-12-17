@@ -12,37 +12,44 @@
     <script src="js/phaser.js"></script>
     <script src="js/phaser-plugin-isometric.js"></script>
     <script src="js/easystar-0.2.3.js"></script>
+    <script src="js/bundle.js"></script>
     <script src="js/AssetLoader.js"></script>
     <script src="js/Boot.js"></script>
     <script src="js/Preloader.js"></script>
+    <script src="js/Story.js"></script>
+    <script src="js/MainMenu.js"></script>
     <script src="js/Game.js"></script>
     <script src="js/BoardModel.js"></script>
     <script src="js/Constants.js"></script>
     <script src="js/hudDisplay.js" type="text/javascript"></script>
-    <script src="js/MainMenu.js"></script>
     <script src="js/enemies.js"></script>
     <script src="js/itemModel.js"></script>
     <script src="js/illumination.js" type="text/javascript"></script>
     <script src="js/Character.js"></script>
     <script src="js/FloorGen.js"></script>
     <script src="js/GameOver.js"></script>
+    <script src="js/Win.js"></script>
+
 </head>
 <body>
 
 <div id="gameContainer"></div>
+<div id="orientation"></div>
 
 <script type="text/javascript">
 window.onload = function() {
     var width = window.innerWidth;
     var height = window.innerHeight;
-    game = new Phaser.Game(width, height, Phaser.AUTO, 'game', null, true, false);
+    game = new Phaser.Game(width, height, Phaser.CANVAS, 'game', null, true, false);
 
     game.state.add('Boot', BasicGame.Boot);
     game.state.add('Preloader', BasicGame.Preloader);
     game.state.add('AssetLoader', BasicGame.AssetLoader);
     game.state.add('MainMenu', BasicGame.MainMenu);
+    game.state.add('Story', BasicGame.Story);
     game.state.add('Game', BasicGame.Game);
     game.state.add('GameOver', BasicGame.GameOver);
+    game.state.add('Win', BasicGame.Win);
 
     game.state.start('Boot');
 };

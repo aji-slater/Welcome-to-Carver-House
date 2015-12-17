@@ -1,10 +1,10 @@
-BasicGame.GameOver = function (game) {
+BasicGame.Win = function (game) {
 	this.over = null;
 	this.newButton = null;
 	this.mainMenu = null;
 };
 
-BasicGame.GameOver.prototype = {
+BasicGame.Win.prototype = {
 
 	preload: function() {
 		this.over = this.add.sprite(window.innerWidth/2, window.innerHeight/2, 'gameover');
@@ -13,7 +13,7 @@ BasicGame.GameOver.prototype = {
 	},
 	create: function () {
 		var style = { font: "120px MORPHEUS", fill: "#ffffff", wordWrap: true, wordWrapWidth: this.over.width, align: "center" };
-		text = this.add.text(window.innerWidth/2, window.innerHeight/2.7, "G a m e  O v e r", style);
+		text = this.add.text(window.innerWidth/2, window.innerHeight/2.7, "Y o u  W o n !", style);
 		text.anchor.setTo(0.5);
 
 		this.music = this.add.audio('Evelyn');
@@ -26,7 +26,7 @@ BasicGame.GameOver.prototype = {
 		this.mainMenu.anchor.setTo(0.5);
   	},
 
-	update: function() {
+	update: function () {
 	},
 
 	transition : function() {
@@ -34,15 +34,14 @@ BasicGame.GameOver.prototype = {
 
 
   	mainMenu: function (pointer) {
-  		// game.world.removeAll();
-  		this.game.state.clear('Game');
-    	this.game.state.start('MainMenu', true, false);
+  		game.world.removeAll();
+  		// this.game.state.clearCurrentState();
+  		// game.state.add('MainMenu', BasicGame.MainMenu);
+    	this.state.start('MainMenu');
 	},
 	newGame: function (pointer) {
 		this.music.stop();
-		this.game.state.clearCurrentState();
-		this.game.state.start('Game', true, false);
-		// this.game.state.start(game.state.current);
+		this.state.start('Game', true, false);
 
 	}
 }

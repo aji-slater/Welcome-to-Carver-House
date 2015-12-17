@@ -44,9 +44,11 @@ BasicGame.Game.prototype =
 
     if (!isPaused){
       game.iso.unproject(game.input.activePointer.position, cursorPos);
-      playerUpdate();
-      moveGhosts();
-      illuminate();
+      if (playerAlive){
+        playerUpdate();
+        moveGhosts();
+        illuminate();
+      }
       checkGhostCollision();
       wallCheck();
 

@@ -100,17 +100,25 @@ function createGhosts(){
    //    return ghost;
 }
 
+function enemyGroupKill(){
+  enemyGroup.forEach(function (enemy) {
+    enemy.kill();
+  });
+}
+
 function checkGhostCollision(){
   // console.log(player);
   // console.log(ghost);
   this.game.physics.isoArcade.overlap(player, enemyGroup, function(player){
       // console.log("overlap");
-      player.body.velocity = 0;
-      player.body.velocity = 0;
+      // player.moves = false;
       playerAlive = false;
       // alert("u dead az fuckkk :(")
-      player.kill();
-      game.state.start("GameOver");
+      enemyGroupKill();
+      // zoomForDeath();
+      playerPerish();
+      // this.time.events.add(Phaser.Timer.SECOND * 200, this.transition, this);
+      // game.state.start("GameOver");
     }, function(){
       return playerAlive;
     });

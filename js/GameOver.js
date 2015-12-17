@@ -34,9 +34,9 @@ BasicGame.GameOver.prototype = {
 
 
   	mainMenu: function (pointer) {
-  		game.world.removeAll();
-  		// this.game.state.clearCurrentState();
-    	this.game.state.start('MainMenu');
+  		// game.world.removeAll();
+  		this.game.state.clear('Game');
+    	this.game.state.start('MainMenu', true, false);
 	},
 	newGame: function (pointer) {
 		this.music.stop();

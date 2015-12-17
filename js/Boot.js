@@ -5,6 +5,7 @@ BasicGame.Boot.prototype = {
 	init: function() {
 		game.input.maxPointers = 1;
 		game.stage.disableVisibilityChange = true;
+		game.scale.scaleMode = Phaser.ScaleManager.RESIZE;
 
 		if(game.device.desktop){
 			game.scale.pageAlignHorizontally = true;

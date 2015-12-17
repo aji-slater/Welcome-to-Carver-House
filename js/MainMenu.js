@@ -29,6 +29,9 @@ BasicGame.MainMenu.prototype = {
 
 		this.soundButton = this.add.button(this.game.world.centerX -630, this.game.world.centerY +380, 'volume-glyph', this.stopMusic, this);
 		this.soundButton.anchor.setTo(0.5);
+
+		// this.soundButton = this.add.button(this.game.world.centerX -630, this.game.world.centerY +380, 'volume-glyph', this.stopMusic, this);
+		// this.soundButton.anchor.setTo(0.5);
   	},
 
 	update: function () {
@@ -49,8 +52,15 @@ BasicGame.MainMenu.prototype = {
 
 	stopMusic: function (pointer) {
 		this.world.remove(this.soundButton);
-		this.soundButton = this.add.button(this.game.world.centerX -630, this.game.world.centerY +380, 'stop-volume-glyph');
+		this.soundButton = this.add.button(this.game.world.centerX -630, this.game.world.centerY +380, 'stop-volume-glyph', this.playMusic, this);
 		this.soundButton.anchor.setTo(0.5);
 		this.music.stop();
+	},
+
+	playMusic: function (pointer) {
+		this.world.remove(this.soundButton);
+		this.soundButton = this.add.button(this.game.world.centerX -630, this.game.world.centerY +380, 'volume-glyph', this.stopMusic, this);
+		this.soundButton.anchor.setTo(0.5);
+		this.music.play();
 	}
 }

@@ -22,7 +22,7 @@ var playerCreate = function(){
    player.animations.add('nw', [9, 10, 11, 12, 13, 14, 15], 10, true);
    player.animations.add('se', [17, 18, 19, 20, 21, 22, 23], 10, true);
    player.animations.add('ne', [25, 26, 27, 28, 29, 30, 31], 10, true);
-   // player.animations.add('death', [68], 10, false);
+   player.animations.add('player_perish', [4], 10, false);
  };
 
  var playerUpdate = function(){
@@ -92,3 +92,17 @@ var determinePlayerStart = function(){
   return aboveAverageRooms[index];
 
 };
+
+function playerPerish(){
+  player.kill();
+  var perish = game.add.sprite(game.camera.x + window.innerWidth/2, game.camera.y + window.innerHeight/2, 'player_perish');
+  perish.anchor.set(0.5);
+  perish.animations.add('player_perish', [0, 1, 2, 3, 4], 3, false);
+  perish.animations.play('player_perish', 5, false);
+
+  // perish.animations.stop('player_perish', [0, 1, 2, 3, 4], 5, false);
+}
+
+function zoomForDeath(){
+  game.world.scale.setTo(1.3, 1.3);
+}

@@ -15,7 +15,7 @@ function Ghost(sprite){
 
 function configPathFinding(){
   easyStar.setGrid(board);
-  easyStar.setIterationsPerCalculation(2000);
+  easyStar.setIterationsPerCalculation(1500);
   easyStar.setAcceptableTiles([1]);
   //easystar.enableCornerCutting();
   // easyStar.enableDiagonals();
@@ -210,7 +210,7 @@ function setPathFinderInterval(ghost) {
 
             easyStar.calculate();
 
-          }, timeStep - Math.floor((Math.random() + 60) + 1));
+          }, timeStep + Math.floor((Math.random() + 60) + 1));
   }
 
 function setGhostPaths(){
@@ -226,7 +226,7 @@ function moveGhost(ghost){
 
 
           // Move the ENEMY
-          var enemySpeed = (Math.random() * 100) + 30;
+          var enemySpeed = (Math.random() * 100) + 50;
 
           if (ghost.enemyDirection == "N") {
             ghost.sprite.body.velocity.x = -enemySpeed;

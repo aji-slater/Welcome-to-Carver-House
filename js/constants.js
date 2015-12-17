@@ -22,7 +22,7 @@ var xTilePosition = function(value){
   return TILE_POS * value;
 };
 
-var inventory = ["Key"];
+var inventory = [];
 
 var floorGroup, activeGroup, itemGroup, menuGroup, furnishGroup, enemyGroup, exitGroup, wallGroup;
 

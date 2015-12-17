@@ -59,6 +59,7 @@ var loadAll = function() {
 
 
   game.load.spritesheet('player', 'assets/investigator_new.png', 40, 70);
+  game.load.spritesheet('player_run', 'assets/investigator-run.png', 70, 70);
   game.load.spritesheet('player_perish', 'assets/perish_investigator.png', 86.6, 70);
 
   // game.load.spritesheet('debugTile', 'assets/tiles/debug_tiles.png', 100, 50);

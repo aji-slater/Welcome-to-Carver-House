@@ -151,17 +151,17 @@ var inventoryHover = function(){
   });
 };
 
-function over(){
-  var style = { font: "25px Morpheus", fill: "#ffffff", align: "center" };
-  text = game.add.text(550, 650, "The Carver Key", style);
-  console.log(text);
-  text.anchor.set(0.5);
-  text.fixedToCamera = true;
-}
-
-function out(){
-  text.destroy();
-}
+// function over(){
+//   var style = { font: "25px Morpheus", fill: "#ffffff", align: "center" };
+//   text = game.add.text(550, 650, "The Carver Key", style);
+//   console.log(text);
+//   text.anchor.set(0.5);
+//   text.fixedToCamera = true;
+// }
+//
+// function out(){
+//   text.destroy();
+// }
 
 var hudItemDragCheck = function(hudItem) {
 

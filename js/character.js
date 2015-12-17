@@ -36,41 +36,42 @@ var playerCreate = function(){
             };
    player.body.velocity.x = 0;
    player.body.velocity.y = 0;
+   var playerSpeed = 175;
 
   if ((cursors.down.isDown && cursors.left.isDown )||(wasd.down.isDown && wasd.left.isDown )){
-     player.body.velocity.y = 150;
+     player.body.velocity.y = playerSpeed;
      player.animations.play('sw');
    }
    else if ((cursors.up.isDown && cursors.left.isDown)||(wasd.up.isDown && wasd.left.isDown)){
-      player.body.velocity.x = -150;
+      player.body.velocity.x = -playerSpeed;
       player.animations.play('nw');
      }
    else if ((cursors.up.isDown && cursors.right.isDown)||(wasd.up.isDown && wasd.right.isDown)){
-      player.body.velocity.y = -150;
+      player.body.velocity.y = -playerSpeed;
       player.animations.play('ne');
      }
    else if ((cursors.down.isDown && cursors.right.isDown)||(wasd.down.isDown && wasd.right.isDown)){
-      player.body.velocity.x = 150;
+      player.body.velocity.x = playerSpeed;
       player.animations.play('se');
      }
   else if ((cursors.up.isDown)||(wasd.up.isDown)){
-     player.body.velocity.x = -150;
-     player.body.velocity.y = -150;
+     player.body.velocity.x = -playerSpeed;
+     player.body.velocity.y = -playerSpeed;
      player.animations.play('up');
     }
   else if ((cursors.down.isDown)||(wasd.down.isDown)){
-     player.body.velocity.x = 150;
-     player.body.velocity.y = 150;
+     player.body.velocity.x = playerSpeed;
+     player.body.velocity.y = playerSpeed;
      player.animations.play('down');
     }
   else if((cursors.left.isDown)||(wasd.left.isDown)){
-    player.body.velocity.x = -100;
-    player.body.velocity.y = 100;
+    player.body.velocity.x = -playerSpeed;
+    player.body.velocity.y = playerSpeed;
     player.animations.play('left');
   }
   else if ((cursors.right.isDown)||(wasd.right.isDown)){
-    player.body.velocity.x = 100;
-    player.body.velocity.y = -100;
+    player.body.velocity.x = playerSpeed;
+    player.body.velocity.y = -playerSpeed;
     player.animations.play('right');
   }
   else {

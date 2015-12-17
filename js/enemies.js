@@ -105,6 +105,11 @@ function checkGhostCollision(){
     });
 }
 
+function gameOver() {
+  this.game.state.clearCurrentState();
+  this.game.state.start('GameOver');
+}
+
 function setPathFinderInterval(ghost) {
   setInterval(function(){
 

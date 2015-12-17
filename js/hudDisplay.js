@@ -119,6 +119,7 @@ function dragStop(sprite, pointer){
     else{
       exit.loadTexture("exit-west-unlock", 0, false);
     }
+    unlocked = true;
   }
 }
 

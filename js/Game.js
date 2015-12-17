@@ -38,6 +38,9 @@ BasicGame.Game.prototype =
 
     cursorPos = new Phaser.Plugin.Isometric.Point3();
     game.camera.follow(player);
+
+
+
   },
 
   update: function () {
@@ -49,16 +52,15 @@ BasicGame.Game.prototype =
       illuminate();
       checkGhostCollision();
       wallCheck();
-
-      this.game.physics.isoArcade.collide(player, emptyGroup);
-
-      this.game.physics.isoArcade.collide(enemyGroup, emptyGroup);
-
-      this.game.physics.isoArcade.collide(player, exitGroup, function(player){
-        player.kill();
+      game.physics.isoArcade.collide(player, emptyGroup);
+      game.physics.isoArcade.collide(enemyGroup, emptyGroup);
+      game.physics.isoArcade.collide(player, exitGroup, function(player){
         // alert("You won!");
-    });
-
+        if(unlocked){
+          player.kill();
+          game.state.start('Win');
+        }
+      });
     }
 
   },

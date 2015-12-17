@@ -8,7 +8,9 @@ BasicGame.Game.prototype =
     game.time.advancedTiming = true;
     game.world.setBounds(0, 0, 5000, 6000);
     game.iso.anchor.setTo(0.5, 0.2);
+
     // game.world.scale.setTo(0.7, 0.7);
+
   },
 
   create: function () {
@@ -51,11 +53,12 @@ BasicGame.Game.prototype =
       moveGhosts();
       checkGhostCollision();
       this.game.physics.isoArcade.collide(player, emptyGroup);
+      wallCheck();
+
 
       this.game.physics.isoArcade.collide(player, exitGroup, function(player){
         player.kill();
         alert("You won!");
-      wallCheck();
     });
 
     }

@@ -12,7 +12,7 @@ var loadAll = function() {
   game.load.image('storystate', 'assets/story.png');
   game.load.image('volume-glyph', 'assets/buttons/volume-glyph.png');
   game.load.image('stop-volume-glyph', 'assets/buttons/stop-volume-glyph.png');
-  
+
   game.load.image('woodTile', 'assets/tiles/wood-floor.png');
   game.load.image('emptyTile', 'assets/tiles/empty-tile.png');
   game.load.image('hudFrame', 'assets/hud/hud-frame.png');
@@ -61,6 +61,7 @@ var loadAll = function() {
 
 
   game.load.spritesheet('player', 'assets/investigator_new.png', 40, 70);
+  game.load.spritesheet('player_perish', 'assets/perish_investigator.png', 86.6, 70, 5);
 
   // game.load.spritesheet('debugTile', 'assets/tiles/debug_tiles.png', 100, 50);
   game.load.spritesheet('wall', 'assets/furniture/wall.png', 100, 150);

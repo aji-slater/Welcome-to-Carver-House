@@ -15,10 +15,10 @@ function Ghost(sprite){
 
 function configPathFinding(){
   easyStar.setGrid(board);
-  easyStar.setIterationsPerCalculation(1000);
+  easyStar.setIterationsPerCalculation(2000);
   easyStar.setAcceptableTiles([1]);
   //easystar.enableCornerCutting();
-  easyStar.enableDiagonals();
+  // easyStar.enableDiagonals();
 }
 
 function placeGhost(){
@@ -44,14 +44,31 @@ function placeGhost(){
   return posData;
 }
 
+function selectGhostType(){
+  var ghostType = Math.floor(Math.random() * 3);
+  switch(ghostType){
+    case 0:
+        return "peculiar_gentleman";
+      break;
+    case 1:
+        return "priestess";
+      break;
+    case 2:
+      return "scarecrow";
+      break;
+  }
+}
+
 function createGhosts(){
-  var ghostCount = Math.floor(Math.random() + 2) + 1;
+  var ghostCount = Math.floor(Math.random() * 6) + 1;
   var posData;
   for (i = 0; i < ghostCount; i++ ){
+
     posData = placeGhost();
-    var sprite = this.game.add.isoSprite(posData.ghostX * TILE_POS, posData.ghostY * TILE_POS, 0, 'scarecrow', 0, enemyGroup);
+    var ghostSprite = selectGhostType();
+    var sprite = this.game.add.isoSprite(posData.ghostX * TILE_POS, posData.ghostY * TILE_POS, 0, ghostSprite, 0, enemyGroup);
     sprite.tint = 0x000000;
-    // sprite.alpha = 0.6;
+    sprite.alpha = 0.6;
     sprite.animations.add('S', [0, 1, 2, 3, 4, 5, 6, 7], 10, true);
     sprite.animations.add('W', [8, 9, 10, 11, 12, 13, 14, 15], 10, true);
     sprite.animations.add('E', [16, 17, 18, 19, 20, 21, 22, 23], 10, true);
@@ -91,7 +108,7 @@ function checkGhostCollision(){
       player.body.velocity = 0;
       player.body.velocity = 0;
       playerAlive = false;
-      alert("u dead az fuckkk :(")
+      // alert("u dead az fuckkk :(")
       player.kill();
       game.state.start("GameOver");
     }, function(){
@@ -107,7 +124,7 @@ function setPathFinderInterval(ghost) {
 
             easyStar.findPath(currentGhostXtile, currentGhostYtile, currentPlayerXtile, currentPlayerYtile, function( path ) {
                 if (path === null) {
-                    // console.log("The path to the destination point was not found.");
+
                 }
 
                 if (path) {
@@ -119,7 +136,6 @@ function setPathFinderInterval(ghost) {
                 {
                   // left up
 
-                  // console.log("GO LEFT UP");
 
                   ghost.enemyDirection = "NW";
                 }
@@ -127,7 +143,7 @@ function setPathFinderInterval(ghost) {
                 {
                   // up
 
-                  // console.log("GO UP");
+
 
                   ghost.enemyDirection = "N";
 
@@ -137,7 +153,6 @@ function setPathFinderInterval(ghost) {
                 {
                   // right up
 
-                  // console.log("GO RIGHT UP");
 
                   ghost.enemyDirection = "NE";
 
@@ -146,7 +161,6 @@ function setPathFinderInterval(ghost) {
                 {
                   // left
 
-                  // console.log("GO LEFT");
 
                   ghost.enemyDirection = "W";
 
@@ -155,7 +169,7 @@ function setPathFinderInterval(ghost) {
                 {
                   // right
 
-                  // console.log("GO RIGHT");
+
 
                   ghost.enemyDirection = "E";
 
@@ -164,7 +178,7 @@ function setPathFinderInterval(ghost) {
                 {
                   // right down
 
-                  // console.log("GO RIGHT DOWN");
+
 
                   ghost.enemyDirection = "SE";
 
@@ -173,7 +187,6 @@ function setPathFinderInterval(ghost) {
                 {
                   // down
 
-                  // console.log("GO DOWN");
 
                   ghost.enemyDirection = "S";
 
@@ -182,7 +195,6 @@ function setPathFinderInterval(ghost) {
                 {
                   // left down
 
-                  // console.log("GO LEFT DOWN");
 
                   ghost.enemyDirection = "SW";
 
@@ -198,7 +210,7 @@ function setPathFinderInterval(ghost) {
 
             easyStar.calculate();
 
-          }, timeStep - Math.floor((Math.random() + 10) + 1));
+          }, timeStep - Math.floor((Math.random() + 60) + 1));
   }
 
 function setGhostPaths(){
@@ -214,7 +226,7 @@ function moveGhost(ghost){
 
 
           // Move the ENEMY
-          var enemySpeed = (Math.random() * 10) + 120;
+          var enemySpeed = (Math.random() * 100) + 60;
 
           if (ghost.enemyDirection == "N") {
             ghost.sprite.body.velocity.x = -enemySpeed;

@@ -93,10 +93,14 @@ function checkGhostCollision(){
       playerAlive = false;
       // alert("u wuz killed :(")
       player.kill();
-      game.state.start("GameOver");
+      gameOver();
     }, function(){
       return playerAlive;
     });
+}
+
+function gameOver() {
+  this.game.state.start('GameOver');
 }
 
 function setPathFinderInterval(ghost) {

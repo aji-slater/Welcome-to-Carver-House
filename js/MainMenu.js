@@ -7,6 +7,7 @@ BasicGame.MainMenu = function(game) {
 };
 
 BasicGame.MainMenu.prototype = {
+
 	create: function () {
     	// this.time.events.add(Phaser.Timer.SECOND * 20, this.transition, this);
 		this.music = this.add.audio('Evelyn');
@@ -16,7 +17,7 @@ BasicGame.MainMenu.prototype = {
 		this.backgroundImage = this.add.sprite(this.game.world.centerX, this.game.world.centerY, 'lovecraft_mansion');
 		this.backgroundImage.anchor.setTo(0.5);
 
-		var style = { font: "85px MORPHEUS", fill: "#ffffff", wordWrap: true, wordWrapWidth: this.backgroundImage.width, align: "center" };
+		var style = { font: "99px MORPHEUS", fill: "#ffffff", wordWrap: true, wordWrapWidth: this.backgroundImage.width, align: "center" };
 		text = this.add.text(this.game.world.centerX, this.game.world.centerY -128, "Welcome to Carver House", style);
 		text.anchor.setTo(0.5);
 
@@ -26,7 +27,7 @@ BasicGame.MainMenu.prototype = {
 		this.storyButton = this.add.button(this.game.world.centerX +140, this.game.world.centerY +70, 'story', this.readStory, this, 1, 0, 2);
 		this.storyButton.anchor.setTo(0.5);
 
-		this.soundButton = this.add.button(this.game.world.centerX -530, this.game.world.centerY +340, 'volume-glyph', this.stopMusic, this);
+		this.soundButton = this.add.button(this.game.world.centerX -630, this.game.world.centerY +380, 'volume-glyph', this.stopMusic, this);
 		this.soundButton.anchor.setTo(0.5);
   	},
 
@@ -37,6 +38,8 @@ BasicGame.MainMenu.prototype = {
   	},
 
   	readStory: function (pointer) {
+  		this.music.stop();
+		this.state.start('Story');
 	},
 
 	startGame: function (pointer) {
@@ -46,7 +49,7 @@ BasicGame.MainMenu.prototype = {
 
 	stopMusic: function (pointer) {
 		this.world.remove(this.soundButton);
-		this.soundButton = this.add.button(this.game.world.centerX -530, this.game.world.centerY +340, 'stop-volume-glyph');
+		this.soundButton = this.add.button(this.game.world.centerX -630, this.game.world.centerY +380, 'stop-volume-glyph');
 		this.soundButton.anchor.setTo(0.5);
 		this.music.stop();
 	}

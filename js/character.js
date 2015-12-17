@@ -26,43 +26,49 @@ var playerCreate = function(){
  };
 
  var playerUpdate = function(){
-   var isoKeys = game.input.keyboard.addKeys( { 'nw': Phaser.Keyboard.Q, 'sw': Phaser.Keyboard.A, 'ne': Phaser.Keyboard.W, 'se': Phaser.Keyboard.S } );
+   // var isoKeys = game.input.keyboard.addKeys( { 'nw': Phaser.Keyboard.Q, 'sw': Phaser.Keyboard.A, 'ne': Phaser.Keyboard.W, 'se': Phaser.Keyboard.S } );
    var cursors = game.input.keyboard.createCursorKeys();
+   this.wasd = {
+                up: game.input.keyboard.addKey(Phaser.Keyboard.W),
+                down: game.input.keyboard.addKey(Phaser.Keyboard.S),
+                left: game.input.keyboard.addKey(Phaser.Keyboard.A),
+                right: game.input.keyboard.addKey(Phaser.Keyboard.D),
+            };
    player.body.velocity.x = 0;
    player.body.velocity.y = 0;
 
-  if (cursors.down.isDown && cursors.left.isDown){
+  if ((cursors.down.isDown && cursors.left.isDown )||(wasd.down.isDown && wasd.left.isDown )){
      player.body.velocity.y = 150;
      player.animations.play('sw');
    }
-   else if (cursors.up.isDown && cursors.left.isDown){
+   else if ((cursors.up.isDown && cursors.left.isDown)||(wasd.up.isDown && wasd.left.isDown)){
       player.body.velocity.x = -150;
       player.animations.play('nw');
      }
-   else if (cursors.up.isDown && cursors.right.isDown){
+   else if ((cursors.up.isDown && cursors.right.isDown)||(wasd.up.isDown && wasd.right.isDown)){
       player.body.velocity.y = -150;
       player.animations.play('ne');
      }
-   else if (cursors.down.isDown && cursors.right.isDown){
+   else if ((cursors.down.isDown && cursors.right.isDown)||(wasd.down.isDown && wasd.right.isDown)){
       player.body.velocity.x = 150;
       player.animations.play('se');
      }
-  else if (cursors.up.isDown){
+  else if ((cursors.up.isDown)||(wasd.up.isDown)){
      player.body.velocity.x = -150;
      player.body.velocity.y = -150;
      player.animations.play('up');
     }
-  else if (cursors.down.isDown){
+  else if ((cursors.down.isDown)||(wasd.down.isDown)){
      player.body.velocity.x = 150;
      player.body.velocity.y = 150;
      player.animations.play('down');
     }
-  else if(cursors.left.isDown){
+  else if((cursors.left.isDown)||(wasd.left.isDown)){
     player.body.velocity.x = -100;
     player.body.velocity.y = 100;
     player.animations.play('left');
   }
-  else if (cursors.right.isDown){
+  else if ((cursors.right.isDown)||(wasd.right.isDown)){
     player.body.velocity.x = 100;
     player.body.velocity.y = -100;
     player.animations.play('right');

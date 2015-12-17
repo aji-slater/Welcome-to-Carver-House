@@ -243,10 +243,10 @@ GameBoard.prototype.generateEmptyBoard = function(width, height){
 //       }
 // }
 
-GameBoard.prototype.generateBoard = function(){
-this.generateEmptyBoard(50, 50);
+GameBoard.prototype.generateBoard = function(width, height){
+this.generateEmptyBoard(width, height);
   this.rooms = [];
-  maxrooms = 200;
+  maxrooms = 100;
   for (var r = 0 ; r < maxrooms; r++){
       var w = Math.floor(Math.random() * 16) + 4;
       var h = Math.floor(Math.random() * 16) + 4;

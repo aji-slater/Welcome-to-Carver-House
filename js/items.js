@@ -10,6 +10,7 @@ var pickUpNecklace = function(event, sprite){
   if (game.physics.arcade.distanceBetween(necklace, player) < 100) {
     inventory.push("Necklace");
     necklace.kill();
+
     console.log(inventory); }
 };
 
@@ -17,6 +18,7 @@ var pickUpKey = function(event, sprite){
   if (game.physics.arcade.distanceBetween(key, player) < 100) {
     inventory.push("Key");
     key.kill();
+
     console.log(inventory); }
 };
 
@@ -37,9 +39,11 @@ var itemInputs = function(){
   necklace.inputEnabled = true;
   necklace.input.useHandCursor = true; //if you want a hand cursor
   necklace.events.onInputDown.add(pickUpNecklace, this);
+
   key.inputEnabled = true;
   key.input.useHandCursor = true; //if you want a hand cursor
   key.events.onInputDown.add(pickUpKey, this);
+
 };
 
 var itemInteract = function(){

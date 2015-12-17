@@ -49,7 +49,7 @@ function createGhosts(){
   var posData;
   for (i = 0; i < ghostCount; i++ ){
     posData = placeGhost();
-    var sprite = this.game.add.isoSprite(posData.ghostX * TILE_POS, posData.ghostY * TILE_POS, 0, 'badGuy', 0, enemyGroup);
+    var sprite = this.game.add.isoSprite(posData.ghostX * TILE_POS, posData.ghostY * TILE_POS, 0, 'scarecrow', 0, enemyGroup);
     sprite.tint = 0x000000;
     // sprite.alpha = 0.6;
     sprite.animations.add('S', [0, 1, 2, 3, 4, 5, 6, 7], 10, true);
@@ -69,18 +69,18 @@ function createGhosts(){
    // var ghost = this.game.add.isoSprite(350, 280, 0, 'characterAnim', 0, enemyGroup);
    // ghost.alpha = 0.6;
 
-      // ghost.animations.add('S', [0, 1, 2, 3, 4, 5, 6, 7], 10, true);
-      // ghost.animations.add('SW', [8, 9, 10, 11, 12, 13, 14, 15], 10, true);
-      // ghost.animations.add('W', [16, 17, 18, 19, 20, 21, 22, 23], 10, true);
-      // ghost.animations.add('NW', [24, 25, 26, 27, 28, 29, 30, 31], 10, true);
-      // ghost.animations.add('N', [32, 33, 34, 35, 36, 37, 38, 39], 10, true);
-      // ghost.animations.add('NE', [40, 41, 42, 43, 44, 45, 46, 47], 10, true);
-      // ghost.animations.add('E', [48, 49, 50, 51, 52, 53, 54, 55], 10, true);
-      // ghost.animations.add('SE', [56, 57, 58, 59, 60, 61, 62, 63], 10, true);
-      // this.game.physics.isoArcade.enable(ghost);
+   //    ghost.animations.add('S', [0, 1, 2, 3, 4, 5, 6, 7], 10, true);
+   //    ghost.animations.add('SW', [8, 9, 10, 11, 12, 13, 14, 15], 10, true);
+   //    ghost.animations.add('W', [16, 17, 18, 19, 20, 21, 22, 23], 10, true);
+   //    ghost.animations.add('NW', [24, 25, 26, 27, 28, 29, 30, 31], 10, true);
+   //    ghost.animations.add('N', [32, 33, 34, 35, 36, 37, 38, 39], 10, true);
+   //    ghost.animations.add('NE', [40, 41, 42, 43, 44, 45, 46, 47], 10, true);
+   //    ghost.animations.add('E', [48, 49, 50, 51, 52, 53, 54, 55], 10, true);
+   //    ghost.animations.add('SE', [56, 57, 58, 59, 60, 61, 62, 63], 10, true);
+   //    this.game.physics.isoArcade.enable(ghost);
 
-      // ghost.body.collideWorldBounds = true;
-      // return ghost;
+   //    ghost.body.collideWorldBounds = true;
+   //    return ghost;
 }
 
 function checkGhostCollision(){
@@ -91,9 +91,9 @@ function checkGhostCollision(){
       player.body.velocity = 0;
       player.body.velocity = 0;
       playerAlive = false;
-      alert("u wuz killed :(")
+      alert("u dead az fuckkk :(")
       player.kill();
-      //this.state.start("GameOver");
+      game.state.start("GameOver");
     }, function(){
       return playerAlive;
     });
@@ -214,7 +214,7 @@ function moveGhost(ghost){
 
 
           // Move the ENEMY
-          var enemySpeed = (Math.random() * 10) + 150;
+          var enemySpeed = (Math.random() * 10) + 120;
 
           if (ghost.enemyDirection == "N") {
             ghost.sprite.body.velocity.x = -enemySpeed;
@@ -246,14 +246,14 @@ function moveGhost(ghost){
           {
             ghost.sprite.body.velocity.x = enemySpeed;
             ghost.sprite.body.velocity.y = 0;
-            sprite.animations.play('SE');
+            ghost.sprite.animations.play('SE');
 
           }
           else if (ghost.enemyDirection == "NW")
           {
             ghost.sprite.body.velocity.x = -enemySpeed;
             ghost.sprite.body.velocity.y = 0;
-            sprite.animations.play('NW');
+            ghost.sprite.animations.play('NW');
 
           }
           else if (ghost.enemyDirection == "SW")

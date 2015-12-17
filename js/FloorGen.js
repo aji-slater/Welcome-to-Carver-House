@@ -12,7 +12,7 @@ function generateExit(){
 
                 }
                 // if the position the tile to the west is the board edge or a west wall
-                else if(board[yi][xi -1] === undefined || board[yi][xi -1] == 0){
+                else if(board[yi][xi -1] === undefined || board[yi][xi -1] === 0){
                     westSpots.push({x: xi, y: yi});
                 }
             }
@@ -22,7 +22,7 @@ function generateExit(){
     var randIndex;
     var x;
     var y;
-    if(Math.floor((Math.random() * 2)) == 0){
+    if(Math.floor((Math.random() * 2)) === 0){
         randIndex = Math.floor((Math.random() * northSpots.length - 1));
         x = northSpots[randIndex].x * TILE_POS;
         y = northSpots[randIndex].y * TILE_POS;
@@ -60,12 +60,14 @@ var generateTiles = function (){
                 woodFloorTile = this.game.add.isoSprite(xx, yy, 0, 'woodTile', 0, floorGroup);
                 woodFloorTile.anchor.set(0.5, 0);
             } else {
+              if (needAnEmpty(xi, yi) ){
                 emptyTile = this.game.add.isoSprite(xx, yy, 0, 'emptySquare', 0, emptyGroup);
                 emptyTile.anchor.set(0.5, 0);
                 game.physics.isoArcade.enable(emptyTile);
                 emptyTile.body.collideWorldBounds = true;
                 emptyTile.body.moves = false;
                 emptyTile.body.setSize(56, 56, 5);
+              }
             }
             xx += TILE_POS;
         }
@@ -118,3 +120,23 @@ function decorateWalls(){
   }
   return  0;
 }
+
+var needAnEmpty = function(x, y){
+  if ( x === 0 || y === 0 ){
+    return true;
+  }
+  if ( x === board[0].length-1 || y === board.length-1 ){
+    return true;
+  }
+  if (board[y-1][x-1] == 0 &&
+    board[y-1][x]     == 0 &&
+    board[y-1][x+1]   == 0 &&
+    board[y][x-1]     == 0 &&
+    board[y][x+1]     == 0 &&
+    board[y+1][x-1]   == 0 &&
+    board[y+1][x]     == 0 &&
+    board[y+1][x+1]   == 0   ){
+      return false;
+    }
+  return true;
+};

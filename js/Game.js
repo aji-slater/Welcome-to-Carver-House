@@ -74,7 +74,7 @@ BasicGame.Game.prototype =
   render: function () {
     // emptyGroup.forEach(function (tile) {
     //     game.debug.body(tile, 'rgba(189, 221, 235, 0.6)', false);
-    // })
+    // });
   //   exitGroup.forEach(function (exit) {
   //     game.debug.body(exit, 'rgba(189, 221, 235, 0.6)', false);
   //     game.debug.spriteBounds(exit, 'pink', false);

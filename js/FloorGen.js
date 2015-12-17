@@ -140,7 +140,7 @@ function emptyFill(){
   var yy = 0;
   for (var yi = 0; yi < board.length; yi++){
     for (var xi = 0; xi < board[0].length; xi++){
-      if ( isEmptyNeeded(xi, yi) ){
+      if ( !isEmptyNeeded(xi, yi) ){
         emptyTile = this.game.add.isoSprite(xTilePosition(xi), yTilePosition(yi), 0, 'emptySquare', 0, emptyGroup);
         emptyTile.anchor.set(0.5, 0);
         game.physics.isoArcade.enable(emptyTile);
@@ -152,10 +152,9 @@ function emptyFill(){
 }
 
 function isEmptyNeeded(x, y){
-  if ( x === 0 || y === 0 || x === board[0].length || y === board.length ){
+  if ( x === 0 || y === 0 || x === board[0].length - 1 || y === board.length - 1 ){
     return true;
-  }
-  if ( board[y][x-1] === 1 ){
+  } else if ( board[y][x-1] === 1 ){
     return true;
   } else if ( board[y-1][x] === 1 ){
     return true;

@@ -43,12 +43,24 @@ var loadAll = function() {
   game.load.spritesheet('invRings', 'assets/items/inv-rings.png', 100, 150);
   game.load.spritesheet('invSkull', 'assets/items/inv-skull.png', 100, 150);
   game.load.spritesheet('invVoodoo', 'assets/items/inv-voodoo.png', 100, 150);
+  game.load.spritesheet('Book', 'assets/items/book.png', 60, 60);
+  game.load.spritesheet('Coin', 'assets/items/coins.png', 60, 60);
+  game.load.spritesheet('CrystalBall', 'assets/items/crystalball.png', 60, 60);
+  game.load.spritesheet('Dice', 'assets/items/die.png', 60, 60);
+  game.load.spritesheet('Voodoo', 'assets/items/doll.png', 60, 60);
+  game.load.spritesheet('Idol', 'assets/items/idol.png', 60, 60);
+  game.load.spritesheet('Key', 'assets/items/key.png', 60, 60);
+  game.load.spritesheet('MusicBox', 'assets/items/musicBox.png', 60, 60);
+  game.load.spritesheet('Necklace', 'assets/items/necklace.png', 60, 60);
+  game.load.spritesheet('PuzzleBox', 'assets/items/puzzleBox.png', 60, 60);
+  game.load.spritesheet('Rings', 'assets/items/rings.png', 60, 60);
+  game.load.spritesheet('Skull', 'assets/items/skull.png', 60, 60);
+  game.load.spritesheet('Needle', 'assets/items/syringe.png', 60, 60);
+
 
   game.load.spritesheet('player', 'assets/investigator_new.png', 40, 70);
 
   // game.load.spritesheet('debugTile', 'assets/tiles/debug_tiles.png', 100, 50);
-  game.load.spritesheet('necklace', 'assets/items/necklace.png', 35, 35);
-  game.load.spritesheet('key', 'assets/items/key.png', 35, 35);
   game.load.spritesheet('wall', 'assets/furniture/wall.png', 100, 150);
   game.load.spritesheet('characterAnim','assets/characterAnim.png', 70, 74);
   game.load.spritesheet('peculiar_gentleman','assets/peculiar_gentleman.png', 75, 75);

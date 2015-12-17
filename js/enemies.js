@@ -21,41 +21,15 @@ function configPathFinding(){
   // easyStar.enableDiagonals();
 }
 
-function placeGhost(){
-  var randX;
-  var randY;
-  var posX = 0;
-  var posY = 0;
-  var posData = {
-    ghostX: 0,
-    ghostY: 0
-  };
-
-  while(posX === 0 && posY === 0){
-    randX = Math.floor(Math.random() * gameBoard.boardWidth);
-    randY = Math.floor(Math.random() * gameBoard.boardHeight);
-    posX = board[randX];
-    posY = board[randY];
-  }
-
-  posData.ghostX = randX;
-  posData.ghostY = randY;
-
-  return posData;
-}
-
 function selectGhostType(){
   var ghostType = Math.floor(Math.random() * 3);
   switch(ghostType){
     case 0:
       return "peculiar_gentleman";
-      break;
     case 1:
       return "priestess";
-      break;
     case 2:
       return "scarecrow";
-      break;
   }
 }
 
@@ -63,10 +37,17 @@ function createGhosts(){
   var ghostCount = Math.floor(Math.random() * 7) + 1;
   var posData;
   for (i = 0; i < ghostCount; i++ ){
+  var xg, yg, sprite;
+    var placed = false;
+    while ( placed === false ){
+      var ghostSprite = selectGhostType();
+      xg = randomCoord();
+      yg = randomCoord();
+      if (checkForFloor(xg, yg)){
+        sprite = this.game.add.isoSprite(xTilePosition(xg), yTilePosition(yg), 0, ghostSprite, 0, enemyGroup);
+        placed = true;
+      }}
 
-    posData = placeGhost();
-    var ghostSprite = selectGhostType();
-    var sprite = this.game.add.isoSprite(posData.ghostX * TILE_POS, posData.ghostY * TILE_POS, 0, ghostSprite, 0, enemyGroup);
     sprite.tint = 0x000000;
     sprite.alpha = 0.6;
     sprite.animations.add('S', [0, 1, 2, 3, 4, 5, 6, 7], 10, true);
@@ -237,7 +218,6 @@ function moveGhost(ghost){
           currentPlayerXtile = Math.floor(player.body.position.x / TILE_POS);
           currentPlayerYtile = Math.floor(player.body.position.y / TILE_POS);
 
-
           // Move the ENEMY
           var enemySpeed = 130;
 
@@ -245,7 +225,7 @@ function moveGhost(ghost){
             ghost.sprite.body.velocity.x = -enemySpeed;
             ghost.sprite.body.velocity.y = -enemySpeed;
             ghost.sprite.animations.play('N');
-
+            
           }
           else if (ghost.enemyDirection == "S")
           {

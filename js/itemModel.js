@@ -24,15 +24,17 @@ function placeItem(item, boardX, boardY){
 
 function itemSeed(){
   var itemsToPlace = ["Skull", "Book", "Coin", "CrystalBall", "Dice", "Idol", "MusicBox", "Necklace", "Needle", "PuzzleBox", "Rings", "Voodoo"];
-  var placed = false;
   for ( i = 1; i <= 6; i++){
     placed = false;
     var newItem = sampleDestruct(itemsToPlace);
     instantiateItem(newItem);
-  }}
+  }
+  instantiateItem("Key");
+}
 
 function instantiateItem(itemName){
   var itemString = itemName;
+  var placed = false;
   while ( placed === false ){
     x = randomCoord();
     y = randomCoord();

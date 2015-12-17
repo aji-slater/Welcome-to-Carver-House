@@ -2,7 +2,7 @@ var ANCHOR_SET = 0.5;
 var TILE_POS = 55;
 
 var gameBoard = new GameBoard();
-gameBoard.generateBoard();
+gameBoard.generateBoard(40, 40);
 var board = gameBoard.board;
 var boardSides = board.length;
 
@@ -22,7 +22,7 @@ var xTilePosition = function(value){
   return TILE_POS * value;
 };
 
-var inventory = [];
+var inventory = ["Key"];
 
 var floorGroup, activeGroup, itemGroup, menuGroup, furnishGroup, enemyGroup, exitGroup, wallGroup;
 

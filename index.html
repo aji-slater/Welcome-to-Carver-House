@@ -15,6 +15,7 @@
     <script src="js/AssetLoader.js"></script>
     <script src="js/Boot.js"></script>
     <script src="js/Preloader.js"></script>
+    <script src="js/Story.js"></script>
     <script src="js/Game.js"></script>
     <script src="js/BoardModel.js"></script>
     <script src="js/Constants.js"></script>
@@ -42,6 +43,7 @@ window.onload = function() {
     game.state.add('Preloader', BasicGame.Preloader);
     game.state.add('AssetLoader', BasicGame.AssetLoader);
     game.state.add('MainMenu', BasicGame.MainMenu);
+    game.state.add('Story', BasicGame.Story);
     game.state.add('Game', BasicGame.Game);
     game.state.add('GameOver', BasicGame.GameOver);
     game.state.add('Win', BasicGame.Win);

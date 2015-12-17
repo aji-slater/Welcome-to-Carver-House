@@ -99,6 +99,7 @@ function playerPerish(){
   perish.anchor.set(0.5);
   perish.animations.add('player_perish', [0, 1, 2, 3, 4], 3, false);
   perish.animations.play('player_perish', 5, false);
+
   // perish.animations.stop('player_perish', [0, 1, 2, 3, 4], 5, false);
 }
 

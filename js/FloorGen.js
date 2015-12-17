@@ -152,17 +152,16 @@ function emptyFill(){
 }
 
 function isEmptyNeeded(x, y){
-  if (x>0){
-    if (board[y][x-1] === 1){
-      return true;
-  } }
-  if (y>0){
-    if (board[y-1][x] === 1) {
-      return true;
-    } }
-  if (board[y+1][x] === 1){
+  if ( x === 0 || y === 0 || x === board[0].length || y === board.length ){
     return true;
-  } else if (board[y][x+1] === 1){
+  }
+  if ( board[y][x-1] === 1 ){
+    return true;
+  } else if ( board[y-1][x] === 1 ){
+    return true;
+  } else if ( board[y+1][x] === 1 ){
+    return true;
+  } else if ( board[y][x+1] === 1 ){
     return true;
   } else {
     return false;

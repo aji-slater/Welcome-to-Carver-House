@@ -26,6 +26,7 @@
     <script src="js/Character.js"></script>
     <script src="js/FloorGen.js"></script>
     <script src="js/GameOver.js"></script>
+    <script src="js/Win.js"></script>
 </head>
 <body>
 
@@ -43,6 +44,7 @@ window.onload = function() {
     game.state.add('MainMenu', BasicGame.MainMenu);
     game.state.add('Game', BasicGame.Game);
     game.state.add('GameOver', BasicGame.GameOver);
+    game.state.add('Win', BasicGame.Win);
 
     game.state.start('Boot');
 };

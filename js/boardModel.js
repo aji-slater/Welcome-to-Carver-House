@@ -283,7 +283,7 @@ this.generateEmptyBoard(width, height);
                         this.board[newRoom.centerY() + z][xx] = 1;
                         this.board[newRoom.centerY()][xx] = 1;
                         xx += z;
-                  };
+                  }
 
                   if ( newRoom.centerY() >= oldRoom.centerY() ){
                         z = -1;
@@ -296,7 +296,7 @@ this.generateEmptyBoard(width, height);
                         this.board[yy][oldRoom.centerX() + z] = 1;
                         this.board[yy][oldRoom.centerX()] = 1;
                         yy += z;
-                  } ;
+                  }
 
 
 

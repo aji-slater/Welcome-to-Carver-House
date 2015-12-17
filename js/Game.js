@@ -38,6 +38,9 @@ BasicGame.Game.prototype =
 
     cursorPos = new Phaser.Plugin.Isometric.Point3();
     game.camera.follow(player);
+
+
+
   },
 
   update: function () {
@@ -45,20 +48,21 @@ BasicGame.Game.prototype =
     if (!isPaused){
       game.iso.unproject(game.input.activePointer.position, cursorPos);
       playerUpdate();
-      moveGhosts();
-      illuminate();
-      checkGhostCollision();
+      if (playerAlive){
+        moveGhosts();
+        illuminate();
+        checkGhostCollision();
+      }
       wallCheck();
-
-      this.game.physics.isoArcade.collide(player, emptyGroup);
-
-      this.game.physics.isoArcade.collide(enemyGroup, emptyGroup);
-
-      this.game.physics.isoArcade.collide(player, exitGroup, function(player){
-        player.kill();
-        game.state.start("GameOver");
-    });
-
+      game.physics.isoArcade.collide(player, emptyGroup);
+      game.physics.isoArcade.collide(enemyGroup, emptyGroup);
+      game.physics.isoArcade.collide(player, exitGroup, function(player){
+        // alert("You won!");
+        if(unlocked){
+          player.kill();
+          game.state.start('Win');
+        }
+      });
     }
 
   },
@@ -70,7 +74,7 @@ BasicGame.Game.prototype =
   render: function () {
     // emptyGroup.forEach(function (tile) {
     //     game.debug.body(tile, 'rgba(189, 221, 235, 0.6)', false);
-    // })
+    // });
   //   exitGroup.forEach(function (exit) {
   //     game.debug.body(exit, 'rgba(189, 221, 235, 0.6)', false);
   //     game.debug.spriteBounds(exit, 'pink', false);

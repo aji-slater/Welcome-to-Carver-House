@@ -13,15 +13,15 @@ var playerCreate = function(){
 
 
 
-   player.animations.add('left', [41, 42, 43, 44, 45, 46, 47], 10, true);
-   player.animations.add('right', [49, 50, 51, 52, 53, 54, 55], 10, true);
-   player.animations.add('down', [33, 34, 35, 36, 37, 38, 39], 10, true);
-   player.animations.add('up', [57, 58, 59, 60, 61, 62, 63], 10, true);
+   player.animations.add('left', [41, 42, 43, 44, 45, 46, 47], 20, true);
+   player.animations.add('right', [49, 50, 51, 52, 53, 54, 55], 20, true);
+   player.animations.add('down', [33, 34, 35, 36, 37, 38, 39], 20, true);
+   player.animations.add('up', [57, 58, 59, 60, 61, 62, 63], 20, true);
 
    player.animations.add('sw', [1, 2, 3, 4, 5, 6, 7], 10, true);
-   player.animations.add('nw', [9, 10, 11, 12, 13, 14, 15], 10, true);
-   player.animations.add('se', [17, 18, 19, 20, 21, 22, 23], 10, true);
-   player.animations.add('ne', [25, 26, 27, 28, 29, 30, 31], 10, true);
+   player.animations.add('nw', [9, 10, 11, 12, 13, 14, 15], 20, true);
+   player.animations.add('se', [17, 18, 19, 20, 21, 22, 23], 20, true);
+   player.animations.add('ne', [25, 26, 27, 28, 29, 30, 31], 20, true);
    player.animations.add('player_perish', [4], 10, false);
  };
 
@@ -33,10 +33,10 @@ var playerCreate = function(){
                 down: game.input.keyboard.addKey(Phaser.Keyboard.S),
                 left: game.input.keyboard.addKey(Phaser.Keyboard.A),
                 right: game.input.keyboard.addKey(Phaser.Keyboard.D),
-            };
+              };
    player.body.velocity.x = 0;
    player.body.velocity.y = 0;
-   var playerSpeed = 175;
+   var playerSpeed = 165;
 
   if ((cursors.down.isDown && cursors.left.isDown )||(wasd.down.isDown && wasd.left.isDown )){
      player.body.velocity.y = playerSpeed;

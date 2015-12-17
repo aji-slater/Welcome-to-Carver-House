@@ -49,14 +49,14 @@ function createGhosts(){
 
     sprite.tint = 0x000000;
     sprite.alpha = 0.6;
-    sprite.animations.add('S', [0, 1, 2, 3, 4, 5, 6, 7], 10, true);
-    sprite.animations.add('W', [8, 9, 10, 11, 12, 13, 14, 15], 10, true);
-    sprite.animations.add('E', [16, 17, 18, 19, 20, 21, 22, 23], 10, true);
-    sprite.animations.add('N', [24, 25, 26, 27, 28, 29, 30, 31], 10, true);
-    sprite.animations.add('SW', [32, 33, 34, 35, 36, 37, 38, 39], 10, true);
-    sprite.animations.add('NW', [40, 41, 42, 43, 44, 45, 46, 47], 10, true);
-    sprite.animations.add('SE', [48, 49, 50, 51, 52, 53, 54, 55], 10, true);
-    sprite.animations.add('NE', [56, 57, 58, 59, 60, 61, 62, 63], 10, true);
+    sprite.animations.add('S', [0, 1, 2, 3, 4, 5, 6, 7], 20, true);
+    sprite.animations.add('W', [8, 9, 10, 11, 12, 13, 14, 15], 20, true);
+    sprite.animations.add('E', [16, 17, 18, 19, 20, 21, 22, 23], 20, true);
+    sprite.animations.add('N', [24, 25, 26, 27, 28, 29, 30, 31], 20, true);
+    sprite.animations.add('SW', [32, 33, 34, 35, 36, 37, 38, 39], 20, true);
+    sprite.animations.add('NW', [40, 41, 42, 43, 44, 45, 46, 47], 20, true);
+    sprite.animations.add('SE', [48, 49, 50, 51, 52, 53, 54, 55], 20, true);
+    sprite.animations.add('NE', [56, 57, 58, 59, 60, 61, 62, 63], 20, true);
     this.game.physics.isoArcade.enable(sprite);
 
     sprite.body.collideWorldBounds = true;
@@ -98,13 +98,11 @@ function checkGhostCollision(){
       // zoomForDeath();
       playerPerish();
       game.time.events.add(Phaser.Timer.SECOND * 2, gameOver, this).autoDestroy = true;
-    }, function(){
-      return playerAlive;
     });
 }
 
 function gameOver(){
-  game.state.start("GameOver");
+  game.state.start("GameOver", true, false);
 }
 
 function setPathFinderInterval(ghost) {

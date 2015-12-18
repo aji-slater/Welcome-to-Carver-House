@@ -8,7 +8,7 @@ BasicGame.Game.prototype =
     game.time.advancedTiming = true;
     game.world.setBounds(0, 0, 5500, 6500);
     game.iso.anchor.setTo(0.5, 0.2);
-    // game.world.scale.setTo(0.2, 0.2);
+    game.world.scale.setTo(0.2, 0.2);
   },
 
   create: function () {
@@ -30,7 +30,7 @@ BasicGame.Game.prototype =
     itemSeed();
     // tableCreate();
     configPathFinding();
-    createGhosts();
+    // createGhosts();
     setGhostPaths();
     hudDisplay();
     hudClick();
@@ -49,9 +49,9 @@ BasicGame.Game.prototype =
       game.iso.unproject(game.input.activePointer.position, cursorPos);
       playerUpdate();
       if (playerAlive){
-        moveGhosts();
-        illuminate();
-        checkGhostCollision();
+        // moveGhosts();
+        // illuminate();
+        // checkGhostCollision();
       }
       wallCheck();
       game.physics.isoArcade.collide(player, emptyGroup);

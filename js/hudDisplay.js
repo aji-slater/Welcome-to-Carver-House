@@ -85,8 +85,8 @@ var populateInventory = function() {
     inventoryItem.inputEnabled = true;
     inventoryItem.events.onInputDown.add(invClickFunction, this);
     // inventoryItem.events.hover
-    inventoryItem.events.onInputOver.add(over, this);
-    inventoryItem.events.onInputOut.add(out, this);
+    // inventoryItem.events.onInputOver.add(over, this);
+    // inventoryItem.events.onInputOut.add(out, this);
   }
 };
 

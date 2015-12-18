@@ -22,7 +22,7 @@ BasicGame.Game.prototype =
     menuGroup = game.add.group();
     enemyGroup = game.add.group();
     itemGroup = game.add.group();
-
+    inventory = [];
     playerCreate();
     generateTiles();
     generateWalls();

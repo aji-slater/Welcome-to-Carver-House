@@ -214,7 +214,7 @@ function moveGhost(ghost){
           currentPlayerYtile = Math.floor(player.body.position.y / TILE_POS);
 
           // Move the ENEMY
-          var enemySpeed = 30;
+          var enemySpeed = 100;
 
           if (ghost.enemyDirection == "N") {
             ghost.sprite.body.velocity.x = -enemySpeed;

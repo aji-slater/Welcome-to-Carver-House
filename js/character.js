@@ -36,7 +36,7 @@ var playerCreate = function(){
               };
    player.body.velocity.x = 0;
    player.body.velocity.y = 0;
-   var playerSpeed = 165;
+   var playerSpeed = 150;
 
   if ((cursors.down.isDown && cursors.left.isDown )||(wasd.down.isDown && wasd.left.isDown )){
      player.body.velocity.y = playerSpeed;
@@ -55,23 +55,23 @@ var playerCreate = function(){
       player.animations.play('se');
      }
   else if ((cursors.up.isDown)||(wasd.up.isDown)){
-     player.body.velocity.x = -playerSpeed;
-     player.body.velocity.y = -playerSpeed;
+     player.body.velocity.x = -playerSpeed + 55;
+     player.body.velocity.y = -playerSpeed + 55;
      player.animations.play('up');
     }
   else if ((cursors.down.isDown)||(wasd.down.isDown)){
-     player.body.velocity.x = playerSpeed;
-     player.body.velocity.y = playerSpeed;
+     player.body.velocity.x = playerSpeed -55;
+     player.body.velocity.y = playerSpeed -55;
      player.animations.play('down');
     }
   else if((cursors.left.isDown)||(wasd.left.isDown)){
-    player.body.velocity.x = -playerSpeed;
-    player.body.velocity.y = playerSpeed;
+    player.body.velocity.x = -playerSpeed +55;
+    player.body.velocity.y = playerSpeed -55;
     player.animations.play('left');
   }
   else if ((cursors.right.isDown)||(wasd.right.isDown)){
-    player.body.velocity.x = playerSpeed;
-    player.body.velocity.y = -playerSpeed;
+    player.body.velocity.x = playerSpeed -55;
+    player.body.velocity.y = -playerSpeed +55;
     player.animations.play('right');
   }
   else {

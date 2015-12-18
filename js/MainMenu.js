@@ -13,7 +13,7 @@ BasicGame.MainMenu.prototype = {
 		this.music.loop = true;
 		this.music.play();
 
-		this.backgroundImage = this.add.sprite(this.game.world.centerX, this.game.world.centerY, 'lovecraft_mansion');
+		this.backgroundImage = this.add.sprite(window.innerWidth/2, window.innerHeight/2, 'lovecraft_mansion');
 		this.backgroundImage.anchor.setTo(0.5);
 
 		// var style = { font: "99px MORPHEUS", fill: "#ffffff", wordWrap: true, wordWrapWidth: this.backgroundImage.width, align: "center" };

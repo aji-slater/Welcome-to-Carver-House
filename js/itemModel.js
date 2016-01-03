@@ -44,7 +44,7 @@ function instantiateItem(itemName){
   while ( placed === false ){
     x = randomCoord();
     y = randomCoord();
-    if (Gameboard.checkForFloor(x, y)){
+    if (GameBoard.checkForFloor(x, y)){
       itemName = new Item(itemString);
       allLocalItems.push(itemName);
       itemName.placeItem(itemString, x, y);

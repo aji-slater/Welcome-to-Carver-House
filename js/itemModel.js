@@ -1,15 +1,17 @@
 var allLocalItems = [];
 
-function ItemController(){
+sampleDestruct = function(array) {
+  returner =  array.splice(Math.floor(Math.random()*array.length), 1);
+  return returner[0];
+};
+
+function ItemController(){}
+
+ItemController.prototype = {
+
+};
 
 
-}
-
-
-function sampleDestruct(array) {
- returner =  array.splice(Math.floor(Math.random()*array.length), 1);
- return returner[0];
-}
 
 function randomCoord(){
   return Math.floor(Math.random()*board.length);
@@ -22,11 +24,11 @@ function randomCoord(){
 //     return false;
 //   }}
 
-function placeItem(item, boardX, boardY){
-  item = game.add.isoSprite(xTilePosition(boardX), yTilePosition(boardY), 0, item, 0, itemGroup);
-  item.anchor.set(0.5, 0.5);
-  item.bringToTop();
-}
+// function placeItem(item, boardX, boardY){
+//   item = game.add.isoSprite(xTilePosition(boardX), yTilePosition(boardY), 0, item, 0, itemGroup);
+//   item.anchor.set(0.5, 0.5);
+//   item.bringToTop();
+// }
 
 function itemSeed(){
   var itemsToPlace = ["Skull", "Book", "Coin", "CrystalBall", "Dice", "Idol", "MusicBox", "Necklace", "Needle", "PuzzleBox", "Rings", "Voodoo"];

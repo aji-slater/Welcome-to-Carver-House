@@ -50,7 +50,7 @@ BasicGame.Game.prototype =
       playerUpdate();
       if (playerAlive){
         moveGhosts();
-        illuminate();
+        // illuminate();
         checkGhostCollision();
       }
       wallCheck();

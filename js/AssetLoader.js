@@ -1,6 +1,6 @@
 
 var loadAll = function() {
-  game.load.image('lovecraft_mansion', 'assets/lovecraft3.png');
+  game.load.image('lovecraft_mansion', 'assets/carver-main.png');
   game.load.image('preload_bar', 'assets/preload_bar.png');
   game.load.bitmapFont('MORPHEUS', 'assets/fonts/morpheus/MORPHEUS.png', 'assets/fonts/morpheus/MORPHEUS.xml');
   game.load.audio('Evelyn', ['assets/audio/Evelyn.mp3']);
@@ -18,7 +18,7 @@ var loadAll = function() {
   game.load.image('hudFrame', 'assets/hud/hud-frame.png');
   game.load.image('sideTable', 'assets/furniture/side-table.png');
   game.load.image('emptySquare', 'assets/tiles/empty-square.png');
-  game.load.image('hudInvButton', 'assets/HUD/inventory-icon.png');
+  game.load.image('hudInvButton', 'assets/hud/inventory-icon.png');
   game.load.image('exit-north', 'assets/tiles/exit-north.png');
   game.load.image('exit-west', 'assets/tiles/exit-west.png');
   game.load.image('exit-north-unlock', 'assets/tiles/exit-north-unlock.png');

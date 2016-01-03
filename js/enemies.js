@@ -40,8 +40,8 @@ function createGhosts(){
     var placed = false;
     while ( placed === false ){
       var ghostSprite = selectGhostType();
-      xg = randomCoord();
-      yg = randomCoord();
+      xg = gameBoard.randomCoord();
+      yg = gameBoard.randomCoord();
       if (gameBoard.checkForFloor(xg, yg)){
         sprite = this.game.add.isoSprite(xTilePosition(xg), yTilePosition(yg), 0, ghostSprite, 0, enemyGroup);
         placed = true;

@@ -42,7 +42,7 @@ function createGhosts(){
       var ghostSprite = selectGhostType();
       xg = randomCoord();
       yg = randomCoord();
-      if (checkForFloor(xg, yg)){
+      if (gameBoard.checkForFloor(xg, yg)){
         sprite = this.game.add.isoSprite(xTilePosition(xg), yTilePosition(yg), 0, ghostSprite, 0, enemyGroup);
         placed = true;
       }}

@@ -8,15 +8,14 @@ sampleDestruct = function(array) {
 function ItemController(){}
 
 ItemController.prototype = {
-
   allLocalItems: [],
 
   instantiateItem: function(itemName){
     var itemString = itemName;
     var placed = false;
     while ( placed === false ){
-      x = randomCoord();
-      y = randomCoord();
+      x = gameBoard.randomCoord();
+      y = gameBoard.randomCoord();
       if (gameBoard.checkForFloor(x, y)){
         itemName = new Item(itemString);
         this.allLocalItems.push(itemName);
@@ -37,9 +36,7 @@ ItemController.prototype = {
 
 
 // This should go into GameBoard?
-function randomCoord(){
-  return Math.floor(Math.random()*board.length);
-}
+
 
 function Item (name) {
   this.name = name;

@@ -94,6 +94,10 @@ GameBoard.prototype.checkForFloor = function(x, y){
   }
 };
 
+GameBoard.prototype.randomCoord = function(){
+  return Math.floor(Math.random()*board.length);
+};
+
 
 //pick point on the board corresponding to the top left corner of room, build room from that origin column by column until the room width is reached, or the edge of the map.
 GameBoard.prototype.generateRoom = function(room){

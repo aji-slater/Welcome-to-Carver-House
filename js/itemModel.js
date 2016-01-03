@@ -34,34 +34,10 @@ ItemController.prototype = {
 };
 
 
-
+// This should go into GameBoard?
 function randomCoord(){
   return Math.floor(Math.random()*board.length);
 }
-
-
-// function itemSeed(){
-//   var itemsToPlace = ["Skull", "Book", "Coin", "CrystalBall", "Dice", "Idol", "MusicBox", "Necklace", "Needle", "PuzzleBox", "Rings", "Voodoo"];
-//   for ( i = 1; i <= 6; i++){
-//     placed = false;
-//     var newItem = sampleDestruct(itemsToPlace);
-//     instantiateItem(newItem);
-//   }
-//   instantiateItem("Key");
-// }
-//
-// function instantiateItem(itemName){
-//   var itemString = itemName;
-//   var placed = false;
-//   while ( placed === false ){
-//     x = randomCoord();
-//     y = randomCoord();
-//     if (gameBoard.checkForFloor(x, y)){
-//       itemName = new Item(itemString);
-//       allLocalItems.push(itemName);
-//       itemName.placeItem(itemString, x, y);
-//       placed = true;
-//     }}}
 
 function Item (name) {
   this.name = name;

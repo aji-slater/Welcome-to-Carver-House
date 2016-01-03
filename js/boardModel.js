@@ -86,7 +86,7 @@ GameBoard.prototype.avgArea = function(){
   return Math.floor(sum/roomAreas.length);
 };
 
-Gameboard.prototype.checkForFloor = function(x, y){
+GameBoard.prototype.checkForFloor = function(x, y){
   if (this.board[y][x] === 1){
     return true;
   } else {

@@ -8,10 +8,11 @@ BasicGame.Game.prototype =
     game.time.advancedTiming = true;
     game.world.setBounds(0, 0, 5500, 6500);
     game.iso.anchor.setTo(0.5, 0.2);
-    game.world.scale.setTo(0.2, 0.2);
+    // game.world.scale.setTo(0.2, 0.2);
   },
 
   create: function () {
+    player = new Character();
     game.physics.isoArcade.gravity.setTo(0, 0, -500);
     emptyGroup = game.add.group();
     floorGroup = game.add.group();
@@ -23,7 +24,7 @@ BasicGame.Game.prototype =
     enemyGroup = game.add.group();
     itemGroup = game.add.group();
     inventory = [];
-    playerCreate();
+    player.playerCreate();
     generateTiles();
     generateWalls();
     generateExit();
@@ -37,7 +38,7 @@ BasicGame.Game.prototype =
 
 
     cursorPos = new Phaser.Plugin.Isometric.Point3();
-    game.camera.follow(player);
+    game.camera.follow(player.sprite);
 
 
 
@@ -47,7 +48,7 @@ BasicGame.Game.prototype =
 
     if (!isPaused){
       game.iso.unproject(game.input.activePointer.position, cursorPos);
-      playerUpdate();
+      player.playerUpdate();
       if (playerAlive){
         moveGhosts();
         // illuminate();

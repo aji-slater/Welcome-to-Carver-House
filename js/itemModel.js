@@ -1,4 +1,4 @@
-var allLocalItems = [];
+
 
 sampleDestruct = function(array) {
   returner =  array.splice(Math.floor(Math.random()*array.length), 1);
@@ -9,6 +9,8 @@ function ItemController(){}
 
 ItemController.prototype = {
 
+  allLocalItems: [],
+
   instantiateItem: function(itemName){
     var itemString = itemName;
     var placed = false;
@@ -17,7 +19,7 @@ ItemController.prototype = {
       y = randomCoord();
       if (gameBoard.checkForFloor(x, y)){
         itemName = new Item(itemString);
-        allLocalItems.push(itemName);
+        this.allLocalItems.push(itemName);
         itemName.placeItem(itemString, x, y);
         placed = true;
     }}},

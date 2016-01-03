@@ -1,5 +1,11 @@
 var allLocalItems = [];
 
+function ItemController(){
+
+
+}
+
+
 function sampleDestruct(array) {
  returner =  array.splice(Math.floor(Math.random()*array.length), 1);
  return returner[0];
@@ -9,12 +15,12 @@ function randomCoord(){
   return Math.floor(Math.random()*board.length);
 }
 
-function checkForFloor(x, y){
-  if (board[y][x] === 1){
-    return true;
-  } else {
-    return false;
-  }}
+// function checkForFloor(x, y){
+//   if (board[y][x] === 1){
+//     return true;
+//   } else {
+//     return false;
+//   }}
 
 function placeItem(item, boardX, boardY){
   item = game.add.isoSprite(xTilePosition(boardX), yTilePosition(boardY), 0, item, 0, itemGroup);
@@ -38,7 +44,7 @@ function instantiateItem(itemName){
   while ( placed === false ){
     x = randomCoord();
     y = randomCoord();
-    if (checkForFloor(x, y)){
+    if (Gameboard.checkForFloor(x, y)){
       itemName = new Item(itemString);
       allLocalItems.push(itemName);
       itemName.placeItem(itemString, x, y);

@@ -1,5 +1,3 @@
-
-
 sampleDestruct = function(array) {
   returner =  array.splice(Math.floor(Math.random()*array.length), 1);
   return returner[0];
@@ -11,15 +9,14 @@ ItemController.prototype = {
   allLocalItems: [],
 
   instantiateItem: function(itemName){
-    var itemString = itemName;
     var placed = false;
     while ( placed === false ){
       x = gameBoard.randomCoord();
       y = gameBoard.randomCoord();
       if (gameBoard.checkForFloor(x, y)){
-        itemName = new Item(itemString);
-        this.allLocalItems.push(itemName);
-        itemName.placeItem(itemString, x, y);
+        thisItem = new Item(itemName);
+        this.allLocalItems.push(thisItem);
+        thisItem.placeItem(itemName, x, y);
         placed = true;
     }}},
 
@@ -33,10 +30,6 @@ ItemController.prototype = {
     this.instantiateItem("Key");
   }
 };
-
-
-// This should go into GameBoard?
-
 
 function Item (name) {
   this.name = name;

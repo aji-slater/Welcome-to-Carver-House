@@ -14,10 +14,10 @@ function Ghost(sprite){
 
 function configPathFinding(){
   easyStar.setGrid(board);
-  easyStar.setIterationsPerCalculation(1500);
+  easyStar.setIterationsPerCalculation(4000);
   easyStar.setAcceptableTiles([1]);
-  // easystar.enableCornerCutting();
-  // easyStar.enableDiagonals();
+  // easyStar.enableCornerCutting();
+  easyStar.enableDiagonals();
 }
 
 function selectGhostType(){
@@ -63,21 +63,7 @@ function createGhosts(){
     var ghost = new Ghost(sprite);
     ghosts.push(ghost);
   }
-   // var ghost = this.game.add.isoSprite(350, 280, 0, 'characterAnim', 0, enemyGroup);
-   // ghost.alpha = 0.6;
 
-   //    ghost.animations.add('S', [0, 1, 2, 3, 4, 5, 6, 7], 10, true);
-   //    ghost.animations.add('SW', [8, 9, 10, 11, 12, 13, 14, 15], 10, true);
-   //    ghost.animations.add('W', [16, 17, 18, 19, 20, 21, 22, 23], 10, true);
-   //    ghost.animations.add('NW', [24, 25, 26, 27, 28, 29, 30, 31], 10, true);
-   //    ghost.animations.add('N', [32, 33, 34, 35, 36, 37, 38, 39], 10, true);
-   //    ghost.animations.add('NE', [40, 41, 42, 43, 44, 45, 46, 47], 10, true);
-   //    ghost.animations.add('E', [48, 49, 50, 51, 52, 53, 54, 55], 10, true);
-   //    ghost.animations.add('SE', [56, 57, 58, 59, 60, 61, 62, 63], 10, true);
-   //    this.game.physics.isoArcade.enable(ghost);
-
-   //    ghost.body.collideWorldBounds = true;
-   //    return ghost;
 }
 
 function enemyGroupKill(){
@@ -87,15 +73,11 @@ function enemyGroupKill(){
 }
 
 function checkGhostCollision(){
-  // console.log(player);
-  // console.log(ghost);
+
   this.game.physics.isoArcade.overlap(player.sprite, enemyGroup, function(player){
-      // console.log("overlap");
-      // player.moves = false;
-      playerAlive = false;
-      // alert("u dead az fuckkk :(")
+
+      // playerAlive = false;
       enemyGroupKill();
-      // zoomForDeath();
       player.perish();
       game.time.events.add(Phaser.Timer.SECOND * 2, gameOver, this).autoDestroy = true;
     });
@@ -113,88 +95,57 @@ function setPathFinderInterval(ghost) {
 
             easyStar.findPath(currentGhostXtile, currentGhostYtile, currentPlayerXtile, currentPlayerYtile, function( path ) {
                 if (path === null) {
-
                 }
-
                 if (path) {
                   currentNextPointX = path[1].x;
                     currentNextPointY = path[1].y;
                 }
-
                 if (currentNextPointX < currentGhostXtile && currentNextPointY < currentGhostYtile)
                 {
                   // left up
-
-
                   ghost.enemyDirection = "NW";
                 }
                 else if (currentNextPointX == currentGhostXtile && currentNextPointY < currentGhostYtile)
                 {
                   // up
-
-
-
                   ghost.enemyDirection = "N";
-
 
                 }
                 else if (currentNextPointX > currentGhostXtile && currentNextPointY < currentGhostYtile)
                 {
                   // right up
-
-
                   ghost.enemyDirection = "NE";
 
                 }
                 else if (currentNextPointX < currentGhostXtile && currentNextPointY == currentGhostYtile)
                 {
                   // left
-
-
                   ghost.enemyDirection = "W";
-
                 }
                 else if (currentNextPointX > currentGhostXtile && currentNextPointY == currentGhostYtile)
                 {
                   // right
-
-
-
                   ghost.enemyDirection = "E";
-
                 }
                 else if (currentNextPointX > currentGhostXtile && currentNextPointY > currentGhostYtile)
                 {
                   // right down
-
-
-
                   ghost.enemyDirection = "SE";
-
                 }
                 else if (currentNextPointX == currentGhostXtile && currentNextPointY > currentGhostYtile)
                 {
                   // down
-
-
                   ghost.enemyDirection = "S";
-
                 }
                 else if (currentNextPointX < currentGhostXtile && currentNextPointY > currentGhostYtile)
                 {
                   // left down
-
-
                   ghost.enemyDirection = "SW";
-
                 }
                 else
                 {
-
                   ghost.enemyDirection = "STOP";
-
                 }
-
             });
 
             easyStar.calculate();
@@ -214,8 +165,6 @@ function moveGhost(ghost){
           currentPlayerYtile = Math.floor(player.sprite.body.position.y / TILE_POS);
 
           // Move the ENEMY
-          var enemySpeed = 100;
-
           if (ghost.enemyDirection == "N") {
             ghost.sprite.body.velocity.x = -enemySpeed;
             ghost.sprite.body.velocity.y = -enemySpeed;

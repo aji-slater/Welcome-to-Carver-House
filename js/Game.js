@@ -1,9 +1,13 @@
 BasicGame.Game = function(game) {
   this.collision = false;
+
 };
 
 BasicGame.Game.prototype =
 {
+  init: function() {
+  },
+
   preload: function () {
     game.time.advancedTiming = true;
     game.world.setBounds(0, 0, 5500, 6500);
@@ -12,26 +16,31 @@ BasicGame.Game.prototype =
   },
 
   create: function () {
+    adjustLevel();
     player = new Character();
+    gameBoard = new GameBoard();
+    gameBoard.generateBoard(boardSize, boardSize);
+
     game.physics.isoArcade.gravity.setTo(0, 0, -500);
     emptyGroup = game.add.group();
     floorGroup = game.add.group();
     wallGroup = game.add.group();
     furnishGroup = game.add.group();
+    itemGroup = game.add.group();
     exitGroup = game.add.group();
     activeGroup = game.add.group();
     menuGroup = game.add.group();
     enemyGroup = game.add.group();
-    itemGroup = game.add.group();
-    inventory = [];
     player.playerCreate();
     generateTiles();
     generateWalls();
     generateExit();
     itemController.seed();
     // tableCreate();
+    //seed inventory with key for testing
+    inventory[0] = "key";
     configPathFinding();
-    // createGhosts();
+    createGhosts();
     setGhostPaths();
     hudDisplay();
     hudClick();
@@ -49,19 +58,17 @@ BasicGame.Game.prototype =
     if (!isPaused){
       game.iso.unproject(game.input.activePointer.position, cursorPos);
       player.playerUpdate();
-      if (playerAlive){
-        moveGhosts();
-        // illuminate();
-        checkGhostCollision();
-      }
+      moveGhosts();
+      illuminate();
+      checkGhostCollision();
       wallCheck();
       game.physics.isoArcade.collide(player.sprite, emptyGroup);
       game.physics.isoArcade.collide(enemyGroup, emptyGroup);
       game.physics.isoArcade.collide(player.sprite, exitGroup, function(player){
-        // alert("You won!");
         if(unlocked){
           player.kill();
-          game.state.start('Win');
+          enemySpeed+= 50;
+          game.state.start('Game');
         }
       });
     }
@@ -70,6 +77,42 @@ BasicGame.Game.prototype =
 
   quitGame: function(pointer) {
       this.state.start('MainMenu');
+  },
+
+  shutdown: function(){
+    emptyGroup = [];
+    floorGroup = [];
+    wallGroup = [];
+    itemGroup = [];
+    furnishGroup = [];
+    exitGroup = [];
+    activeGroup = [];
+    menuGroup = [];
+    enemyGroup = [];
+    gameBoard = null;
+    player = null;
+    level++
+  },
+
+  adjustLevel: function(){
+    switch (level) {
+      case 1:
+        boardSize = 20;
+        break;
+      case 2:
+        boardSize = 30;
+        break;
+      case 3:
+        boardSize = 40;
+        break;
+      case 4:
+        boardSize = 50;
+        break;
+      case 5:
+        boardSize = 60;
+        break;
+      default:
+    }
   },
 
   render: function () {

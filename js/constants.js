@@ -6,6 +6,8 @@ gameBoard.generateBoard(40, 40);
 var board = gameBoard.board;
 var boardSides = board.length;
 
+itemController = new ItemController();
+
 var player;
 var ghosts = [];
 var exit;

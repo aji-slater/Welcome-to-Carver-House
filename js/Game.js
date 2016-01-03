@@ -27,7 +27,7 @@ BasicGame.Game.prototype =
     generateTiles();
     generateWalls();
     generateExit();
-    itemSeed();
+    itemController.seed();
     // tableCreate();
     configPathFinding();
     createGhosts();

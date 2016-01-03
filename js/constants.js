@@ -8,9 +8,8 @@ var boardSides = board.length;
 
 itemController = new ItemController();
 
-var player;
+var player, exit;
 var ghosts = [];
-var exit;
 var unlocked = false;
 var easyStar = new EasyStar.js();
 var timeStep = 400;

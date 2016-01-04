@@ -86,6 +86,19 @@ GameBoard.prototype.avgArea = function(){
   return Math.floor(sum/roomAreas.length);
 };
 
+GameBoard.prototype.checkForFloor = function(x, y){
+  if (this.board[y][x] === 1){
+    return true;
+  } else {
+    return false;
+  }
+};
+
+GameBoard.prototype.randomCoord = function(){
+  return Math.floor(Math.random()*board.length);
+};
+
+
 //pick point on the board corresponding to the top left corner of room, build room from that origin column by column until the room width is reached, or the edge of the map.
 GameBoard.prototype.generateRoom = function(room){
 
@@ -95,7 +108,7 @@ GameBoard.prototype.generateRoom = function(room){
             }
       }
       console.log(this.board);
-}
+};
 
 GameBoard.prototype.generateEmptyBoard = function(width, height){
             for(var y = height; y >= 1 ; --y){

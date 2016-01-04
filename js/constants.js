@@ -6,9 +6,10 @@ gameBoard.generateBoard(40, 40);
 var board = gameBoard.board;
 var boardSides = board.length;
 
-var player;
+itemController = new ItemController();
+
+var player, exit;
 var ghosts = [];
-var exit;
 var unlocked = false;
 var easyStar = new EasyStar.js();
 var timeStep = 400;

@@ -94,8 +94,15 @@ Character.prototype = {
       this.sprite.body.velocity.x = 0;
       this.sprite.body.velocity.y = 0;
     }
-  }
+  },
 
+  perish: function(){
+    this.sprite.kill();
+    var perish = game.add.sprite(game.camera.x + window.innerWidth/2, game.camera.y + window.innerHeight/2, 'player_perish');
+    perish.anchor.set(0.5);
+    perish.animations.add('player_perish', [0, 1, 2, 3, 4], 3, false);
+    perish.animations.play('player_perish', 5, false);
+  }
 };
 
 // var determinePlayerStart = function(){
@@ -111,16 +118,11 @@ Character.prototype = {
 //
 // };
 
-function playerPerish(){
-  player.kill();
-  var perish = game.add.sprite(game.camera.x + window.innerWidth/2, game.camera.y + window.innerHeight/2, 'player_perish');
-  perish.anchor.set(0.5);
-  perish.animations.add('player_perish', [0, 1, 2, 3, 4], 3, false);
-  perish.animations.play('player_perish', 5, false);
-
-  // perish.animations.stop('player_perish', [0, 1, 2, 3, 4], 5, false);
-}
-
-function zoomForDeath(){
-  game.world.scale.setTo(1.3, 1.3);
-}
+// function playerPerish(){
+//   player.kill();
+//   var perish = game.add.sprite(game.camera.x + window.innerWidth/2, game.camera.y + window.innerHeight/2, 'player_perish');
+//   perish.anchor.set(0.5);
+//   perish.animations.add('player_perish', [0, 1, 2, 3, 4], 3, false);
+//   perish.animations.play('player_perish', 5, false);
+//
+// }

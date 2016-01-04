@@ -96,7 +96,7 @@ function checkGhostCollision(){
       // alert("u dead az fuckkk :(")
       enemyGroupKill();
       // zoomForDeath();
-      playerPerish();
+      player.perish();
       game.time.events.add(Phaser.Timer.SECOND * 2, gameOver, this).autoDestroy = true;
     });
 }

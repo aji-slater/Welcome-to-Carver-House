@@ -33,8 +33,8 @@ function stopSprites(){
     enemy.body.velocity.y = 0;
   });
 
-  player.body.velocity.x = 0;
-  player.body.velocity.y = 0;
+  player.sprite.body.velocity.x = 0;
+  player.sprite.body.velocity.y = 0;
 }
 
 

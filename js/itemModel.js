@@ -39,7 +39,7 @@ function Item (name) {
 Item.prototype = {
 
   pickUp: function(){
-    if (game.physics.arcade.distanceBetween(this.sprite, player) < 100 ){
+    if (game.physics.arcade.distanceBetween(this.sprite, player.sprite) < 100 ){
       this.sprite.kill();
       inventory.push(this.name);
   }},

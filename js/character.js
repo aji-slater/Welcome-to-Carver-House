@@ -2,8 +2,6 @@ function Character() {
   this.sprite = null;
 }
 
-// var playerStartingRoom;
-
 Character.prototype = {
 
   determinePlayerStart: function(){
@@ -37,11 +35,10 @@ Character.prototype = {
     this.sprite.animations.add('nw', [9, 10, 11, 12, 13, 14, 15], 20, true);
     this.sprite.animations.add('se', [17, 18, 19, 20, 21, 22, 23], 20, true);
     this.sprite.animations.add('ne', [25, 26, 27, 28, 29, 30, 31], 20, true);
-    this.sprite.animations.add('player_perish', [4], 10, false);
+    // this.sprite.animations.add('player_perish', [4], 10, false);
   },
 
   playerUpdate: function(){
-    // var isoKeys = game.input.keyboard.addKeys( { 'nw': Phaser.Keyboard.Q, 'sw': Phaser.Keyboard.A, 'ne': Phaser.Keyboard.W, 'se': Phaser.Keyboard.S } );
     var cursors = game.input.keyboard.createCursorKeys();
     var wasd = {
       up: game.input.keyboard.addKey(Phaser.Keyboard.W),
@@ -104,25 +101,3 @@ Character.prototype = {
     perish.animations.play('player_perish', 5, false);
   }
 };
-
-// var determinePlayerStart = function(){
-//   var aboveAverageRooms = [];
-//   var meanArea = gameBoard.avgArea();
-//   for ( i = gameBoard.rooms.length - 1; i >= 0; i-- ){
-//     if (gameBoard.rooms[i].area() >= meanArea) {
-//       aboveAverageRooms.push(gameBoard.rooms[i]);
-//     }
-//   }
-//   var index = Math.floor(Math.random() * aboveAverageRooms.length);
-//   return aboveAverageRooms[index];
-//
-// };
-
-// function playerPerish(){
-//   player.kill();
-//   var perish = game.add.sprite(game.camera.x + window.innerWidth/2, game.camera.y + window.innerHeight/2, 'player_perish');
-//   perish.anchor.set(0.5);
-//   perish.animations.add('player_perish', [0, 1, 2, 3, 4], 3, false);
-//   perish.animations.play('player_perish', 5, false);
-//
-// }

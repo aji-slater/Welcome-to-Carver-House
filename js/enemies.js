@@ -16,7 +16,7 @@ function configPathFinding(){
   easyStar.setGrid(board);
   easyStar.setIterationsPerCalculation(1500);
   easyStar.setAcceptableTiles([1]);
-  //easystar.enableCornerCutting();
+  // easystar.enableCornerCutting();
   // easyStar.enableDiagonals();
 }
 
@@ -89,7 +89,7 @@ function enemyGroupKill(){
 function checkGhostCollision(){
   // console.log(player);
   // console.log(ghost);
-  this.game.physics.isoArcade.overlap(player, enemyGroup, function(player){
+  this.game.physics.isoArcade.overlap(player.sprite, enemyGroup, function(player){
       // console.log("overlap");
       // player.moves = false;
       playerAlive = false;
@@ -210,8 +210,8 @@ function setGhostPaths(){
 }
 
 function moveGhost(ghost){
-          currentPlayerXtile = Math.floor(player.body.position.x / TILE_POS);
-          currentPlayerYtile = Math.floor(player.body.position.y / TILE_POS);
+          currentPlayerXtile = Math.floor(player.sprite.body.position.x / TILE_POS);
+          currentPlayerYtile = Math.floor(player.sprite.body.position.y / TILE_POS);
 
           // Move the ENEMY
           var enemySpeed = 100;

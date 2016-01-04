@@ -55,9 +55,9 @@ BasicGame.Game.prototype =
         checkGhostCollision();
       }
       wallCheck();
-      game.physics.isoArcade.collide(player, emptyGroup);
+      game.physics.isoArcade.collide(player.sprite, emptyGroup);
       game.physics.isoArcade.collide(enemyGroup, emptyGroup);
-      game.physics.isoArcade.collide(player, exitGroup, function(player){
+      game.physics.isoArcade.collide(player.sprite, exitGroup, function(player){
         // alert("You won!");
         if(unlocked){
           player.kill();

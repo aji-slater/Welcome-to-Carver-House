@@ -38,9 +38,8 @@ BasicGame.Game.prototype =
     generateWalls();
     generateExit();
     itemController.seed();
-    // tableCreate();
     //seed inventory with key for testing
-    inventory[0] = "key";
+    // inventory[0] = "Key";
     configPathFinding();
     createGhosts();
     setGhostPaths();

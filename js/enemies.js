@@ -73,8 +73,8 @@ function enemyGroupKill(){
 }
 
 function checkGhostCollision(){
-
-  this.game.physics.isoArcade.overlap(player.sprite, enemyGroup, function(player){
+  // p = player.sprite;
+  this.game.physics.isoArcade.overlap(player.sprite, enemyGroup, function(){
 
       // playerAlive = false;
       enemyGroupKill();

@@ -33,11 +33,11 @@ function GameBoard(){
   this.roomCount = 0;
   this.boardHeight;
   this.boardWidth;
-  this.entryRoom = new Room();
-  this.entryRoom.x = 0;
-  this.entryRoom.y = 0;
-  this.entryRoom.height = 2;
-  this.entryRoom.width = 2;
+  // this.entryRoom = new Room();
+  // this.entryRoom.x = 0;
+  // this.entryRoom.y = 0;
+  // this.entryRoom.height = 2;
+  // this.entryRoom.width = 2;
 }
 
 GameBoard.prototype.maxArea = function(){
@@ -104,8 +104,9 @@ GameBoard.prototype.generateRoom = function(room){
                   this.board[y][x] = 1;
             }
       }
-      console.log(this.board);
-};
+      // console.log(this.board);
+}
+
 
 GameBoard.prototype.generateEmptyBoard = function(width, height){
             for(var y = height; y >= 1 ; --y){
@@ -120,6 +121,16 @@ GameBoard.prototype.generateEmptyBoard = function(width, height){
       return this.board;
 }
 
+GameBoard.prototype.fixRoomBounds = function(room){
+  if(room.x2 > this.boardWidth){
+    room.x2 = this.boardWidth;
+    room.width = room.x2 - room.x;
+  }
+  if(room.y2 > this.boardHeight){
+    room.y2 = this.boardHeight;
+    room.height = room.y2 - room.y;
+  }
+}
 
 GameBoard.prototype.generateBoard = function(width, height){
 this.generateEmptyBoard(width, height);
@@ -138,6 +149,7 @@ this.generateEmptyBoard(width, height);
       }
 
       var newRoom = new Room(x, y, w, h);
+      this.fixRoomBounds(newRoom);
       var intersect = false;
       for(roomIndex in this.rooms){
             if(newRoom.intersects(this.rooms[roomIndex])){

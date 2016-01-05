@@ -16,9 +16,11 @@ BasicGame.Game.prototype =
   },
 
   create: function () {
-    adjustLevel();
     player = new Character();
+    this.adjustLevel();
     gameBoard = new GameBoard();
+    board = gameBoard.board;
+    boardSides = board.length;
     gameBoard.generateBoard(boardSize, boardSize);
 
     game.physics.isoArcade.gravity.setTo(0, 0, -500);

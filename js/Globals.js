@@ -2,12 +2,12 @@ var ANCHOR_SET = 0.5;
 var TILE_POS = 55;
 
 var gameBoard;
-var board = gameBoard.board;
-var boardSides = board.length;
 
 itemController = new ItemController();
 
 var player, exit;
+var board;
+var boardSides;
 var enemySpeed = 100;
 var ghosts = [];
 var unlocked = false;

@@ -100,4 +100,4 @@ Character.prototype = {
     perish.animations.add('player_perish', [0, 1, 2, 3, 4], 3, false);
     perish.animations.play('player_perish', 5, false);
   }
-};
+}

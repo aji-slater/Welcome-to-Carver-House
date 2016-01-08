@@ -100,7 +100,7 @@ var generateWalls = function(){
 
 var wallCheck = function(){
   wallGroup.forEach(function (wall){
-    if ( wall.isoX >= player.isoX && wall.isoY >= player.isoY ) {
+    if ( wall.isoX >= player.sprite.isoX && wall.isoY >= player.sprite.isoY ) {
       wall.alpha = 0.3;
     } else {
       wall.alpha = 1;

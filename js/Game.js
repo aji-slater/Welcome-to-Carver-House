@@ -60,7 +60,7 @@ BasicGame.Game.prototype =
       game.iso.unproject(game.input.activePointer.position, cursorPos);
       player.playerUpdate();
       moveGhosts();
-      illuminate();
+       illuminate();
       checkGhostCollision();
       wallCheck();
       game.physics.isoArcade.collide(player.sprite, emptyGroup);
@@ -117,15 +117,20 @@ BasicGame.Game.prototype =
   },
 
   render: function () {
-    // emptyGroup.forEach(function (tile) {
-    //     game.debug.body(tile, 'rgba(189, 221, 235, 0.6)', false);
-    // });
-  //   exitGroup.forEach(function (exit) {
-  //     game.debug.body(exit, 'rgba(189, 221, 235, 0.6)', false);
-  //     game.debug.spriteBounds(exit, 'pink', false);
-  // });
 
-  //   game.debug.body(player, 'rgba(189, 221, 235, 0.6)', false);
+    emptyGroup.forEach(function (tile) {
+      game.debug.body(tile, 'rgba(189, 221, 235, 0.6)', false);
+    });
+      exitGroup.forEach(function (exit) {
+         game.debug.body(exit, 'rgba(189, 221, 235, 0.6)', false);
+         game.debug.spriteBounds(exit, 'pink', false);
+     });
+
+    enemyGroup.forEach(function(enemy){
+      game.debug.body(enemy, 'rgba(189, 221, 235, 0.6)', false);
+    });
+
+    game.debug.body(player, 'rgba(189, 221, 235, 0.6)', false);
 
   }
 

@@ -58,7 +58,8 @@ function createGhosts(){
     sprite.animations.add('SE', [48, 49, 50, 51, 52, 53, 54, 55], 20, true);
     sprite.animations.add('NE', [56, 57, 58, 59, 60, 61, 62, 63], 20, true);
     this.game.physics.isoArcade.enable(sprite);
-
+    sprite.body.setSize(15,15,2);
+    sprite.anchor.set(0.5);
     sprite.body.collideWorldBounds = true;
     var ghost = new Ghost(sprite);
     ghosts.push(ghost);

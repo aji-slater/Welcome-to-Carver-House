@@ -68,8 +68,12 @@ BasicGame.Game.prototype =
       game.physics.isoArcade.collide(player.sprite, exitGroup, function(player){
         if(unlocked){
           player.kill();
-          enemySpeed+= 50;
-          game.state.start('Game');
+          if(level === 5){
+            level = 0;
+            game.state.start('Win');
+          }
+            game.state.start('Game');
+
         }
       });
     }
@@ -81,6 +85,7 @@ BasicGame.Game.prototype =
   },
 
   shutdown: function(){
+    unlocked = false;
     emptyGroup = [];
     floorGroup = [];
     wallGroup = [];
@@ -90,43 +95,59 @@ BasicGame.Game.prototype =
     activeGroup = [];
     menuGroup = [];
     enemyGroup = [];
+    inventory = [];
     gameBoard = null;
     player = null;
+    activeItem = null;
+    hudItem = null;
+    hudFrame = null;
+
     level++
   },
 
   adjustLevel: function(){
+    enemySpeed += 20;
     switch (level) {
       case 1:
         boardSize = 20;
         break;
       case 2:
         boardSize = 30;
+        enemyNum += 3
         break;
       case 3:
         boardSize = 40;
+        enemyNum += 3
         break;
       case 4:
         boardSize = 50;
+        enemyNum += 3
         break;
       case 5:
         boardSize = 60;
+        enemyNum += 3
         break;
       default:
     }
   },
 
   render: function () {
+
     // emptyGroup.forEach(function (tile) {
-    //     game.debug.body(tile, 'rgba(189, 221, 235, 0.6)', false);
+    //   game.debug.body(tile, 'rgba(189, 221, 235, 0.6)', false);
     // });
-  //   exitGroup.forEach(function (exit) {
-  //     game.debug.body(exit, 'rgba(189, 221, 235, 0.6)', false);
-  //     game.debug.spriteBounds(exit, 'pink', false);
-  // });
+
+    // exitGroup.forEach(function (exit) {
+    //      game.debug.body(exit, 'rgba(189, 221, 235, 0.6)', false);
+    //      game.debug.spriteBounds(exit, 'pink', false);
+    //  });
+
+  //   enemyGroup.forEach(function(enemy){
+  //     game.debug.body(enemy, 'rgba(189, 221, 235, 0.6)', false);
+  //   });
 
   //   game.debug.body(player, 'rgba(189, 221, 235, 0.6)', false);
 
-  }
+  // }
 
 };

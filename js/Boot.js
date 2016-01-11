@@ -1,4 +1,5 @@
 var BasicGame = function(game) { };
+
 BasicGame.Boot = function(game) { };
 
 BasicGame.Boot.prototype = {
@@ -26,5 +27,6 @@ BasicGame.Boot.prototype = {
 
 		this.state.start('Preloader');
 	}
+
 };
 

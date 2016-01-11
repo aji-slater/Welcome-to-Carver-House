@@ -65,7 +65,7 @@ var generateTiles = function (){
                 emptyTile.anchor.set(0.5, 0);
                 game.physics.isoArcade.enable(emptyTile);
                 emptyTile.body.collideWorldBounds = true;
-                emptyTile.body.moves = false;
+                emptyTile.body.immovable = true;
                 emptyTile.body.setSize(56, 56, 5);
               }
             }
@@ -100,7 +100,7 @@ var generateWalls = function(){
 
 var wallCheck = function(){
   wallGroup.forEach(function (wall){
-    if ( wall.isoX >= player.isoX && wall.isoY >= player.isoY ) {
+    if ( wall.isoX >= player.sprite.isoX && wall.isoY >= player.sprite.isoY ) {
       wall.alpha = 0.3;
     } else {
       wall.alpha = 1;

@@ -5,6 +5,8 @@ var currentPlayerYtile;
 var currentNextPointX; // next movement point in X
 var currentNextPointY; // next movement point in Y
 var playerAlive = true;
+var xEnemyChange = 0;
+var yEnemyChange = 0;
 
 function Ghost(sprite){
   this.sprite = sprite;
@@ -33,7 +35,8 @@ function selectGhostType(){
 }
 
 function createGhosts(){
-  var ghostCount = Math.floor(Math.random() * 7) + 1;
+  // var ghostCount = Math.floor(Math.random() * 7) + 1;
+  var ghostCount = enemyNum;
   var posData;
   for (i = 0; i < ghostCount; i++ ){
   var xg, yg, sprite;
@@ -49,16 +52,17 @@ function createGhosts(){
 
     sprite.tint = 0x000000;
     sprite.alpha = 0.6;
-    sprite.animations.add('S', [0, 1, 2, 3, 4, 5, 6, 7], 20, true);
-    sprite.animations.add('W', [8, 9, 10, 11, 12, 13, 14, 15], 20, true);
-    sprite.animations.add('E', [16, 17, 18, 19, 20, 21, 22, 23], 20, true);
-    sprite.animations.add('N', [24, 25, 26, 27, 28, 29, 30, 31], 20, true);
-    sprite.animations.add('SW', [32, 33, 34, 35, 36, 37, 38, 39], 20, true);
-    sprite.animations.add('NW', [40, 41, 42, 43, 44, 45, 46, 47], 20, true);
-    sprite.animations.add('SE', [48, 49, 50, 51, 52, 53, 54, 55], 20, true);
-    sprite.animations.add('NE', [56, 57, 58, 59, 60, 61, 62, 63], 20, true);
+    sprite.animations.add('SE', [0, 1, 2, 3, 4, 5, 6, 7], 20, true);
+    sprite.animations.add('SW', [8, 9, 10, 11, 12, 13, 14, 15], 20, true);
+    sprite.animations.add('NE', [16, 17, 18, 19, 20, 21, 22, 23], 20, true);
+    sprite.animations.add('NW', [24, 25, 26, 27, 28, 29, 30, 31], 20, true);
+    sprite.animations.add('S', [32, 33, 34, 35, 36, 37, 38, 39], 20, true);
+    sprite.animations.add('W', [40, 41, 42, 43, 44, 45, 46, 47], 20, true);
+    sprite.animations.add('E', [48, 49, 50, 51, 52, 53, 54, 55], 20, true);
+    sprite.animations.add('N', [56, 57, 58, 59, 60, 61, 62, 63], 20, true);
     this.game.physics.isoArcade.enable(sprite);
-
+    sprite.body.setSize(18,18,2);
+    sprite.anchor.set(0.5);
     sprite.body.collideWorldBounds = true;
     var ghost = new Ghost(sprite);
     ghosts.push(ghost);
@@ -84,14 +88,36 @@ function checkGhostCollision(){
 }
 
 function gameOver(){
+  clearInterval(intervalId);
+  level = 0;
+  enemySpeed = 0;
+  enemyNum = 1;
   game.state.start("GameOver", true, false);
 }
 
-function setPathFinderInterval(ghost) {
-  setInterval(function(){
+function ghostPathCorrection() {
+  var xRemainder =  ghost.sprite.body.position.x % TILE_POS;
+  var yRemainder =  ghost.sprite.body.position.y % TILE_POS;
+  // var xOffset = TILE_POS - xRemainder + 1;
+  // var yOffset = TILE_POS - yRemainder + 1;
 
-            var currentGhostXtile = Math.floor(ghost.sprite.body.position.x / TILE_POS);
-            var currentGhostYtile = Math.floor(ghost.sprite.body.position.y / TILE_POS);
+  if(xRemainder >= 27.5){
+    xEnemyChange = TILE_POS;
+  }else{
+    xEnemyChange = -TILE_POS;
+  }
+  if(yRemainder >= 27.5){
+    yEnemyChange = TILE_POS;
+  }else{
+    yEnemyChange = -TILE_POS;
+  }
+}
+
+function setPathFinderInterval(ghost) {
+  intervalId = setInterval(function(){
+            // ghostPathCorrection();
+            var currentGhostXtile = Math.round((ghost.sprite.body.position.x + xEnemyChange) / TILE_POS);
+            var currentGhostYtile = Math.round((ghost.sprite.body.position.y + yEnemyChange) / TILE_POS);
 
             easyStar.findPath(currentGhostXtile, currentGhostYtile, currentPlayerXtile, currentPlayerYtile, function( path ) {
                 if (path === null) {
@@ -163,51 +189,51 @@ function setGhostPaths(){
 function moveGhost(ghost){
           currentPlayerXtile = Math.floor(player.sprite.body.position.x / TILE_POS);
           currentPlayerYtile = Math.floor(player.sprite.body.position.y / TILE_POS);
-
+          console.log(ghost.enemyDirection);
           // Move the ENEMY
           if (ghost.enemyDirection == "N") {
-            ghost.sprite.body.velocity.x = -enemySpeed;
+            ghost.sprite.body.velocity.x = 0;
             ghost.sprite.body.velocity.y = -enemySpeed;
             ghost.sprite.animations.play('N');
 
           }
           else if (ghost.enemyDirection == "S")
           {
-            ghost.sprite.body.velocity.x = enemySpeed;
+            ghost.sprite.body.velocity.x = 0;
             ghost.sprite.body.velocity.y = enemySpeed;
             ghost.sprite.animations.play('S');
 
           }
           else if (ghost.enemyDirection == "E") {
             ghost.sprite.body.velocity.x = enemySpeed;
-            ghost.sprite.body.velocity.y = -enemySpeed;
+            ghost.sprite.body.velocity.y = 0;
             ghost.sprite.animations.play('E');
 
           }
           else if (ghost.enemyDirection == "W")
           {
             ghost.sprite.body.velocity.x = -enemySpeed;
-            ghost.sprite.body.velocity.y = enemySpeed;
+            ghost.sprite.body.velocity.y = 0;
             ghost.sprite.animations.play('W');
 
           }
           else if (ghost.enemyDirection == "SE")
           {
             ghost.sprite.body.velocity.x = enemySpeed;
-            ghost.sprite.body.velocity.y = 0;
+            ghost.sprite.body.velocity.y = enemySpeed;
             ghost.sprite.animations.play('SE');
 
           }
           else if (ghost.enemyDirection == "NW")
           {
             ghost.sprite.body.velocity.x = -enemySpeed;
-            ghost.sprite.body.velocity.y = 0;
+            ghost.sprite.body.velocity.y = -enemySpeed;
             ghost.sprite.animations.play('NW');
 
           }
           else if (ghost.enemyDirection == "SW")
           {
-            ghost.sprite.body.velocity.x = 0;
+            ghost.sprite.body.velocity.x = -enemySpeed;
             ghost.sprite.body.velocity.y = enemySpeed;
             ghost.sprite.animations.play('SW');
 
@@ -215,7 +241,7 @@ function moveGhost(ghost){
 
           else if (ghost.enemyDirection == "NE")
           {
-            ghost.sprite.body.velocity.x = 0;
+            ghost.sprite.body.velocity.x = enemySpeed;
             ghost.sprite.body.velocity.y = -enemySpeed;
             ghost.sprite.animations.play('NE');
 
@@ -233,4 +259,13 @@ function moveGhosts(){
     ghost = ghosts[i];
     moveGhost(ghost);
   }
+}
+
+function moveDebug(){
+  var enemyNum = 1
+  console.log("player " + " x: " + player.sprite.isoX + " y: " + player.sprite.isoY + " x tile: " + Math.round(player.sprite.isoX / 55) + " y tile: " + Math.round(player.sprite.isoY /55));
+  enemyGroup.forEach(function(enemy){
+    console.log("num: " + enemyNum + " x: " + enemy.isoX + " y: " + enemy.isoY + " tile x pos: " + Math.round(enemy.isoX /55) + " tile y pos: " + Math.round(enemy.isoY / 55));
+    enemyNum++
+  });
 }

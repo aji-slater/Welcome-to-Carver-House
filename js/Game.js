@@ -68,7 +68,12 @@ BasicGame.Game.prototype =
       game.physics.isoArcade.collide(player.sprite, exitGroup, function(player){
         if(unlocked){
           player.kill();
-          game.state.start('Game');
+          if(level === 5){
+            level = 0;
+            game.state.start('Win');
+          }
+            game.state.start('Game');
+
         }
       });
     }
@@ -137,12 +142,12 @@ BasicGame.Game.prototype =
     //      game.debug.spriteBounds(exit, 'pink', false);
     //  });
 
-    enemyGroup.forEach(function(enemy){
-      game.debug.body(enemy, 'rgba(189, 221, 235, 0.6)', false);
-    });
+  //   enemyGroup.forEach(function(enemy){
+  //     game.debug.body(enemy, 'rgba(189, 221, 235, 0.6)', false);
+  //   });
 
-    game.debug.body(player, 'rgba(189, 221, 235, 0.6)', false);
+  //   game.debug.body(player, 'rgba(189, 221, 235, 0.6)', false);
 
-  }
+  // }
 
 };

@@ -65,7 +65,7 @@ var generateTiles = function (){
                 emptyTile.anchor.set(0.5, 0);
                 game.physics.isoArcade.enable(emptyTile);
                 emptyTile.body.collideWorldBounds = true;
-                emptyTile.body.moves = false;
+                emptyTile.body.immovable = true;
                 emptyTile.body.setSize(56, 56, 5);
               }
             }

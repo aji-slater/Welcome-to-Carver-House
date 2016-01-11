@@ -93,6 +93,9 @@ BasicGame.Game.prototype =
     inventory = [];
     gameBoard = null;
     player = null;
+    activeItem = null;
+    hudItem = null;
+    hudFrame = null;
 
     level++
   },
@@ -134,11 +137,11 @@ BasicGame.Game.prototype =
     //      game.debug.spriteBounds(exit, 'pink', false);
     //  });
 
-    // enemyGroup.forEach(function(enemy){
-    //   game.debug.body(enemy, 'rgba(189, 221, 235, 0.6)', false);
-    // });
+    enemyGroup.forEach(function(enemy){
+      game.debug.body(enemy, 'rgba(189, 221, 235, 0.6)', false);
+    });
 
-    // game.debug.body(player, 'rgba(189, 221, 235, 0.6)', false);
+    game.debug.body(player, 'rgba(189, 221, 235, 0.6)', false);
 
   }
 

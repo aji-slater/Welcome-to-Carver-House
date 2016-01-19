@@ -18,7 +18,7 @@ BasicGame.Preloader.prototype = {
 		this.loadingHouse.anchor.setTo(0.5);
 		this.loadingText.anchor.setTo(0.5);
 
-		text = game.add.text(32, 32, 'Load', { fill: "#ffffff"});
+		var text = game.add.text(32, 32, 'Load', { fill: "#ffffff"});
 		this.start();
 		game.load.onLoadStart.add(this.loadStart, this);
 		game.load.onFileComplete.add(this.fileComplete, this);
@@ -26,7 +26,6 @@ BasicGame.Preloader.prototype = {
 	},
 
 	loadStart: function(){
-
 	},
 
 	fileComplete: function(progress, cacheKey, success, totalLoaded, totalFiles){

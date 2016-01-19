@@ -23,6 +23,8 @@ BasicGame.Game.prototype =
     boardSides = board.length;
     gameBoard.generateBoard(boardSize, boardSize);
 
+    // game.Projector.topologicalSort(wallGroup, 5);
+    // game.Projector.topologicalSort(activeGroup, 5);
     game.physics.isoArcade.gravity.setTo(0, 0, -500);
     emptyGroup = game.add.group();
     floorGroup = game.add.group();
@@ -98,11 +100,13 @@ BasicGame.Game.prototype =
     inventory = [];
     gameBoard = null;
     player = null;
+
     activeItem = null;
     hudItem = null;
     hudFrame = null;
 
     level++
+
   },
 
   adjustLevel: function(){
@@ -148,6 +152,5 @@ BasicGame.Game.prototype =
 
   //   game.debug.body(player, 'rgba(189, 221, 235, 0.6)', false);
 
-  // }
 
-};
+  // }

@@ -62,7 +62,7 @@ BasicGame.Game.prototype =
       game.iso.unproject(game.input.activePointer.position, cursorPos);
       player.playerUpdate();
       moveGhosts();
-      illuminate();
+      game.illuminate();
       checkGhostCollision();
       wallCheck();
       game.physics.isoArcade.collide(player.sprite, emptyGroup);
@@ -105,7 +105,7 @@ BasicGame.Game.prototype =
     hudItem = null;
     hudFrame = null;
 
-    level++
+    level++;
 
   },
 
@@ -117,19 +117,19 @@ BasicGame.Game.prototype =
         break;
       case 2:
         boardSize = 30;
-        enemyNum += 3
+        enemyNum += 3;
         break;
       case 3:
         boardSize = 40;
-        enemyNum += 3
+        enemyNum += 3;
         break;
       case 4:
         boardSize = 50;
-        enemyNum += 3
+        enemyNum += 3;
         break;
       case 5:
         boardSize = 60;
-        enemyNum += 3
+        enemyNum += 3;
         break;
       default:
     }
@@ -153,4 +153,7 @@ BasicGame.Game.prototype =
   //   game.debug.body(player, 'rgba(189, 221, 235, 0.6)', false);
 
 
-  // }
+  }
+
+
+};

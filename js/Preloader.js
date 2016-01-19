@@ -7,26 +7,17 @@ BasicGame.Preloader = function (game) {
 BasicGame.Preloader.prototype = {
 
 	preload: function() {
-		this.stage.backgroundColor = '#333333';
+		this.stage.backgroundColor = '#ffffff';
+		this.loadingHouse = this.add.sprite(this.game.world.centerX, this.game.world.centerY - 50, 'loadingHouse');
+		this.loadingHouse.scale.setTo(0.6)
+		this.loadingHouse.anchor.setTo(0.5);
 
-		this.backgroundImage = this.add.sprite(this.game.world.centerX, this.game.world.centerY, 'lovecraft_mansion');
-		this.backgroundImage.anchor.setTo(0.5);
-
-		this.preloadBar = this.add.sprite(this.game.world.centerX, this.game.world.centerY + 228, 'preload_bar');
-		this.preloadBar.anchor.setTo(0.5);
+		loadAll();
 
 	},
 
 	create: function() {
-		this.load.setPreloadSprite(this.preloadBar);
-		// this.preloadBar.cropEnabled = false;
+		// this.state.start('MainMenu');
 	},
 
-
-	update: function() {
-		if (this.ready == false) {
-		this.ready = true;
-		this.state.start('MainMenu');
-		}
-	}
 };

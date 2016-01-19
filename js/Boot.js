@@ -19,6 +19,7 @@ BasicGame.Boot.prototype = {
 
 	preload: function() {
 		game.load.image('loadingHouse', 'assets/outside-to-game/preloader.png');
+		game.load.image('loadingText', 'assets/outside-to-game/loadingText.png');
 
 		game.physics.startSystem(Phaser.Plugin.Isometric.ISOARCADE);
     	game.plugins.add(new Phaser.Plugin.Isometric(game));

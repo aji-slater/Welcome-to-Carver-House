@@ -150,4 +150,4 @@ BasicGame.Game.prototype =
 
   // }
 
-};
+}};

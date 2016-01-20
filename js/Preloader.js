@@ -7,26 +7,39 @@ BasicGame.Preloader = function (game) {
 BasicGame.Preloader.prototype = {
 
 	preload: function() {
-		this.stage.backgroundColor = '#333333';
-
-		this.backgroundImage = this.add.sprite(this.game.world.centerX, this.game.world.centerY, 'lovecraft_mansion');
-		this.backgroundImage.anchor.setTo(0.5);
-
-		this.preloadBar = this.add.sprite(this.game.world.centerX, this.game.world.centerY + 228, 'preload_bar');
-		this.preloadBar.anchor.setTo(0.5);
 
 	},
 
 	create: function() {
-		this.load.setPreloadSprite(this.preloadBar);
-		// this.preloadBar.cropEnabled = false;
+		this.stage.backgroundColor = '#ffffff';
+		this.loadingHouse = this.add.sprite(this.game.world.centerX, this.game.world.centerY - 50, 'loadingHouse');
+		this.loadingText = this.add.sprite(this.game.world.centerX, this.game.world.centerY+200, 'loadingText');
+		this.loadingHouse.scale.setTo(0.6);
+		this.loadingHouse.anchor.setTo(0.5);
+		this.loadingText.anchor.setTo(0.5);
+
+		var text = game.add.text(32, 32, 'Load', { fill: "#ffffff"});
+		this.start();
+		game.load.onLoadStart.add(this.loadStart, this);
+		game.load.onFileComplete.add(this.fileComplete, this);
+		game.load.onLoadComplete.add(this.loadComplete, this);
 	},
 
+	loadStart: function(){
+	},
 
-	update: function() {
-		if (this.ready == false) {
-		this.ready = true;
+	fileComplete: function(progress, cacheKey, success, totalLoaded, totalFiles){
+		text.setText("Percent Complete: " + progress + "%");
+	},
+
+	loadComplete: function(){
 		this.state.start('MainMenu');
-		}
+	},
+
+	start: function(){
+		loadAll();
+		game.load.start();
+
 	}
+
 };

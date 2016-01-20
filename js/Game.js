@@ -23,6 +23,8 @@ BasicGame.Game.prototype =
     boardSides = board.length;
     gameBoard.generateBoard(boardSize, boardSize);
 
+    // game.Projector.topologicalSort(wallGroup, 5);
+    // game.Projector.topologicalSort(activeGroup, 5);
     game.physics.isoArcade.gravity.setTo(0, 0, -500);
     emptyGroup = game.add.group();
     floorGroup = game.add.group();
@@ -60,7 +62,7 @@ BasicGame.Game.prototype =
       game.iso.unproject(game.input.activePointer.position, cursorPos);
       player.playerUpdate();
       moveGhosts();
-      illuminate();
+      game.illuminate();
       checkGhostCollision();
       wallCheck();
       game.physics.isoArcade.collide(player.sprite, emptyGroup);
@@ -98,11 +100,13 @@ BasicGame.Game.prototype =
     inventory = [];
     gameBoard = null;
     player = null;
+
     activeItem = null;
     hudItem = null;
     hudFrame = null;
 
-    level++
+    level++;
+
   },
 
   adjustLevel: function(){
@@ -113,19 +117,19 @@ BasicGame.Game.prototype =
         break;
       case 2:
         boardSize = 30;
-        enemyNum += 3
+        enemyNum += 3;
         break;
       case 3:
         boardSize = 40;
-        enemyNum += 3
+        enemyNum += 3;
         break;
       case 4:
         boardSize = 50;
-        enemyNum += 3
+        enemyNum += 3;
         break;
       case 5:
         boardSize = 60;
-        enemyNum += 3
+        enemyNum += 3;
         break;
       default:
     }
@@ -148,6 +152,8 @@ BasicGame.Game.prototype =
 
   //   game.debug.body(player, 'rgba(189, 221, 235, 0.6)', false);
 
-  // }
+
+  }
+
 
 }};

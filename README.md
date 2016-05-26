@@ -10,3 +10,10 @@ Inside, Ivy is met with an impossibly vast chamber and series of hallways and ro
 -Welcome to Carver House is a procedurally generated exploration game. That means the sounds, the music, the house...and it's inhabitants, are built by algorithm, making it **literally infinite**. Built on html5's canvas, Phaser, and pixi javascript libraries, comes a game in which a player will explore the house gathering items and experiences while trying to leave it's labyrinthian hallways. The intrepid investigator will eventually come face to face with Evelyn Carver, an encounter which triggers a story shift generated in relation to the player's experiences exploring the house so far. Only then shall the exit become accessible.
 
 [![Codacy Badge](https://api.codacy.com/project/badge/Grade/fdfcd4a960124bb392329f25b1ec7860)](https://www.codacy.com/app/aji-slater/Welcome-to-Carver-House?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=aji-slater/Welcome-to-Carver-House&amp;utm_campaign=Badge_Grade)
+
+## Development Environment Setup
+
+For local development, you might want to:
+
+- Install a local webserver `npm install http-server -`
+- Start the server `http-server .`

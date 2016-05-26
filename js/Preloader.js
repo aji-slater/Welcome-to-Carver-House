@@ -5,7 +5,6 @@ BasicGame.Preloader = function (game) {
 };
 
 BasicGame.Preloader.prototype = {
-
 	preload: function() {
 
 	},
@@ -29,7 +28,7 @@ BasicGame.Preloader.prototype = {
 	},
 
 	fileComplete: function(progress, cacheKey, success, totalLoaded, totalFiles){
-		text.setText("Percent Complete: " + progress + "%");
+		// text.setText("Percent Complete: " + progress + "%");
 	},
 
 	loadComplete: function(){

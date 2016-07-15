@@ -18,4 +18,4 @@ For local development, you might want to:
 - Install a local webserver `npm install http-server -`
 - Start the server `http-server .`
 
-If you want to see the walls more clearly, set `DEBUG=true` in FloorGen.js
+If you want to see the walls more clearly, set `DEBUG=true` in FloorGen.js# carver_house
